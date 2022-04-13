@@ -77,7 +77,7 @@ class UsuarioDAO implements DAO
               'imagenPerfil'=>$usuario->imagenPerfil);
 
      // url
-     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/Anuncia2Web/databases/(default)/documents/Usuarios/" . $datosU["idUsuario"] . "?key=AIzaSyCyBul43xaEl0ZJ7JRcbeP2oU8QPkpHUt4");
+     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $datosU["idUsuario"] . "?key=AIzaSyCyBul43xaEl0ZJ7JRcbeP2oU8QPkpHUt4");
 
      // Se formatea el array a formato json
      $datosjson = json_encode($datosU);
@@ -111,8 +111,7 @@ class UsuarioDAO implements DAO
       // Objeto de tipo curl para hacer la peticion a la PR18
       $ch = curl_init();
 
-      //curl_setopt($ch, CURLOPT_URL, "http://10.1.160.105/tema7/miapi/miapi.php/usuarios");
-      curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/Anuncia2Web/databases/(default)/documents/Usuarios/?key=AIzaSyCyBul43xaEl0ZJ7JRcbeP2oU8QPkpHUt4");
+      curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/");
 
       // Array que contiene los parámetros que le paso por post
      $datosU = array('idUsuario'=>$usuario->idUsuario,'nombre'=>$usuario->nombre,'apellido'=>$usuario->apellido,
@@ -121,21 +120,22 @@ class UsuarioDAO implements DAO
      'imagenPerfil'=>$usuario->imagenPerfil);
 
       // Se formatea el array para que lo entienda la cabecera del http
-      $datoshttp = http_build_query($datosU);
+      //$datoshttp = http_build_query($datosU);
 
       // Se le indica que lo queremos hacer por post
       curl_setopt($ch,CURLOPT_POST,true);
 
       // Se le pasan los parámetros a la cabecera del post
-      curl_setopt($ch,CURLOPT_POSTFIELDS,$datoshttp);
+      curl_setopt($ch,CURLOPT_POSTFIELDS,$datosU);
+      //curl_setopt($ch,CURLOPT_HEADER,array('Content-Type: text/plain'));
 
       // Ejecuto la conexion
-      $usuario = curl_exec($ch);
+      $respuesta = curl_exec($ch);
 
       // Cierre de la conexión
       curl_close($ch);
 
-      return $usuario;
+      return $respuesta;
   }
 
   // Método que elimina un usuario en funcion de su id
@@ -145,10 +145,30 @@ class UsuarioDAO implements DAO
   }
 
 
-  // Método que valida si existe un usuario
-  public static function validaUser($user,$pass)
+  // Método que valida si existe un usuario (activo) mediante sus credenciales
+  public static function validaUser($email,$contraseña)
   {
-      
+    // Compruebo que existe dicho usuario con esas credenciales
+    $usuarios = UsuarioDAO::findAll();
+
+    $existe = false;
+    $activo = false;
+
+    foreach ($usuarios as $usuario) 
+    {
+      // Si coinciden las credenciales...
+      if(($usuario->email == $email)&&($usuario->contraseña == $contraseña))
+      {
+        $existe = true;
+
+        // Compruebo que esté activo (requisito para poder loguearse)
+        if($usuario->activo == true)
+          $activo = true;
+      }
+    }
+
+    // Devuelvo un array con la información del usuario (si existe y si está activo)
+    return array($existe,$activo);
   }
 }
 

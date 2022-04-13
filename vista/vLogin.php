@@ -9,7 +9,7 @@
 <div class="formulario">
   <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <section>
-      <label for="nombre">Email:</label> 
+      <label for="email">Email:</label> 
       <input type="text" name="email" id="email" placeholder="Email" value="<?php 
       
           // Si se quiere recordar el usuario...
@@ -27,11 +27,9 @@
     <section>
       <label for="check">Recordar Usuario</label>
       <input type="checkbox" name="check" id="check" <?php 
-      
           // Si esxiste la cookie... recuerdo el check
           if(isset($_COOKIE["recordarUsuario"]))
               echo "checked";
-          
         ?>>
     </section><br>
 

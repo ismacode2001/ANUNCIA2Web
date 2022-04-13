@@ -29,12 +29,4 @@
   $_SESSION['vista'] = $vistas['inicio'];
   $_SESSION['pagina'] = 'inicio';
   require_once $vistas['layout'];
-  
-  //$res = UsuarioDAO::findAll();
-
-  /*
-  echo "<pre>";
-  print_r($res);
-  echo "</pre>";
-  */
 ?>
