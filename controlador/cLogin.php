@@ -26,7 +26,7 @@
 
       // Se encripta la contraseña (mediante 'sha256')
       //$pass = hash("sha256",$pass);
-
+      $pass = sha1($pass);
       // Compruebo si se desea recordar el usuario
       if(isset($_REQUEST["check"]))
       {
@@ -52,7 +52,9 @@
         {
           // Guardo los datos del usuario en la sesion
           $_SESSION["validada"] = true;
-          /*
+
+          $usuario = UsuarioDAO::findByEmailAndPass($user,$pass);
+          
           $_SESSION["idUsuario"] = $usuario->idUsuario;
           $_SESSION["nombreUsuario"] = $usuario->nombre;
           $_SESSION["apellidoUsuario"] = $usuario->apellido;
@@ -62,7 +64,7 @@
           $_SESSION["usuarioActivo"] = $usuario->activo;
           $_SESSION["perfil"] = $usuario->perfil;
           $_SESSION["imagenPerfilUsuario"] = $usuario->imagenPerfil;
-          */
+          
           // Se accede al inicio
           $_SESSION["pagina"] = "inicio";
           header("Location: index.php");

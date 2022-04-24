@@ -97,7 +97,7 @@
                 </form>
         <?php
                 // Codigo de Usuario
-                echo "<p style='float:left'><b>" . $_SESSION['nombre'] . "</b></p>";
+                echo "<p style='float:left'><b>" . $_SESSION['nombreUsuario'] . "</b></p>";
             } 
             else 
             {

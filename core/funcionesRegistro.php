@@ -157,6 +157,17 @@
       }
   }
 
+  // Funcion que formatea la fecha a String
+  function fechaToString($fechaDate)
+  {
+    $date = explode("/",$fechaDate);
+    list($day,$month,$year) = $date;
+
+    $nuevaFecha = $day . "/" . $month . "/" . $year;
+
+    return $nuevaFecha;
+  }
+
   /*
   // Funcion que valida si el nombre del usuario es único //
   function validaNombreUsuario($validando,$campo)
