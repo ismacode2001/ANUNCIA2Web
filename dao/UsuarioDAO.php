@@ -3,7 +3,7 @@
 class UsuarioDAO implements DAO
 {
 
-  // Método que lista todos los usuarios
+  // Método que lista todos los Usuarios
   public static function findAll()
   {
     $ch = curl_init();
@@ -47,7 +47,7 @@ class UsuarioDAO implements DAO
     return $usuarios;
   }
 
-  // Método que busca un usuario por su email y contraseña
+  // Método que busca un Usuario por su email y contraseña
   public static function findByEmailAndPass($email,$contraseña)
   {
     $ch = curl_init();
@@ -98,7 +98,7 @@ class UsuarioDAO implements DAO
     return $usuario;
   }
 
-  // Método que busca un usuario por su id
+  // Método que busca un Usuario por su id
   public static function findById($id)
   {
     $ch = curl_init();
@@ -187,7 +187,7 @@ class UsuarioDAO implements DAO
      return $usuario;
   }
 
-  // Método que inserta un nuevo usuario
+  // Método que inserta un nuevo Usuario
   public static function save($usuario)
   {
     // Objeto de tipo curl para hacer la peticion a la PR18
@@ -248,14 +248,14 @@ class UsuarioDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un usuario en funcion de su id
+  // Método que elimina un Usuario en funcion de su id
   public static function deleteById($id)
   {
     
   }
 
 
-  // Método que valida si existe un usuario (activo) mediante sus credenciales
+  // Método que valida si existe un Usuario (activo) mediante sus credenciales
   public static function validaUser($email,$contraseña)
   {
     // Compruebo que existe dicho usuario con esas credenciales

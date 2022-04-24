@@ -3,7 +3,7 @@
 class ComentarioDAO implements DAO
 {
 
-  // Método que lista todos los Favoritos
+  // Método que lista todos los Comentarios
   public static function findAll()
   {
     $ch = curl_init();
@@ -138,7 +138,7 @@ class ComentarioDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un usuario en funcion de su id
+  // Método que elimina un Comentario en funcion de su id
   public static function deleteById($id)
   {
     

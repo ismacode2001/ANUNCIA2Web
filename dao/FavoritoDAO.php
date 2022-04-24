@@ -128,7 +128,7 @@ class FavoritoDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un usuario en funcion de su id
+  // Método que elimina un Favorito en funcion de su id
   public static function deleteById($id)
   {
     

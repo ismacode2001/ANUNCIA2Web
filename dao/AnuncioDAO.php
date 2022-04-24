@@ -2,7 +2,7 @@
 
 class AnuncioDAO implements DAO
 {
-  // Método que lista todos los anuncios
+  // Método que lista todos los Anuncios
   public static function findAll()
   {
     $ch = curl_init();
@@ -47,7 +47,7 @@ class AnuncioDAO implements DAO
     return $anuncios;
   }
 
-  // Método que busca un anuncio por su id
+  // Método que busca un Anuncio por su id
   public static function findById($id)
   {
     $ch = curl_init();
@@ -164,7 +164,7 @@ class AnuncioDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un usuario en funcion de su id
+  // Método que elimina un Anuncio en funcion de su id
   public static function deleteById($id)
   {
     
