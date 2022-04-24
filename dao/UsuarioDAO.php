@@ -115,15 +115,14 @@ class UsuarioDAO implements DAO
     $arrayUsuarios = json_decode($jsonUsuarios,true); // decode the JSON feed
     
     // Array que contiene los objetos de tipo Usuario
-    $usuarios = [];
+    $usuario = null;
 
     // Por cada Usuario...
     foreach ($arrayUsuarios["documents"] as $arrayUsuario)
     {
       $arrayDatos = $arrayUsuario["fields"];
-
       $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-
+     
       if($idUsuario == $id)
       {
         $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
@@ -140,12 +139,11 @@ class UsuarioDAO implements DAO
         $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
           $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
   
-        array_push($usuarios,$usuario);
       }
       
     }
 
-    return $usuarios;
+    return $usuario;
   }
 
   // Método que modifica/actualiza un Usuario

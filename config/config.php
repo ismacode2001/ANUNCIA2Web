@@ -15,7 +15,8 @@
   $controladores = [
       'inicio' => 'controlador/cInicio.php',
       'login' => 'controlador/cLogin.php',
-      'registro' => 'controlador/cRegistro.php'
+      'registro' => 'controlador/cRegistro.php',
+      'perfil' => 'controlador/cPerfil.php'
   ];
 
   // Vistas //
