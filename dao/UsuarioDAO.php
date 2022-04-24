@@ -195,8 +195,6 @@ class UsuarioDAO implements DAO
 
     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/");
 
-    //parse_str($usuario->fechaNacimiento,$fecha);
-
     $json = "{
       'fields':{
           'idUsuario':{
@@ -231,17 +229,6 @@ class UsuarioDAO implements DAO
           }
       }
     }";
-
-    //$json = file_get_contents($json);
-
-    /*
-    // Se le indica que lo queremos hacer por post
-    curl_setopt($ch,CURLOPT_POST,true);
-
-    // Se le pasan los parámetros a la cabecera del post
-    curl_setopt($ch,CURLOPT_POSTFIELDS,$json);
-    //curl_setopt($ch,CURLOPT_HEADER,array('Content-Type: text/plain'));
-    */
 
     curl_setopt_array($ch, array(
       CURLOPT_POST=>1,
