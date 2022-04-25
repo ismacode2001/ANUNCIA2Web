@@ -66,7 +66,7 @@
           $_SESSION["imagenPerfilUsuario"] = $usuario->imagenPerfil;
           
           // Se accede al inicio
-          $_SESSION["pagina"] = "inicio";
+          $_SESSION["pagina"] = "menu";
           header("Location: index.php");
         }
         else

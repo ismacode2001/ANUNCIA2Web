@@ -123,7 +123,8 @@
         <!-- Activo -->
         <section>
             <input type="hidden" name="activo" id="idActivo" value="<?php
-                echo "true";
+                // Por defecto, los nuevos usuarios registrados no estarán activos
+                echo "false";
             ?>">
         </section>
         <br>
