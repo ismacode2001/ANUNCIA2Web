@@ -28,13 +28,14 @@
                 <!-- Listado de las paginas -->
                 <ul>
 
-                    <!-- Productos -->
+                    <!-- Anuncios -->
                     <li>
-                        <input type="submit" value="Ver Productos" id="verProductos" name="verProductos">
+                        <input type="submit" value="Anuncios" id="verAnuncios" name="verAnuncios">
                     </li>
 
                     <?php
 
+/*
                     // Si está validada la sesión...
                     if (isset($_SESSION['validada'])) 
                     {
@@ -45,26 +46,16 @@
                         </li>
                     <?php
                     }
-
+*/
                     if(isset($_SESSION['perfil']))
                     {
                         // Si el perfil del usuario es de tipo ADMINISTRADOR...
-                        if($_SESSION['perfil'] == 'PERFIL_ADMIN')
+                        if($_SESSION['perfil'] == 'P_ADMIN')
                         {
                     ?>
-                            <!-- Insertar un nuevo producto -->
+                            <!-- Listado de Usuario -->
                             <li>
-                                <input type="submit" value="Crear Producto" id="insertarProducto" name="insertarProducto">
-                            </li>
-
-                            <!-- Ventas -->
-                            <li>
-                                <input type="submit" value="Mostrar ventas" id="mostrarVentas" name="mostrarVentas">
-                            </li>
-
-                            <!-- Albaranes -->
-                            <li>
-                                <input type="submit" value="Mostrar albaranes" id="mostrarAlbaranes" name="mostrarAlbaranes">
+                                <input type="submit" value="Listado de Usuarios" id="mostrarUsuarios" name="mostrarUsuarios">
                             </li>
                     <?php  
                         }                   
@@ -133,7 +124,7 @@
     <footer>&copy;&nbsp;Ismael Maestre</footer>
 
     <!-- Script -->
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!--<script src="./webroot/js/menuLayout.js"></script>-->
+    <!--<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
+    <script src="./webroot/js/menuLayout.js"></script>
 </body>
 </html>
