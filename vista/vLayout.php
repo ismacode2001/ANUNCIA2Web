@@ -8,8 +8,9 @@
     <title>ANUNCIA2</title>
 
     <!-- Enlace al css -->
-    <link rel="stylesheet" href="./webroot/css/style.css">
-    
+    <!--<link rel="stylesheet" href="./webroot/css/style.css">-->
+    <link rel="stylesheet" href="./styles.css"/>
+
 </head>
 
 <body>
@@ -132,6 +133,7 @@
     <footer>&copy;&nbsp;Ismael Maestre</footer>
 
     <!-- Script -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--<script src="./webroot/js/menuLayout.js"></script>-->
 </body>
 </html>
