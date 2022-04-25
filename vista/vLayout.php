@@ -8,8 +8,8 @@
     <title>ANUNCIA2</title>
 
     <!-- Enlace al css -->
-    <!--<link rel="stylesheet" href="./webroot/css/style.css">-->
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./webroot/css/style.css">
+    <!--<link rel="stylesheet" href="./webroot/bootstrap/styles.css"/>-->
 
 </head>
 
@@ -17,7 +17,7 @@
     
     <!-- Cabecera de la Aplicación -->
     <header class="cabecera">
-    <div>
+    <div class="container">
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 
             <!-- Elemento Izquierdo -->
