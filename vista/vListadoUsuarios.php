@@ -1,14 +1,12 @@
 <?php
-  echo "vista vMenu";
-  echo "<br>";
-/*
+  echo "vista vUsuarios";
+
   // Si el usuario es Administrador...
   // Se le permite la visualización del resto de Usuarios
   if($_SESSION["perfil"] == "P_ADMIN")
   {
     // Prueba de mostrar todos los usuarios de la BBDD //
-    echo "<h2>Todos los usuarios</h2>";
-
+    echo "<h1>Listado de Usuarios</h1>";
 
     $arrayUsuarios = UsuarioDAO::findAll();
 
@@ -48,6 +46,6 @@
   {
       echo "Publicaciones...";
   }
-  */
+  
 
 ?>

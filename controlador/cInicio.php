@@ -21,6 +21,15 @@
     header('Location: index.php');
     exit();
 	}
+  /*
+  // Listado Usuarios
+	else if(isset($_POST['mostrarUsuarios']))
+	{
+    $_SESSION['pagina'] = 'listadoUsuarios';
+    header('Location: index.php');
+    exit();
+	}
+  */
 	else
 	{
     // Que sea la primera vez que se entra en login //

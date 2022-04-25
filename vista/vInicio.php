@@ -1,6 +1,8 @@
 <?php
   echo "vista vInicio";
+  echo "<h2>Anuncios</h2>";
 
+  /*
   // Prueba de mostrar todos los usuarios de la BBDD //
   echo "<h2>Todos los usuarios</h2>";
 
@@ -38,5 +40,5 @@
   }
   echo "</tbody>";
   echo "</table>";
-
+  */
 ?>

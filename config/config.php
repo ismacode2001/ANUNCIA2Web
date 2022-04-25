@@ -17,7 +17,8 @@
       'login' => 'controlador/cLogin.php',
       'registro' => 'controlador/cRegistro.php',
       'perfil' => 'controlador/cPerfil.php',
-      'menu' => 'controlador/cMenu.php'
+      'menu' => 'controlador/cMenu.php',
+      'listadoUsuarios' => 'controlador/cListadoUsuarios.php',
   ];
 
   // Vistas //
@@ -27,7 +28,8 @@
       'layout' => 'vista/vLayout.php',
       'registro' => 'vista/vRegistro.php',
       'perfil' => 'vista/vPerfil.php',
-      'menu' => 'vista/vMenu.php'
+      'menu' => 'vista/vMenu.php',
+      'listadoUsuarios' => 'vista/vListadoUsuarios.php'
   ];
 
 ?>

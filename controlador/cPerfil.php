@@ -5,7 +5,7 @@ include './core/funcionesPerfil.php';
     //si se ha pulsado login
     if (isset($_POST['volver'])) 
     {
-        $_SESSION['pagina'] = 'inicio';
+        $_SESSION['pagina'] = 'menu';
         header('Location: index.php');
         exit();
     }
@@ -20,6 +20,13 @@ include './core/funcionesPerfil.php';
         header('Location: index.php');
         exit();
     }
+    // Listado Usuarios
+	else if(isset($_POST['mostrarUsuarios']))
+	{
+    $_SESSION['pagina'] = 'listadoUsuarios';
+    header('Location: index.php');
+    exit();
+	}
     // Modificar
     else if(isset($_POST['modificar']))
     {

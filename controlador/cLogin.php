@@ -91,6 +91,15 @@
     header('Location: index.php');
     exit();   
   }
+  /*
+  // Listado Usuarios
+	else if(isset($_POST['mostrarUsuarios']))
+	{
+    $_SESSION['pagina'] = 'listadoUsuarios';
+    header('Location: index.php');
+    exit();
+	}
+  */
   else
   {
     $_SESSION['vista'] = $vistas['login'];
