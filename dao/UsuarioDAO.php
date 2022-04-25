@@ -146,6 +146,54 @@ class UsuarioDAO implements DAO
     return $usuario;
   }
 
+  // Método que busca un Usuario por su email
+  public static function findByEmail($email)
+  {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/");
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+    // Ejecuto la conexion
+    $jsonUsuarios = curl_exec($ch);
+
+    // Cierre de la conexión
+    curl_close($ch);
+
+    $arrayUsuarios = json_decode($jsonUsuarios,true); // decode the JSON feed
+    
+    // Array que contiene los objetos de tipo Usuario
+    $usuario = null;
+
+    // Por cada Usuario...
+    foreach ($arrayUsuarios["documents"] as $arrayUsuario)
+    {
+      $arrayDatos = $arrayUsuario["fields"];
+      $emailUsuario = $arrayDatos["email"]["stringValue"];
+     
+      if($emailUsuario == $email)
+      {
+        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $nombre = $arrayDatos["nombre"]["stringValue"];
+        $apellido = $arrayDatos["apellido"]["stringValue"];
+        $contraseña = $arrayDatos["contraseña"]["stringValue"];
+        $email = $arrayDatos["email"]["stringValue"];
+        $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
+        $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
+        $perfil = $arrayDatos["perfil"]["stringValue"];
+        $activo = $arrayDatos["activo"]["booleanValue"];
+        $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
+  
+        $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
+          $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
+  
+      }
+      
+    }
+
+    return $usuario;
+  }
+
   // Método que modifica/actualiza un Usuario
   public static function update($usuario)
   {

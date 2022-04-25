@@ -21,10 +21,27 @@
     header('Location: index.php');
     exit();
 	}
-    // Listado Usuarios
+  // Listado Usuarios
 	else if(isset($_POST['mostrarUsuarios']))
 	{
     $_SESSION['pagina'] = 'listadoUsuarios';
+    header('Location: index.php');
+    exit();
+	}
+  // Modificar Usuarios
+	else if(isset($_POST['modificarUsuario']))
+	{
+    // Recojo el email del Usuario
+    if(isset($_POST["emailUsuario"]))
+    {
+        $emailUsuario = $_POST["emailUsuario"];
+        $_SESSION["emailUsuario"] = $emailUsuario;
+
+        // Recojo el producto con ese id
+        $usuario = UsuarioDAO::findByEmail($emailUsuario);
+    }
+    
+    $_SESSION['pagina'] = 'modificarUsuario';
     header('Location: index.php');
     exit();
 	}
