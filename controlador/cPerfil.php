@@ -35,7 +35,7 @@ include './core/funcionesPerfil.php';
         $_SESSION["erroresPerfil"] = $arrayErrores;
 
         // Usuario con la sesion activa
-        $usuario = UsuarioDAO::findById($_SESSION["usuario"]);
+        $usuario = UsuarioDAO::findByEmail($_SESSION["email"]);
 
         /*
         if(validaFormularioPerfil("modificar"))
@@ -88,8 +88,8 @@ include './core/funcionesPerfil.php';
         $arrayErrores = Array();
         $_SESSION["erroresPerfil"] = $arrayErrores;
 
-        $codUsuario = $_SESSION["idUsuario"];
-        $usuario = UsuarioDAO::findById($codUsuario);
+        $email = $_SESSION["email"];
+        $usuario = UsuarioDAO::findByEmail($email);
 
         $_SESSION['vista'] = $vistas['perfil'];
         require_once $vistas['layout'];
