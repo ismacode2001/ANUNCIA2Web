@@ -71,18 +71,26 @@
         }
         else
         {
-          $_SESSION["mensaje"] = "El usuario introducido no tiene acceso.";
+          $_SESSION["erroresLogin"]["pass"] = "El usuario no está activo";
+
           $_SESSION["vista"] = $vistas["login"];
           require_once $vistas["layout"];
         }
       }
       else
       {
-          $_SESSION["mensaje"] = "No existe el usuario o contraseña";
+          $_SESSION["erroresLogin"]["pass"] = "Usuario o contraseña incorrectos";
+
           $_SESSION["vista"] = $vistas["login"];
           require_once $vistas["layout"];
       }
       
+    }
+    else
+    {
+        //$_SESSION["mensaje"] = "No existe el usuario o contraseña";
+        $_SESSION["vista"] = $vistas["login"];
+        require_once $vistas["layout"];
     }
   }
   else if (isset($_POST['volver']))
@@ -102,6 +110,10 @@
   */
   else
   {
+    // Array que contendra los errores
+    $arrayErrores = Array();
+    $_SESSION["erroresLogin"] = $arrayErrores;
+
     $_SESSION['vista'] = $vistas['login'];
     require_once $vistas['layout'];
   }

@@ -1,26 +1,38 @@
-<?php
-  if(isset($_SESSION["mensaje"]))
-  {
-      echo $_SESSION["mensaje"];
-  }
-?>
 
 <!-- Formulario de Login del Usuario -->
 <div class="formulario">
   <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-    <section>
+  
+  <!-- Email -->
+  <section>
       <label for="email">Email:</label> 
       <input type="text" name="email" id="email" placeholder="Email" value="<?php 
-      
-          // Si se quiere recordar el usuario...
-          if(isset($_COOKIE["recordarUsuario"]))
-              echo $_COOKIE["recordarUsuario"];
+          
+          if(!validaSiVacio("email","iniciar"))
+          {
+            // Si se quiere recordar el usuario...
+            if(isset($_COOKIE["recordarUsuario"]))
+                echo $_COOKIE["recordarUsuario"];
+          }
+          
       ?>">
+      <?php
+          // En caso de que esté vacío o mal formado, se muestra un error
+          imprimeError($_SESSION["erroresLogin"],"email",'email');
+            ?>
     </section>
 
+    <!-- Contraseña -->
     <section>
       <label for="pass">Contraseña:</label> 
-      <input type="password" name="pass" id="pass" placeholder="Contraseña">
+      <input type="password" name="pass" id="pass" placeholder="Contraseña" value="<?php
+          
+          validaSiVacio("pass","iniciar")
+      ?>">
+      <?php
+          // En caso de que esté vacío o mal formado, se muestra un error
+          imprimeError($_SESSION["erroresLogin"],'pass','pass');
+      ?>
     </section>
 
     <!-- Recordar usuario -->
@@ -38,9 +50,3 @@
     <input type="submit" value="Volver" name="volver">
   </form>
 </div>
-<?php
-  if(isset($_SESSION["mensaje"]))
-  {
-      unset($_SESSION["mensaje"]);
-  }
-?>
