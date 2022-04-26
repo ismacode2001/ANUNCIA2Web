@@ -27,7 +27,10 @@ class UsuarioDAO implements DAO
     {
       $arrayDatos = $arrayUsuario["fields"];
 
-      $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+      $rutaDocumento = $arrayUsuario["name"];
+      $partes = explode("/",$rutaDocumento);
+
+      $idUsuario = $partes[count($partes) - 1];
       $nombre = $arrayDatos["nombre"]["stringValue"];
       $apellido = $arrayDatos["apellido"]["stringValue"];
       $contraseña = $arrayDatos["contraseña"]["stringValue"];
@@ -76,7 +79,10 @@ class UsuarioDAO implements DAO
 
       if(($emailU == $email)&&($contraseñaU == $contraseña))
       {
-        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $rutaDocumento = $arrayUsuario["name"];
+        $partes = explode("/",$rutaDocumento);
+
+        $idUsuario = $partes[count($partes) - 1];
         $nombre = $arrayDatos["nombre"]["stringValue"];
         $apellido = $arrayDatos["apellido"]["stringValue"];
         $contraseña = $arrayDatos["contraseña"]["stringValue"];
@@ -125,7 +131,10 @@ class UsuarioDAO implements DAO
      
       if($idUsuario == $id)
       {
-        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $rutaDocumento = $arrayUsuario["name"];
+        $partes = explode("/",$rutaDocumento);
+  
+        $idUsuario = $partes[count($partes) - 1];
         $nombre = $arrayDatos["nombre"]["stringValue"];
         $apellido = $arrayDatos["apellido"]["stringValue"];
         $contraseña = $arrayDatos["contraseña"]["stringValue"];
@@ -207,7 +216,7 @@ class UsuarioDAO implements DAO
               'imagenPerfil'=>$usuario->imagenPerfil);
 
      // url
-     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $datosU["idUsuario"] . "?key=AIzaSyCyBul43xaEl0ZJ7JRcbeP2oU8QPkpHUt4");
+     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/");
 
      // Se formatea el array a formato json
      $datosjson = json_encode($datosU);

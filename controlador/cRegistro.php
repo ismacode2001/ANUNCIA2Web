@@ -25,7 +25,7 @@
           $fechaNacimiento = $_REQUEST["fechaNacimiento"];
           //$fechaNacimiento = ->format('Y-m-d H:i:s');
 
-          $nuevoUsuario = new Usuario($_REQUEST["idUsuario"],$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseñaEncrip,$_REQUEST["email"],$fechaNacimiento,$_REQUEST["numTelefono"],"P_NORMAL",$_REQUEST["activo"],"imagenPorDefecto");
+          $nuevoUsuario = new Usuario("",$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseñaEncrip,$_REQUEST["email"],$fechaNacimiento,$_REQUEST["numTelefono"],"P_NORMAL",$_REQUEST["activo"],"imagenPorDefecto");
           echo UsuarioDAO::save($nuevoUsuario);
           
           unset($_SESSION["erroresRegistro"]);

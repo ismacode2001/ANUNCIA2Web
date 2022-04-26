@@ -50,4 +50,8 @@
   }
   */
 
+  // Prueba de actualizar un Usuario
+  //$usuario = new Usuario("150","Update","update","update","email","","numtelf","Perfil",true,"");
+  //UsuarioDAO::save($usuario);
+
 ?>
