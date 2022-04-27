@@ -209,28 +209,54 @@ class UsuarioDAO implements DAO
      // Objeto de tipo curl para hacer la peticion
     $ch = curl_init();
 
-     // Array que contiene los parámetros que le paso por post
-     $datosU = array('idUsuario'=>$usuario->idUsuario,'nombre'=>$usuario->nombre,'apellido'=>$usuario->apellido,
-              'contraseña'=>$usuario->contraseña,'email'=>$usuario->email,'fechaNacimiento'=>$usuario->fechaNacimiento,
-              'numTelefono'=>$usuario->numTelefono,'perfil'=>$usuario->perfil,'activo'=>$usuario->activo,
-              'imagenPerfil'=>$usuario->imagenPerfil);
+    $json = "{
+      'fields':{
+          'idUsuario':{
+              'stringValue': '" . $usuario->idUsuario . "'
+          },
+          'nombre':{
+              'stringValue': '" . $usuario->nombre . "'
+          },
+          'apellido':{
+              'stringValue': '" . $usuario->apellido . "'
+          },
+          'contraseña':{
+              'stringValue': '" . $usuario->contraseña . "'
+          },
+          'email':{
+              'stringValue': '" . $usuario->email . "'
+          },
+          'fechaNacimiento':{
+              'stringValue': '24/02/2001'
+          },
+          'numTelefono':{
+              'stringValue': '" . $usuario->numTelefono ."'
+          },
+          'perfil':{
+              'stringValue': '" . $usuario->perfil ."'
+          },
+          'activo':{
+              'booleanValue': '" . $usuario->activo . "'
+          },
+          'imagenPerfil':{
+              'stringValue': '" . $usuario->imagenPerfil . "'
+          }
+      }
+    }";
 
      // url
      curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $usuario->idUsuario);
 
-     // Se formatea el array a formato json
-     $datosjson = json_encode($datosU);
-
      // Se le indica que lo queremos hacer por put, indicandole como va a ir la cabecera
      curl_setopt($ch,CURLOPT_HTTPHEADER,
          array("Content-Type: application/json",
-                 "Content.length: " . strlen($datosjson)));
+                 "Content.length: " . strlen($json)));
 
      // Se le pasan los parámetros a la cabecera del post
      curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'PATCH');
 
      // Parametros
-     curl_setopt($ch,CURLOPT_POSTFIELDS,$datosjson);
+     curl_setopt($ch,CURLOPT_POSTFIELDS,$json);
 
      // Quiero respuesta
      curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
@@ -308,9 +334,26 @@ class UsuarioDAO implements DAO
   // Método que elimina un Usuario en funcion de su id
   public static function deleteById($id)
   {
-    
-  }
+    // Objeto de tipo curl para hacer la peticion
+    $ch = curl_init();
 
+     // url
+     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $id);
+
+     // Se le pasan los parámetros a la cabecera del post
+     curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'DELETE');
+
+     // Quiero respuesta
+     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+     // Ejecuto la conexion
+     $usuario = curl_exec($ch);
+
+     // Cierre de la conexión
+     curl_close($ch);
+
+     return $usuario;
+  }
 
   // Método que valida si existe un Usuario (activo) mediante sus credenciales
   public static function validaUser($email,$contraseña)

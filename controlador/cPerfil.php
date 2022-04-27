@@ -30,6 +30,7 @@ include './core/funcionesPerfil.php';
     // Modificar
     else if(isset($_POST['modificar']))
     {
+        /*
         // Array que contendra los errores
         $arrayErrores = Array();
         $_SESSION["erroresPerfil"] = $arrayErrores;
@@ -37,7 +38,7 @@ include './core/funcionesPerfil.php';
         // Usuario con la sesion activa
         $usuario = UsuarioDAO::findByEmail($_SESSION["email"]);
 
-        /*
+        
         if(validaFormularioPerfil("modificar"))
         {
             // Encripto la pass

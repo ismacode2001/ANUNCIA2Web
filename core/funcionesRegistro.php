@@ -20,14 +20,7 @@
               $correcto = false;
               $_SESSION["erroresRegistro"]["nombre"] = TXT_CAMPO_OBLIGATORIO;
           }
-          /*
-          else if(!validaNombreUsuario(false,"nombre"))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["nombre"] = "El nombre del usuario introducido ya existe";
-          }
-          */
-
+        
           // Apellido //
           if (empty($_REQUEST['apellido']))
           {
@@ -41,13 +34,6 @@
               $correcto = false;
               $_SESSION["erroresRegistro"]["contraseña"] = TXT_CAMPO_OBLIGATORIO;
           }
-          /*
-          else if((validaContraseña(false,"contraseña") == false))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["contraseña"] = "La contraseña introducida no cumple el patron";
-          }
-          */
 
           // Contraseña (confirmacion) //
           if (empty($_REQUEST['contraseñaConf']))
@@ -55,13 +41,6 @@
               $correcto = false;
               $_SESSION["erroresRegistro"]["contraseñaConf"] = TXT_CAMPO_OBLIGATORIO;
           }
-          /*
-          else if((validaContraseña(false,"contraseñaConf") == false))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["contraseñaConf"] = "La contraseña de confirmacion introducida no cumple el patron";
-          }
-          */
           else if(!coincidenContraseñas($nombre))
           {
               $correcto = false;
@@ -168,11 +147,4 @@
     return $nuevaFecha;
   }
 
-  /*
-  // Funcion que valida si el nombre del usuario es único //
-  function validaNombreUsuario($validando,$campo)
-  {   
-      
-  }
-  */
 ?>

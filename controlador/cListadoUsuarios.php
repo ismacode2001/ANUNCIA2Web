@@ -37,7 +37,7 @@
         $emailUsuario = $_POST["emailUsuario"];
         $_SESSION["emailUsuario"] = $emailUsuario;
 
-        // Recojo el producto con ese id
+        // Recojo el usuario con ese email
         $usuario = UsuarioDAO::findByEmail($emailUsuario);
     }
     
@@ -54,7 +54,7 @@
   }
 	else
 	{
-    // Que sea la primera vez que se entra en el Menú //
+    // Que sea la primera vez que se entra //
     $_SESSION['vista'] = $vistas['listadoUsuarios'];
     require_once $vistas['layout'];    
 	}

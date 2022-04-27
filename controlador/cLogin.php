@@ -11,7 +11,6 @@
   // 
   else if (isset($_POST['iniciar']))
   {
-    //////
     // Array que contendra los errores
     $arrayErrores = Array();
     $_SESSION["erroresLogin"] = $arrayErrores;
@@ -24,9 +23,9 @@
       $user = $_POST["email"];
       $pass = $_POST["pass"];
 
-      // Se encripta la contraseña (mediante 'sha256')
-      //$pass = hash("sha256",$pass);
+      // Se encripta la contraseña
       $pass = sha1($pass);
+
       // Compruebo si se desea recordar el usuario
       if(isset($_REQUEST["check"]))
       {
@@ -99,15 +98,6 @@
     header('Location: index.php');
     exit();   
   }
-  /*
-  // Listado Usuarios
-	else if(isset($_POST['mostrarUsuarios']))
-	{
-    $_SESSION['pagina'] = 'listadoUsuarios';
-    header('Location: index.php');
-    exit();
-	}
-  */
   else
   {
     // Array que contendra los errores

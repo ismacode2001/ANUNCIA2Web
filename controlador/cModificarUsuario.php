@@ -23,9 +23,9 @@ include './core/funcionesPerfil.php';
     // Listado Usuarios
 	else if(isset($_POST['mostrarUsuarios']))
 	{
-    $_SESSION['pagina'] = 'listadoUsuarios';
-    header('Location: index.php');
-    exit();
+        $_SESSION['pagina'] = 'listadoUsuarios';
+        header('Location: index.php');
+        exit();
 	}
     // Modificar
     else if(isset($_POST['modificar']))
