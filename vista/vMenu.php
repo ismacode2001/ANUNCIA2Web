@@ -51,7 +51,7 @@
   */
 
   // Prueba de actualizar un Usuario
-  //$usuario = new Usuario("150","Update","update","update","email","","numtelf","Perfil",true,"");
-  //UsuarioDAO::save($usuario);
+  $usuario = new Usuario("fyNGUDiv9mbNg4ttvO0Z","Update","updateeee","update","email","","numtelf","Perfil",true,"");
+  UsuarioDAO::update($usuario);
 
 ?>

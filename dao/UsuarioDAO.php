@@ -206,8 +206,8 @@ class UsuarioDAO implements DAO
   // Método que modifica/actualiza un Usuario
   public static function update($usuario)
   {
-     // Objeto de tipo curl para hacer la peticion a la PR18
-     $ch = curl_init();
+     // Objeto de tipo curl para hacer la peticion
+    $ch = curl_init();
 
      // Array que contiene los parámetros que le paso por post
      $datosU = array('idUsuario'=>$usuario->idUsuario,'nombre'=>$usuario->nombre,'apellido'=>$usuario->apellido,
@@ -216,7 +216,7 @@ class UsuarioDAO implements DAO
               'imagenPerfil'=>$usuario->imagenPerfil);
 
      // url
-     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/");
+     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $usuario->idUsuario);
 
      // Se formatea el array a formato json
      $datosjson = json_encode($datosU);
@@ -227,7 +227,7 @@ class UsuarioDAO implements DAO
                  "Content.length: " . strlen($datosjson)));
 
      // Se le pasan los parámetros a la cabecera del post
-     curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'PUT');
+     curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'PATCH');
 
      // Parametros
      curl_setopt($ch,CURLOPT_POSTFIELDS,$datosjson);
