@@ -1,16 +1,14 @@
 <?php
-  echo "vista vUsuarios";
+//  echo "vista vUsuarios";
+  echo "<h2>Listado de Usuarios</h2>";
 
   // Si el usuario es Administrador...
   // Se le permite la visualización del resto de Usuarios
   if($_SESSION["perfil"] == "P_ADMIN")
   {
-    // Prueba de mostrar todos los usuarios de la BBDD //
-    echo "<h1>Listado de Usuarios</h1>";
-
     $arrayUsuarios = UsuarioDAO::findAll();
 
-    echo "<table>";
+    echo "<table class='table table-striped'>";
     echo "<thead>";
     echo "<th>Id Usuario</th>";
     echo "<th>Nombre</th>";

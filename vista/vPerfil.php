@@ -2,131 +2,132 @@
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     
     <!-- Imagen de Perfil -->
-    <section>
-        <img src="./webroot/img/usuario.png" height="70px" alt="Imagen de Perfil"/>
-    </section>
+    <img src="./webroot/img/usuario.png" height="70px" alt="Imagen de Perfil"/>
 
-    <!-- User -->
-    <section>
-        <label  class="form-group"  for="user">User:</label> 
-        <input type="text" name="user" id="user" readonly value="<?php 
-            echo $usuario->idUsuario;
-        ?>"> <!-- Lo muestra -->
+    <!-- Id del Usuario -->
+    <div class="row mb-3 mt-3">
+        <label for="idNombre" class="col-sm-2 col-form-label mt-3">Id</label>
+        <div class="col-sm-5 mt-3">
+        <input type="text" class="form-control" id="user" placeholder="Id del Usuario" readonly name="user" value="<?php 
+            echo $usuario->idUsuario;            
+        ?>">
         <input type="hidden" name="user" id="user" value="<?php 
             echo $usuario->idUsuario;    
-        ?>"> <!-- Lo envía -->
-        <br><br>
-    </section>
+        ?>">
+        </div>
+    </div>
 
+    <!-- Nombre -->
+    <div class="row mb-3 mt-3">
+        <label for="idNombre" class="col-sm-2 col-form-label mt-3">Nombre</label>
+        <div class="col-sm-5 mt-3">
+        <input type="text" class="form-control" id="idNombre" placeholder="Nombre" name="nombre" value="<?php 
+            echo $usuario->nombre;
+            
+        ?>">
+        <?php
+            // En caso de que esté vacío o mal formado, se muestra un error
+            imprimeError($_SESSION["erroresPerfil"],"idNombre",'nombre');
+        ?>
+        </div>
+    </div>
+    <!-- Apellido -->
+    <div class="row mb-3 mt-3">
+        <label for="idApellido" class="col-sm-2 col-form-label mt-3">Apellido</label>
+        <div class="col-sm-5 mt-3">
+        <input type="text" class="form-control" id="idApellido" placeholder="Apellido" name="apellido" value="<?php 
+            echo $usuario->apellido;
+            
+        ?>">
+        <?php
+            // En caso de que esté vacío o mal formado, se muestra un error
+            imprimeError($_SESSION["erroresPerfil"],"idApellido",'apellido');
+        ?>
+        </div>
+    </div>
     <!-- Contraseña -->
-    <section>
-        <label class="form-group" for="pass">Contraseña:</label> 
-        <input  type="password" name="pass" id="idPass" size="20" placeholder="Contraseña" value="<?php        
-            //echo $usuario->contraseña;
-
-            // Si no está vacío, se guarda el texto introducido
-            validaSiVacio("pass","modificar");
-        ?>">
-
-        <?php
-            // En caso de que esté vacío o mal formado, se muestra un error
-            imprimeError($_SESSION["erroresPerfil"],"idPass",'pass');
-        ?>
-        <br><br>
-    </section>
-
-    <!-- Repetir contraseña -->
-    <section>
-        <label class="form-group" for="pass">Repetir contraseña:</label> 
-        <input type="password" name="pass2" id="pass2" size="20" placeholder="Confirma contraseña" value="<?php 
-            
-            //echo $usuario->contraseña;
-            
-            // Si no está vacío, se guarda el texto introducido
-            validaSiVacio("pass2","modificar");
+    <div class="row mb-3">
+        <label for="idContraseña" class="col-sm-2 col-form-label">Contraseña</label>
+        <div class="col-sm-5">
+        <input type="password" class="form-control" id="idContraseña" name="contraseña" placeholder="Contraseña" value="<?php
+            echo $usuario->contraseña;
         ?>">
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error
-            imprimeError($_SESSION["erroresPerfil"],"pass2",'pass2');
+            imprimeError($_SESSION["erroresPerfil"],'idContraseña','contraseña');
         ?>
-        <br><br>
-    </section>
-
-    <!-- E-mail  -->
-    <section>
-        <label for="idEmail">E-mail:</label>
-        <input type="email" name="email" id="idEmail" size="30" placeholder="E-mail" value="<?php
-
+        </div>
+    </div>
+    <!-- Confirmar Contraseña -->
+    <div class="row mb-3">
+        <label for="idContraseñaConf" class="col-sm-2 col-form-label">Confirmar Contraseña</label>
+        <div class="col-sm-5">
+        <input type="password" class="form-control" id="idContraseñaConf" name="contraseñaConf" placeholder="Confirmar contraseña" value="<?php
+            echo $usuario->contraseña;
+        ?>">
+        <?php
+            // En caso de que esté vacío o mal formado, se muestra un error
+            imprimeError($_SESSION["erroresPerfil"],'idContraseñaConf','contraseñaConf');
+        ?>
+        </div>
+    </div>
+    <!-- Email -->
+    <div class="row mb-3">
+        <label for="idEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-5">
+        <input type="email" class="form-control" id="idEmail" name="email" placeholder="Email" value="<?php
             echo $usuario->email;
-
-            // Si no está vacío, se guarda el texto introducido
-           // validaSiVacio('email','modificar');
         ?>">
-
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error
             imprimeError($_SESSION["erroresPerfil"],'idEmail','email');
         ?>
-    </section>
-
+        </div>
+    </div>
     <!-- Fecha de Nacimiento -->
-    <section>
-        <label for="idFecha">Fecha de Nacimiento:</label>
-        <input type="date" name="fecha_nacimiento" id="idfecha" value="<?php
-
+    <div class="row mb-3">
+        <label for="idFecha" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
+        <div class="col-sm-5">
+        <input type="date" class="form-control" id="idFecha" name="fechaNacimiento" placeholder="Fecha de nacimiento" value="<?php
             echo $usuario->fechaNacimiento;
-            // Si no está vacío, se guarda el texto introducido
-            //validaSiVacio('fecha_nacimiento','modificar');
         ?>">
-
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error
-            imprimeError($_SESSION["erroresPerfil"],'idfecha','fecha_nacimiento');
+            imprimeError($_SESSION["erroresPerfil"],'idFecha','fechaNacimiento');
         ?>
-    </section>
-
+        </div>
+    </div>
     <!-- Nº de teléfono -->
-    <section>
-        <label for="idNumTelf">Nº de telf:</label>
-        <input type="number" name="numTelf" id="idNumTelf" size="9" placeholder="Nº de telf" value="<?php
-
+    <div class="row mb-3">
+        <label for="idNumTelf" class="col-sm-2 col-form-label">Nº de teléfono</label>
+        <div class="col-sm-5">
+        <input type="number" class="form-control" id="idNumTelf" name="numTelefono" placeholder="Nº de teléfono" value="<?php
             echo $usuario->numTelefono;
-            // Si no está vacío, se guarda el texto introducido
-            //validaSiVacio('fecha_nacimiento','modificar');
         ?>">
-
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error
-            imprimeError($_SESSION["erroresPerfil"],'idfecha','fecha_nacimiento');
+            imprimeError($_SESSION["erroresPerfil"],'idNumTelf','numTelefono');
         ?>
-    </section>
-
-    <!-- Perfil -->
-    <section>
-        <label class="form-group" for="perfil">Perfil:</label> 
-        <input type="text" name="perfil" id="perfil" placeholder="Perfil" readonly value="<?php 
-            
-            echo $usuario->perfil;    
-        ?>">
-    </section>
-
+        </div>
+    </div>
     <!-- Activo -->
-    <section>
-        <label class="form-group" for="perfil">Activo:</label> 
-        <input type="text" name="perfil" id="perfil" placeholder="Activo" readonly value="<?php 
-
+    <div class="row mb-3">
+        <label for="idActivo" class="col-sm-2 col-form-label">Estado</label>
+        <div class="col-sm-5">
+        <input type="text" class="form-control" id="idActivo" name="numTelefono" placeholder="Estado (Activo/Inactivo)" value="<?php
             if($usuario->activo)
                 echo "Activo";   
             else
                 echo "Inactivo";
         ?>">
-    </section>
-    <br><br>
-
-
-    
-    <input type="submit" value="Modificar" name="modificar">
-    <input type="submit" value="Volver" name="volver">
-    
+        <?php
+            // En caso de que esté vacío o mal formado, se muestra un error
+            imprimeError($_SESSION["erroresPerfil"],'idActivo','numTelefono');
+        ?>
+        </div>
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-primary mb-3 m-1" name="modificar">Modificar</button>
+    <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
 </form>
 </div>

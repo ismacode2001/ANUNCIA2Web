@@ -5,7 +5,6 @@
     <label for="email" class="col-sm-2 col-form-label mt-3">Email</label>
     <div class="col-sm-5 mt-3">
       <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<?php 
-          
           if(!validaSiVacio("email","iniciar"))
           {
             // Si se quiere recordar el usuario...
