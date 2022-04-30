@@ -14,6 +14,14 @@
     header('Location: index.php');
     exit();
 	}
+    // Registro
+    //si se ha pulsado el registro
+    else if(isset($_POST['registro']))
+    {
+        $_SESSION['pagina'] = 'registro';
+        header('Location: index.php');
+        exit();
+    }
 	// Perfil
 	else if(isset($_POST['perfil']))
 	{

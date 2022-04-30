@@ -1,12 +1,10 @@
-
 <!-- Formulario de Login del Usuario -->
-<div class="formulario">
-  <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-  
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="formulario">
   <!-- Email -->
-  <section>
-      <label for="email">Email:</label> 
-      <input type="text" name="email" id="email" placeholder="Email" value="<?php 
+  <div class="row mb-3 mt-3">
+    <label for="email" class="col-sm-2 col-form-label mt-3">Email</label>
+    <div class="col-sm-5 mt-3">
+      <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<?php 
           
           if(!validaSiVacio("email","iniciar"))
           {
@@ -20,12 +18,13 @@
           // En caso de que esté vacío o mal formado, se muestra un error
           imprimeError($_SESSION["erroresLogin"],"email",'email');
             ?>
-    </section>
-
-    <!-- Contraseña -->
-    <section>
-      <label for="pass">Contraseña:</label> 
-      <input type="password" name="pass" id="pass" placeholder="Contraseña" value="<?php
+    </div>
+  </div>
+  <!-- Contraseña -->
+  <div class="row mb-3">
+    <label for="pass" class="col-sm-2 col-form-label">Contraseña</label>
+    <div class="col-sm-5">
+      <input type="password" class="form-control" id="pass" name="pass" value="<?php
           
           validaSiVacio("pass","iniciar")
       ?>">
@@ -33,20 +32,24 @@
           // En caso de que esté vacío o mal formado, se muestra un error
           imprimeError($_SESSION["erroresLogin"],'pass','pass');
       ?>
-    </section>
-
-    <!-- Recordar usuario -->
-    <section>
-      <label for="check">Recordar Usuario</label>
-      <input type="checkbox" name="check" id="check" <?php 
+    </div>
+  </div>
+  <!-- Recordar Usuario -->
+  <div class="row mb-3">
+    <div class="col-sm-10 offset-sm-2">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="check" name="check"" <?php 
           // Si esxiste la cookie... recuerdo el check
           if(isset($_COOKIE["recordarUsuario"]))
               echo "checked";
         ?>>
-    </section><br>
-
-    <input type="submit" value="Iniciar Sesión" name="iniciar">
-    <input type="submit" value="Registro" name="registro">
-    <input type="submit" value="Volver" name="volver">
-  </form>
-</div>
+        <label class="form-check-label" for="check">
+          Recuérdame
+        </label>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mb-3 m-1" name="iniciar">Iniciar sesión</button>
+  <button type="submit" class="btn btn-primary mb-3 m-1" name="registro">Registrarse</button>
+  <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
+</form>
