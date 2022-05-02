@@ -27,23 +27,24 @@ include './core/funcionesPerfil.php';
         header('Location: index.php');
         exit();
 	}
-    // Modificar
-    else if(isset($_POST['modificar']))
+    // Modificar el Perfil de Usuario
+    else if(isset($_POST['guardarMod']))
     {
         // Array que contendra los errores
         $arrayErrores = Array();
-        $_SESSION["erroresPerfil"] = $arrayErrores;
+        $_SESSION["erroresModPerfil"] = $arrayErrores;
 
         // Usuario con la sesion activa
-        $usuario = UsuarioDAO::findById($_SESSION["usuario"]);
+        $usuario = UsuarioDAO::findByEmail($_SESSION["email"]);
 
-        /*
-        if(validaFormularioPerfil("modificar"))
+        if(validaFormularioPerfil("guardarMod"))
         {
-            // Encripto la pass
-            $contraseñaEncriptada = sha1($_REQUEST["pass"]);
+            // Encripto la contraseña
+            $contraseña = hash('sha256', $_REQUEST["contraseña"]);
 
-            $nuevoUsuario = new Usuario($_REQUEST["user"],$contraseñaEncriptada,$_REQUEST["email"],$_REQUEST["fecha_nacimiento"],$_REQUEST["perfil"]);
+            $nuevoUsuario = new Usuario($_SESSION["idUsuario"],$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseña,$_REQUEST["email"],
+                $_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],$_REQUEST["perfil"],$_REQUEST["activo"],$_REQUEST["imagenPerfil"]);
+
             UsuarioDAO::update($nuevoUsuario);
 
             $_SESSION['pagina'] = 'perfil';
@@ -53,10 +54,9 @@ include './core/funcionesPerfil.php';
         else
         {
             // Me quedo en el perfil
-            $_SESSION['vista'] = $vistas['perfil'];
+            $_SESSION['vista'] = $vistas['modificarPerfil'];
             require_once $vistas['layout'];
         }
-        */
 
     }
     else if(isset($_POST["usuarios"]))
@@ -85,12 +85,12 @@ include './core/funcionesPerfil.php';
     {
         // Array que contendra los errores
         $arrayErrores = Array();
-        $_SESSION["erroresPerfil"] = $arrayErrores;
+        $_SESSION["erroresModPerfil"] = $arrayErrores;
 
-        $emailUsuario = $_SESSION["emailUsuario"];
+        $emailUsuario = $_SESSION["email"];
         $usuario = UsuarioDAO::findByEmail($emailUsuario);
 
-        $_SESSION['vista'] = $vistas['modificarUsuario'];
+        $_SESSION['vista'] = $vistas['modificarPerfil'];
         require_once $vistas['layout'];
     }
 ?>

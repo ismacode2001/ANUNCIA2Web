@@ -24,7 +24,7 @@
       $pass = $_POST["pass"];
 
       // Se encripta la contraseña
-      $pass = sha1($pass);
+      $pass = hash('sha256',$pass);
 
       // Compruebo si se desea recordar el usuario
       if(isset($_REQUEST["check"]))

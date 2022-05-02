@@ -19,7 +19,7 @@
       if(validaFormularioRegistro("registro"))
       {
           // Enctripto la contraseña
-          $contraseñaEncrip = sha1($_REQUEST["contraseña"]);
+          $contraseñaEncrip = hash('sha256', $_REQUEST["contraseña"]);
 
           $nuevoUsuario = new Usuario("",$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseñaEncrip,$_REQUEST["email"],$_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],"P_NORMAL",$_REQUEST["activo"],"imagenPorDefecto");
           echo UsuarioDAO::save($nuevoUsuario);

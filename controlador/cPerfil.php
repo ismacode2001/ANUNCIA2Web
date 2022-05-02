@@ -30,34 +30,10 @@ include './core/funcionesPerfil.php';
     // Modificar
     else if(isset($_POST['modificar']))
     {
-        /*
-        // Array que contendra los errores
-        $arrayErrores = Array();
-        $_SESSION["erroresPerfil"] = $arrayErrores;
-
-        // Usuario con la sesion activa
-        $usuario = UsuarioDAO::findByEmail($_SESSION["email"]);
-
-        
-        if(validaFormularioPerfil("modificar"))
-        {
-            // Encripto la pass
-            $contraseñaEncriptada = sha1($_REQUEST["pass"]);
-
-            $nuevoUsuario = new Usuario($_REQUEST["user"],$contraseñaEncriptada,$_REQUEST["email"],$_REQUEST["fecha_nacimiento"],$_REQUEST["perfil"]);
-            UsuarioDAO::update($nuevoUsuario);
-
-            $_SESSION['pagina'] = 'perfil';
-            header('Location: index.php');
-            exit();
-        }
-        else
-        {
-            // Me quedo en el perfil
-            $_SESSION['vista'] = $vistas['perfil'];
-            require_once $vistas['layout'];
-        }
-        */
+        // Accedo a la página de modificar
+        $_SESSION['pagina'] = 'modificarPerfil';
+        header('Location: index.php');
+        exit();
 
     }
     else if(isset($_POST["usuarios"]))
