@@ -20,7 +20,7 @@
     echo "<th>Perfil</th>";
     echo "<th>Activo</th>";
     echo "<th>Imagen de Perfil</th>";
-    echo "<th>Modificar</th>";
+    echo "<th>Estado</th>";
     echo "<thead>";
     echo "<tbody>";
     
@@ -37,13 +37,27 @@
       echo "<td>" . $usuario->perfil . "</td>";
       echo "<td>" . $usuario->activo . "</td>";
       echo "<td>" . $usuario->imagenPerfil . "</td>";
-      echo
+      if($usuario->activo)
+      {
+        echo
         "<td>".
         "<form action='". $_SERVER['PHP_SELF']."' method='post'>".
-        "<input type='submit' title='Modificar' value='Modificar' name='modificarUsuario'>".
+        "<input type='submit' title='Desactivar usuario' value='Desactivar' name='desactivar'>".
         "<input type='hidden' name='emailUsuario' value='$usuario->email'>".
-        "</form>"
-        . "</td>";
+        "</form>" .
+        "</td>";
+      }
+      else
+      {
+        echo
+        "<td>".
+        "<form action='". $_SERVER['PHP_SELF']."' method='post'>".
+        "<input type='submit' title='Activar usuario' value='Activar' name='activar'>".
+        "<input type='hidden' name='emailUsuario' value='$usuario->email'>".
+        "</form>" .
+        "</td>";
+      }
+      
       echo "</tr>";
     }
     echo "</tbody>";

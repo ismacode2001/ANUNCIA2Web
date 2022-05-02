@@ -5,7 +5,7 @@ include './core/funcionesPerfil.php';
     //si se ha pulsado login
     if (isset($_POST['volver'])) 
     {
-        $_SESSION['pagina'] = 'menu';
+        $_SESSION['pagina'] = 'perfil';
         header('Location: index.php');
         exit();
     }

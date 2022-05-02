@@ -22,7 +22,10 @@
           $contraseñaEncrip = hash('sha256', $_REQUEST["contraseña"]);
 
           $nuevoUsuario = new Usuario("",$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseñaEncrip,$_REQUEST["email"],$_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],"P_NORMAL",$_REQUEST["activo"],"imagenPorDefecto");
-          echo UsuarioDAO::save($nuevoUsuario);
+          UsuarioDAO::save($nuevoUsuario);
+
+          $usuario = UsuarioDAO::findByEmail($_REQUEST["email"]);
+          UsuarioDAO::update($usuario);
           
           unset($_SESSION["erroresRegistro"]);
 

@@ -182,7 +182,10 @@ class UsuarioDAO implements DAO
      
       if($emailUsuario == $email)
       {
-        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $rutaDocumento = $arrayUsuario["name"];
+        $partes = explode("/",$rutaDocumento);
+  
+        $idUsuario = $partes[count($partes) - 1];
         $nombre = $arrayDatos["nombre"]["stringValue"];
         $apellido = $arrayDatos["apellido"]["stringValue"];
         $contraseña = $arrayDatos["contraseña"]["stringValue"];
