@@ -61,7 +61,8 @@
             // Recojo el usuario con ese email
             $usuario = UsuarioDAO::findByEmail($emailUsuario);
 
-            $usuario->activo = false;
+            $usuario->activo = 0;
+            //$usuario->imagenPerfil = "xxx";
 
             UsuarioDAO::update($usuario);
         }
