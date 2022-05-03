@@ -91,8 +91,6 @@
         <div class="col-sm-5">
         <input type="date" class="form-control" id="idFecha" name="fechaNacimiento" value="<?php
             echo $usuario->fechaNacimiento;
-            //echo "2001-05-21";
-            //echo "01/01/2001";
         ?>">
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error

@@ -111,34 +111,34 @@ class AnuncioDAO implements DAO
     $json = "{
       'fields':{
           'idAnuncio':{
-              'stringValue': '" . $anuncio->idAnuncio . "'
+            'stringValue': '" . $anuncio->idAnuncio . "'
           },
           'titulo':{
-              'stringValue': '" . $anuncio->titulo . "'
+            'stringValue': '" . $anuncio->titulo . "'
           },
           'descripcion':{
-              'stringValue': '" . $anuncio->descripcion . "'
+            'stringValue': '" . $anuncio->descripcion . "'
           },
           'categoria':{
-              'stringValue': '" . $anuncio->categoria . "'
+            'stringValue': '" . $anuncio->categoria . "'
           },
           'precio':{
-              'numberValue': '" . $anuncio->precio . "'
+            'numberValue': '" . $anuncio->precio . "'
           },
           'fechaAnuncio':{
-              'stringValue': '" . $anuncio->fechaAnuncio . "'
+            'stringValue': '" . $anuncio->fechaAnuncio . "'
           },
           'ubicacion':{
-              'stringValue': '" . $anuncio->ubicacion ."'
+            'stringValue': '" . $anuncio->ubicacion ."'
           },
           'idUsuario':{
-              'stringValue': '" . $anuncio->idUsuario ."'
+            'stringValue': '" . $anuncio->idUsuario ."'
           },
           'numFavoritos':{
-              'stringValue': '" . $anuncio->numFavoritos . "'
+            'stringValue': '" . $anuncio->numFavoritos . "'
           },
           'imagen1':{
-              'stringValue': '" . $anuncio->imagen1 . "'
+            'stringValue': '" . $anuncio->imagen1 . "'
           },
           'imagen2':{
             'stringValue': '" . $anuncio->imagen2 . "'

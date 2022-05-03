@@ -40,7 +40,7 @@ include './core/funcionesPerfil.php';
         if(validaFormularioPerfil("guardarMod"))
         {
             // Encripto la contraseña
-            $contraseña = hash('sha256', $_REQUEST["contraseña"]);
+            $contraseña = hash('sha256', $_REQUEST["contraseñaNueva"]);
 
             $nuevoUsuario = new Usuario($_SESSION["idUsuario"],$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseña,$_REQUEST["email"],
                 $_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],$_REQUEST["perfil"],$_REQUEST["activo"],$_REQUEST["imagenPerfil"]);
