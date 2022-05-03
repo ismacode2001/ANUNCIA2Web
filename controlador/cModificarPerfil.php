@@ -59,28 +59,6 @@ include './core/funcionesPerfil.php';
         }
 
     }
-    else if(isset($_POST["usuarios"]))
-    {
-        if($_SESSION["perfil"] == "P_ADMIN")
-        {
-            $_SESSION['vista'] = $vistas['listaUsuarios'];
-
-            $lista = UsuarioDAO::findAll();
-
-            require_once $vistas['layout'];    
-        }
-    }
-    else if(isset($_GET["mostrar"]))
-    {
-        if($_SESSION["perfil"] == "P_ADMIN")
-        {
-            $codUsuario = $_GET["mostrar"];
-            $usuario = UsuarioDAO::findById($codUsuario);
-
-            $_SESSION["vista"] = $vistas["perfil"];
-            require_once $vistas['layout'];
-        }
-    }
     else
     {
         // Array que contendra los errores

@@ -299,7 +299,7 @@ class UsuarioDAO implements DAO
               'stringValue': '" . $usuario->email . "'
           },
           'fechaNacimiento':{
-              'stringValue': '24/02/2001'
+              'stringValue': '" . $usuario->fechaNacimiento . "'
           },
           'numTelefono':{
               'stringValue': '" . $usuario->numTelefono ."'
