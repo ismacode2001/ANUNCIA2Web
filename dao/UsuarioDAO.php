@@ -334,28 +334,28 @@ class UsuarioDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un Usuario en funcion de su id
+  // Método que elimina un Usuario en funcion de su Id
   public static function deleteById($id)
   {
     // Objeto de tipo curl para hacer la peticion
     $ch = curl_init();
 
-     // url
-     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $id);
+    // url
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $id);
 
-     // Se le pasan los parámetros a la cabecera del post
-     curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'DELETE');
+    // Se le pasan los parámetros a la cabecera del post
+    curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'DELETE');
 
-     // Quiero respuesta
-     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    // Quiero respuesta
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 
-     // Ejecuto la conexion
-     $usuario = curl_exec($ch);
+    // Ejecuto la conexion
+    $usuario = curl_exec($ch);
 
-     // Cierre de la conexión
-     curl_close($ch);
+    // Cierre de la conexión
+    curl_close($ch);
 
-     return $usuario;
+    return $usuario;
   }
 
   // Método que valida si existe un Usuario (activo) mediante sus credenciales

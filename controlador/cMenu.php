@@ -32,7 +32,7 @@
 	else
 	{
     // Recojo los Anuncios de la BBDD
-    $listaAnuncios = AnuncioDAO::findAll();
+    $arrayAnuncios = AnuncioDAO::findAll();
     
     $_SESSION['vista'] = $vistas['menu'];
     require_once $vistas['layout'];    

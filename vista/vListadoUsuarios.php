@@ -19,6 +19,7 @@
     echo "<th>Activo</th>";
     echo "<th>Imagen de Perfil</th>";
     echo "<th>Estado</th>";
+    echo "<th>Eliminar</th>";
     echo "<thead>";
     echo "<tbody>";
     
@@ -35,6 +36,8 @@
       echo "<td>" . $usuario->perfil . "</td>";
       echo "<td>" . $usuario->activo . "</td>";
       echo "<td>" . $usuario->imagenPerfil . "</td>";
+
+      // Estado
       if($usuario->activo)
       {
         echo
@@ -55,6 +58,15 @@
         "</form>" .
         "</td>";
       }
+
+      // Eliminar
+      echo
+        "<td>".
+        "<form action='". $_SERVER['PHP_SELF']."' method='post'>".
+        "<input type='submit' title='Eliminar usuario' value='Eliminar' name='eliminarUsuario'>".
+        "<input type='hidden' name='idUsuario' value='$usuario->idUsuario'>".
+        "</form>" .
+        "</td>";
       
       echo "</tr>";
     }

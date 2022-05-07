@@ -28,6 +28,7 @@
       'menu' => 'controlador/cMenu.php',
       'listadoUsuarios' => 'controlador/cListadoUsuarios.php',
       'modificarPerfil' => 'controlador/cModificarPerfil.php',
+      'detalleAnuncio' => 'controlador/cDetalleAnuncio.php',
   ];
 
   // Vistas //
@@ -40,6 +41,7 @@
       'menu' => 'vista/vMenu.php',
       'listadoUsuarios' => 'vista/vListadoUsuarios.php',
       'modificarPerfil' => 'vista/vModificarPerfil.php',
+      'detalleAnuncio' => 'vista/vDetalleAnuncio.php',
   ];
 
 ?>

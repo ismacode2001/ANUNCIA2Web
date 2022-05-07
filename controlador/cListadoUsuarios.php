@@ -28,48 +28,64 @@
     header('Location: index.php');
     exit();
 	}
-    // Activar
+  // Activar
 	else if(isset($_POST['activar']))
 	{
-        // Recojo el email del Usuario
-        if(isset($_POST["emailUsuario"]))
-        {
-            $emailUsuario = $_POST["emailUsuario"];
-            //$_SESSION["emailUsuario"] = $emailUsuario;
+    // Recojo el email del Usuario
+    if(isset($_POST["emailUsuario"]))
+    {
+        $emailUsuario = $_POST["emailUsuario"];
+        //$_SESSION["emailUsuario"] = $emailUsuario;
 
-            // Recojo el usuario con ese email
-            $usuario = UsuarioDAO::findByEmail($emailUsuario);
+        // Recojo el usuario con ese email
+        $usuario = UsuarioDAO::findByEmail($emailUsuario);
 
-            $usuario->activo = true;
+        $usuario->activo = true;
 
-            UsuarioDAO::update($usuario);
-        }
-    
-        $_SESSION['pagina'] = 'listadoUsuarios';
-        header('Location: index.php');
-        exit();
+        UsuarioDAO::update($usuario);
+    }
+
+    $_SESSION['pagina'] = 'listadoUsuarios';
+    header('Location: index.php');
+    exit();
 	}
-    // Desactivar
+  // Desactivar
 	else if(isset($_POST['desactivar']))
 	{
-        // Recojo el email del Usuario
-        if(isset($_POST["emailUsuario"]))
-        {
-            $emailUsuario = $_POST["emailUsuario"];
-            //$_SESSION["emailUsuario"] = $emailUsuario;
+    // Recojo el email del Usuario
+    if(isset($_POST["emailUsuario"]))
+    {
+        $emailUsuario = $_POST["emailUsuario"];
+        //$_SESSION["emailUsuario"] = $emailUsuario;
 
-            // Recojo el usuario con ese email
-            $usuario = UsuarioDAO::findByEmail($emailUsuario);
+        // Recojo el usuario con ese email
+        $usuario = UsuarioDAO::findByEmail($emailUsuario);
 
-            $usuario->activo = 0;
-            //$usuario->imagenPerfil = "xxx";
+        $usuario->activo = 0;
+        //$usuario->imagenPerfil = "xxx";
 
-            UsuarioDAO::update($usuario);
-        }
-    
-        $_SESSION['pagina'] = 'listadoUsuarios';
-        header('Location: index.php');
-        exit();
+        UsuarioDAO::update($usuario);
+    }
+
+    $_SESSION['pagina'] = 'listadoUsuarios';
+    header('Location: index.php');
+    exit();
+	}
+  // Eliminar Usuario
+	else if(isset($_POST['eliminarUsuario']))
+	{
+    // Recojo el id del Usuario
+    if(isset($_POST["idUsuario"]))
+    {
+        $idUsuario = $_POST["idUsuario"];
+
+        // Lo elimino
+        UsuarioDAO::deleteById($idUsuario);
+    }
+
+    $_SESSION['pagina'] = 'listadoUsuarios';
+    header('Location: index.php');
+    exit();
 	}
   // Volver
   else if (isset($_POST['volver'])) 

@@ -9,7 +9,7 @@ interface DAO
     public static function findById($id);
 
     // Método que modifica/actualiza un documento
-    public  static function update($objeto);
+    public static function update($objeto);
 
     // Método que crea un nuevo documentos
     public static function save($objeto);
