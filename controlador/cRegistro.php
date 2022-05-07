@@ -21,10 +21,13 @@
           // Enctripto la contraseña
           $contraseñaEncrip = hash('sha256', $_REQUEST["contraseña"]);
 
+          // Creo el Usuario (Por defecto inactivo y con Perfil normal)
           $nuevoUsuario = new Usuario("",$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseñaEncrip,$_REQUEST["email"],$_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],"P_NORMAL",$_REQUEST["activo"],"imagenPorDefecto");
           UsuarioDAO::save($nuevoUsuario);
 
-          $usuario = UsuarioDAO::findByEmail($_REQUEST["email"]);
+          // Le actualizo el id de Usuario al dado por el documento de la BBDD
+          $usuario = UsuarioDAO::findByEmail($nuevoUsuario->email);
+          $usuario->activo = "false";
           UsuarioDAO::update($usuario);
           
           unset($_SESSION["erroresRegistro"]);

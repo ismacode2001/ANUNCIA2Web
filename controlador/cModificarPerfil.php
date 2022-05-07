@@ -45,6 +45,7 @@ include './core/funcionesPerfil.php';
             $nuevoUsuario = new Usuario($_SESSION["idUsuario"],$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseña,$_REQUEST["email"],
                 $_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],$_REQUEST["perfil"],$_REQUEST["activo"],$_REQUEST["imagenPerfil"]);
 
+            // Modifico el Usuario
             UsuarioDAO::update($nuevoUsuario);
 
             $_SESSION['pagina'] = 'perfil';
