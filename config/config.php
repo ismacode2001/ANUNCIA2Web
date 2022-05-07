@@ -1,15 +1,23 @@
 <?php
 
-  // Imágenes en local //
-  define ('IMAGENES', "../webroot/img/");
+  // Imágenes (local) //
+  define('IMAGENES',"./webroot/img/");
 
-  // Includes //
+  // Funciones Generales //
   include './core/funcionesValidarGenericas.php';
   //include './core/funcionesCookies.php';
-  require './config/datosBD.php';
-  require './dao/DAO.php';
+
+  // Modelos //
   require './modelo/Usuario.php';
+  require './modelo/Anuncio.php';
+
+  // DAO //
+  require './dao/DAO.php';
   require './dao/UsuarioDAO.php';
+  require './dao/AnuncioDAO.php';
+
+  // Config //
+  require './config/datosBD.php';
 
   // Controladores //
   $controladores = [

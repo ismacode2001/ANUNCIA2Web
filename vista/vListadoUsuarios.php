@@ -6,8 +6,6 @@
   // Se le permite la visualización del resto de Usuarios
   if($_SESSION["perfil"] == "P_ADMIN")
   {
-    $arrayUsuarios = UsuarioDAO::findAll();
-
     echo "<table class='table table-striped'>";
     echo "<thead>";
     echo "<th>Id Usuario</th>";

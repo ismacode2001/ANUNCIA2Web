@@ -78,9 +78,12 @@
       header('Location: index.php');
       exit();
   }
+  // Que sea la primera vez que se entra //
 	else
 	{
-    // Que sea la primera vez que se entra //
+    // Recojo los usuarios de la BBDD
+    $arrayUsuarios = UsuarioDAO::findAll();
+
     $_SESSION['vista'] = $vistas['listadoUsuarios'];
     require_once $vistas['layout'];    
 	}

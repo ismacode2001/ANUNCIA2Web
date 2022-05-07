@@ -11,39 +11,43 @@ class AnuncioDAO implements DAO
     curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 
     // Ejecuto la conexion
-    $jsonUsuarios = curl_exec($ch);
+    $jsonAnuncios = curl_exec($ch);
 
     // Cierre de la conexión
     curl_close($ch);
 
-    $arrayAnuncios = json_decode($jsonUsuarios,true); // decode the JSON feed
+    $arrayAnuncios = json_decode($jsonAnuncios,true); // decode the JSON feed
     
     // Array que contiene los objetos de tipo Anuncio
     $anuncios = [];
 
-    // Por cada Anuncio...
-    foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
+    // Si hay Anuncios en la BBDD...
+    if(count($arrayAnuncios) > 0)
     {
-      $arrayDatos = $arrayAnuncio["fields"];
+      // Por cada Anuncio...
+      foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
+      {
+        $arrayDatos = $arrayAnuncio["fields"];
 
-      $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
-      $titulo = $arrayDatos["titulo"]["stringValue"];
-      $descripcion = $arrayDatos["descripcion"]["stringValue"];
-      $categoria = $arrayDatos["categoria"]["stringValue"];
-      $precio = $arrayDatos["precio"]["stringValue"];
-      $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
-      $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
-      $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-      $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
-      $imagen1 = $arrayDatos["imagen1"]["stringValue"];
-      $imagen2 = $arrayDatos["imagen2"]["stringValue"];
+        $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
+        $titulo = $arrayDatos["titulo"]["stringValue"];
+        $descripcion = $arrayDatos["descripcion"]["stringValue"];
+        $categoria = $arrayDatos["categoria"]["stringValue"];
+        $precio = $arrayDatos["precio"]["stringValue"];
+        $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
+        $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
+        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
+        $imagen1 = $arrayDatos["imagen1"]["stringValue"];
+        $imagen2 = $arrayDatos["imagen2"]["stringValue"];
 
-      $anuncio = new Usuario($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,$ubicacion,
-        $idUsuario,$numFavoritos,$imagen1,$imagen2);
+        $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,$ubicacion,
+          $idUsuario,$numFavoritos,$imagen1,$imagen2);
 
-      array_push($anuncios,$anuncio);
+        array_push($anuncios,$anuncio);
+      }
     }
-
+    
     return $anuncios;
   }
 
@@ -78,11 +82,11 @@ class AnuncioDAO implements DAO
         $titulo = $arrayDatos["titulo"]["stringValue"];
         $descripcion = $arrayDatos["descripcion"]["stringValue"];
         $categoria = $arrayDatos["categoria"]["stringValue"];
-        $precio = $arrayDatos["email"]["numberValue"];
+        $precio = $arrayDatos["email"]["stringValue"];
         $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
         $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
         $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-        $numFavoritos = $arrayDatos["numFavoritos"]["numberValue"];
+        $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
         $imagen1 = $arrayDatos["imagen1"]["stringValue"];
         $imagen2 = $arrayDatos["imagen2"]["stringValue"];
   
@@ -123,7 +127,7 @@ class AnuncioDAO implements DAO
             'stringValue': '" . $anuncio->categoria . "'
           },
           'precio':{
-            'numberValue': '" . $anuncio->precio . "'
+            'stringValue': '" . $anuncio->precio . "'
           },
           'fechaAnuncio':{
             'stringValue': '" . $anuncio->fechaAnuncio . "'
@@ -142,7 +146,7 @@ class AnuncioDAO implements DAO
           },
           'imagen2':{
             'stringValue': '" . $anuncio->imagen2 . "'
-        }
+          }
       }
     }";
 

@@ -28,9 +28,12 @@
     header('Location: index.php');
     exit();
 	}
+  // Que sea la primera vez que se entra en el Menú //
 	else
 	{
-    // Que sea la primera vez que se entra en el Menú //
+    // Recojo los Anuncios de la BBDD
+    $listaAnuncios = AnuncioDAO::findAll();
+    
     $_SESSION['vista'] = $vistas['menu'];
     require_once $vistas['layout'];    
 	}
