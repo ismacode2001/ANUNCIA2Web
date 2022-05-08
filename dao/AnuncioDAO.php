@@ -29,7 +29,10 @@ class AnuncioDAO implements DAO
       {
         $arrayDatos = $arrayAnuncio["fields"];
 
-        $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
+        $rutaDocumento = $arrayAnuncio["name"];
+        $partes = explode("/",$rutaDocumento);
+
+        $idAnuncio = $partes[count($partes) - 1];
         $titulo = $arrayDatos["titulo"]["stringValue"];
         $descripcion = $arrayDatos["descripcion"]["stringValue"];
         $categoria = $arrayDatos["categoria"]["stringValue"];
@@ -74,11 +77,14 @@ class AnuncioDAO implements DAO
     foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
     {
       $arrayDatos = $arrayAnuncio["fields"];
-      $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
      
+      $rutaDocumento = $arrayAnuncio["name"];
+      $partes = explode("/",$rutaDocumento);
+      $idAnuncio = $partes[count($partes) - 1];
+
       if($idAnuncio == $id)
       {
-        $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
+        $idAnuncio = $partes[count($partes) - 1];
         $titulo = $arrayDatos["titulo"]["stringValue"];
         $descripcion = $arrayDatos["descripcion"]["stringValue"];
         $categoria = $arrayDatos["categoria"]["stringValue"];
@@ -99,9 +105,74 @@ class AnuncioDAO implements DAO
   }
 
   // Método que modifica/actualiza un Anuncio
-  public static function update($usuario)
+  public static function update($anuncio)
   {
-     
+    // Objeto de tipo curl para hacer la peticion
+    $ch = curl_init();
+
+    $json = "{
+      'fields':{
+          'idAnuncio':{
+            'stringValue': '" . $anuncio->idAnuncio . "'
+          },
+          'titulo':{
+            'stringValue': '" . $anuncio->titulo . "'
+          },
+          'descripcion':{
+            'stringValue': '" . $anuncio->descripcion . "'
+          },
+          'categoria':{
+            'stringValue': '" . $anuncio->categoria . "'
+          },
+          'precio':{
+            'stringValue': '" . $anuncio->precio . "'
+          },
+          'fechaAnuncio':{
+            'stringValue': '" . $anuncio->fechaAnuncio . "'
+          },
+          'ubicacion':{
+            'stringValue': '" . $anuncio->ubicacion ."'
+          },
+          'idUsuario':{
+            'stringValue': '" . $anuncio->idUsuario ."'
+          },
+          'numFavoritos':{
+            'stringValue': '" . $anuncio->numFavoritos . "'
+          },
+          'imagen1':{
+            'stringValue': '" . $anuncio->imagen1 . "'
+          },
+          'imagen2':{
+            'stringValue': '" . $anuncio->imagen2 . "'
+          }
+      }
+    }";
+
+
+    // url
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $anuncio->idAnuncio);
+
+    // Se le indica que lo queremos hacer por put, indicandole como va a ir la cabecera
+    curl_setopt($ch,CURLOPT_HTTPHEADER,
+        array("Content-Type: application/json",
+                "Content.length: " . strlen($json)));
+
+    // Se le pasan los parámetros a la cabecera del post
+    curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'PATCH');
+
+    // Parametros
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$json);
+
+    // Quiero respuesta
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+    // Ejecuto la conexion
+    $anuncio = curl_exec($ch);
+
+    // Cierre de la conexión
+    curl_close($ch);
+
+    return $anuncio;
   }
 
   // Método que inserta un nuevo Anuncio
@@ -171,7 +242,25 @@ class AnuncioDAO implements DAO
   // Método que elimina un Anuncio en funcion de su id
   public static function deleteById($id)
   {
-    
+    // Objeto de tipo curl para hacer la peticion
+    $ch = curl_init();
+
+    // url
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Anuncios/" . $id);
+
+    // Se le pasan los parámetros a la cabecera del post
+    curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'DELETE');
+
+    // Quiero respuesta
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+    // Ejecuto la conexion
+    $anuncio = curl_exec($ch);
+
+    // Cierre de la conexión
+    curl_close($ch);
+
+    return $anuncio;
   }
 
 }
