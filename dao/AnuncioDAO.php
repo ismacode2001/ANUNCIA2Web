@@ -201,7 +201,7 @@ class AnuncioDAO implements DAO
 
 
     // url
-    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Usuarios/" . $anuncio->idAnuncio);
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Anuncios/" . $anuncio->idAnuncio);
 
     // Se le indica que lo queremos hacer por put, indicandole como va a ir la cabecera
     curl_setopt($ch,CURLOPT_HTTPHEADER,
