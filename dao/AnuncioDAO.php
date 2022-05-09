@@ -88,7 +88,58 @@ class AnuncioDAO implements DAO
         $titulo = $arrayDatos["titulo"]["stringValue"];
         $descripcion = $arrayDatos["descripcion"]["stringValue"];
         $categoria = $arrayDatos["categoria"]["stringValue"];
-        $precio = $arrayDatos["email"]["stringValue"];
+        $precio = $arrayDatos["precio"]["stringValue"];
+        $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
+        $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
+        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
+        $imagen1 = $arrayDatos["imagen1"]["stringValue"];
+        $imagen2 = $arrayDatos["imagen2"]["stringValue"];
+  
+        $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,
+            $ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2);
+      }
+    }
+
+    return $anuncio;
+  }
+
+  // Método que busca un Anuncio por su titulo
+  public static function findByTitulo($titulo)
+  {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Anuncios/");
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+    // Ejecuto la conexion
+    $jsonAnuncios = curl_exec($ch);
+
+    // Cierre de la conexión
+    curl_close($ch);
+
+    $arrayAnuncios = json_decode($jsonAnuncios,true); // decode the JSON feed
+    
+    // Array que contiene los objetos de tipo Usuario
+    $anuncio = null;
+
+    // Por cada Anuncio...
+    foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
+    {
+      $arrayDatos = $arrayAnuncio["fields"];
+     
+      $rutaDocumento = $arrayAnuncio["name"];
+      $partes = explode("/",$rutaDocumento);
+      $idAnuncio = $partes[count($partes) - 1];
+      $tituloAnuncio = $arrayDatos["titulo"]["stringValue"];
+
+      if($tituloAnuncio == $titulo)
+      {
+        $idAnuncio = $partes[count($partes) - 1];
+        $titulo = $arrayDatos["titulo"]["stringValue"];
+        $descripcion = $arrayDatos["descripcion"]["stringValue"];
+        $categoria = $arrayDatos["categoria"]["stringValue"];
+        $precio = $arrayDatos["precio"]["stringValue"];
         $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
         $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
         $idUsuario = $arrayDatos["idUsuario"]["stringValue"];

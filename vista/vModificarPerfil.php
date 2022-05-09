@@ -119,6 +119,11 @@
                 echo "false";
         ?>">
     </div>
+    <!-- Perfil -->
+    <input type="hidden" class="form-control" id="idPerfil" name="perfil" value="<?php
+        echo $usuario->perfil;
+    ?>">
+    </div>
     <hr>
     <button type="submit" class="btn btn-primary mb-3 m-1" name="guardarMod">Guardar Cambios</button>
     <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>

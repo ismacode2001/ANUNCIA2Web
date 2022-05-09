@@ -29,6 +29,7 @@
       'listadoUsuarios' => 'controlador/cListadoUsuarios.php',
       'modificarPerfil' => 'controlador/cModificarPerfil.php',
       'detalleAnuncio' => 'controlador/cDetalleAnuncio.php',
+      'crearAnuncio' => 'controlador/cCrearAnuncio.php',
   ];
 
   // Vistas //
@@ -42,6 +43,7 @@
       'listadoUsuarios' => 'vista/vListadoUsuarios.php',
       'modificarPerfil' => 'vista/vModificarPerfil.php',
       'detalleAnuncio' => 'vista/vDetalleAnuncio.php',
+      'crearAnuncio' => 'vista/vCrearAnuncio.php',
   ];
 
 ?>

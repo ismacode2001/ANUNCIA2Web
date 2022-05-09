@@ -45,6 +45,13 @@
       // Mensaje de error: "error al acceder al Anuncio"
     }
 	}
+  // Crear Anuncio
+	else if(isset($_POST['crearAnuncio']))
+	{
+    $_SESSION['pagina'] = 'crearAnuncio';
+    header('Location: index.php');
+    exit();
+	}
   // Que sea la primera vez que se entra en el Menú //
 	else
 	{
