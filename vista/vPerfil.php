@@ -6,7 +6,7 @@
 
     <!-- Id del Usuario -->
     <div class="row mb-3 mt-3">
-        <label for="idNombre" class="col-sm-2 col-form-label mt-3">Id</label>
+        <label for="user" class="col-sm-2 col-form-label mt-3">Id</label>
         <div class="col-sm-5 mt-3">
         <input type="text" class="form-control" id="user" placeholder="Id del Usuario" readonly name="user" value="<?php 
             echo $usuario->idUsuario;            
