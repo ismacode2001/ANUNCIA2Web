@@ -28,6 +28,13 @@
     header('Location: index.php');
     exit();
 	}
+  // Volver
+  else if (isset($_POST['volver'])) 
+  {
+      $_SESSION['pagina'] = 'menu';
+      header('Location: index.php');
+      exit();
+  }
   // Ver Detalle del Anuncio
   else if(isset($_POST['detalleAnuncio']))
 	{

@@ -36,6 +36,8 @@
       // Guardo el id del Anuncio
       $_SESSION["idAnuncio"] = $_POST["idAnuncio"];
 
+      $anuncio = AnuncioDAO::findById(["idAnuncio"]);
+
       $_SESSION['pagina'] = 'detalleAnuncio';
       header('Location: index.php');
       exit();

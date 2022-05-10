@@ -35,20 +35,34 @@
             ?>
             </div>
         </div>
+
         <!-- Categoria -->
         <div class="row mb-3">
             <label for="idCategoria" class="col-sm-2 col-form-label">Categoría</label>
-            <div class="col-sm-5">
-            <input type="text" class="form-control" id="idCategoria" name="categoria" placeholder="Categoria" value="<?php
-                // Si no está vacío, se guarda el texto introducido
-                validaSiVacio("categoria","crearAnuncio")
-            ?>">
-            <?php
-                // En caso de que esté vacío o mal formado, se muestra un error
-                imprimeError($_SESSION["erroresAnuncio"],'idCategoria','categoria');
-            ?>
+            <div class="col-sm-5" id="idCategoria">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="categoria" id="idCategoriaInformatica" value="Informática">
+                    <label class="form-check-label" for="inlineRadio1">Informática</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="categoria" id="idCategoriaDeportes" value="Deportes">
+                    <label class="form-check-label" for="inlineRadio2">Deportes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="categoria" id="idCategoriaInmobiliaria" value="Inmobiliaria">
+                    <label class="form-check-label" for="inlineRadio3">Inmobiliaria</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="categoria" id="idCategoriaMotor" value="Motor">
+                    <label class="form-check-label" for="inlineRadio3">Motor)</label>
+                </div>
             </div>
         </div>
+
+        <?php
+            //validaCategoria('categoria',"idCategoriaMotor","Debe seleccionar al menos una categoria");
+        ?>
+
         <!-- Precio -->
         <div class="row mb-3">
             <label for="idPrecio" class="col-sm-2 col-form-label">Precio (€)</label>

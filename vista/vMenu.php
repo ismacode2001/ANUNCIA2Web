@@ -1,6 +1,7 @@
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
   <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnCrear" name="crearAnuncio">Crear Anuncio</button>
 </form>
+<hr>
 <!-- Por cada Anuncio... imprimo un card con su info asociada -->
 <?php
 
@@ -14,7 +15,7 @@
       <div class="card mb-3">
       <img src="<?php echo IMAGENES . 'teclado.png'?>" class="card-img-top" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
       <div class="card-body">
-        <h5 class="card-title"></h5>
+        <h5 class="card-title"><?php echo $anuncio->titulo?></h5>
         <p class="card-text"><?php echo $anuncio->descripcion?></p>
         <p class="card-text"><small class="text-muted"><?php echo $anuncio->categoria?></small></p>
         <p class="card-text"><small class="text-muted"><?php echo $anuncio->precio . " €"?></small></p>
