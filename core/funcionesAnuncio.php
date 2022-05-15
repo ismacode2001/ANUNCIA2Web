@@ -85,7 +85,7 @@
             if ((isset($_FILES))) 
             {
                 // Se le dice donde se quiere que se guarde
-                $rutaGuardado = "./webroot/img/temp/";
+                $rutaGuardado = "../webroot/img/temp/";
 
                 // Se le establece el nombre al archivo a guardar
                 $rutaConNombreFichero = $rutaGuardado .  $_FILES[$nameCampo]['name'];
