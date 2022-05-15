@@ -3,18 +3,24 @@
   // Imágenes (local) //
   define('IMAGENES',"./webroot/img/");
 
+  // Imágenes (temporales) //
+  define('IMAGENES_TEMP',"./webroot/img/temp/");
+
   // Funciones Generales //
   include './core/funcionesValidarGenericas.php';
+  include './core/funcionesImagenes.php';
   //include './core/funcionesCookies.php';
 
   // Modelos //
   require './modelo/Usuario.php';
   require './modelo/Anuncio.php';
+  require './modelo/Imagen.php';
 
   // DAO //
   require './dao/DAO.php';
   require './dao/UsuarioDAO.php';
   require './dao/AnuncioDAO.php';
+  require './dao/ImagenDAO.php';
 
   // Config //
   require './config/datosBD.php';

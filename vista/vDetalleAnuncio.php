@@ -1,5 +1,5 @@
 <!-- Imágenes (Carousel) -->
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -25,6 +25,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
 
 <!-- Título -->
 <figure class="text-center mt-3">
@@ -63,4 +64,3 @@
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
 </form>
-
