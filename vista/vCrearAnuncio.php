@@ -105,13 +105,21 @@
             echo "0";
         ?>">
         <!-- Imagen 1 -->
-        <input type="hidden" id="idImagen1" name="imagen1" value="<?php
-            echo "imagen1";
-        ?>">
+        <div class="row mb-3">
+            <label for="idImagen1" class="col-sm-2 col-form-label">Imagen 1</label>
+            <div class="col-sm-5">
+            <input type="file" class="form-control" id="idImagen1" name="imagen1">
+            </div>
+        </div>
+        <?php guardaImagenLocal("idImagen1","imagen1"); ?>
         <!-- Imagen 2 -->
-        <input type="hidden" id="idImagen2" name="imagen2" value="<?php
-            echo "imagen2";
-        ?>">
+        <div class="row mb-3">
+            <label for="idImagen2" class="col-sm-2 col-form-label">Imagen 2</label>
+            <div class="col-sm-5">
+            <input type="file" class="form-control" id="idImagen2" name="imagen2">
+            </div>
+        </div>
+        <?php guardaImagenLocal("idImagen2","imagen2"); ?>
         <hr>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="crearAnuncio">Confirmar</button>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>

@@ -76,4 +76,38 @@
       return $correcto;
   }
 
+  // Funcion que guarda una imagen de manera temporal en la carpeta /temp (local) //
+  function guardaImagenLocal($idCampo,$nameCampo)
+    {
+        if(validaEnviado("crearAnuncio"))
+        {
+
+            if ((isset($_FILES))) 
+            {
+                // Se le dice donde se quiere que se guarde
+                $rutaGuardado = "./webroot/img/temp/";
+
+                // Se le establece el nombre al archivo a guardar
+                $rutaConNombreFichero = $rutaGuardado .  $_FILES[$nameCampo]['name'];
+
+                // Si se mueve el fichero del sitio temporal a la ruta especificada...
+                if (move_uploaded_file($_FILES[$nameCampo]['tmp_name'], $rutaConNombreFichero)) 
+                {
+                    echo "<br>El archivo se ha guardado correctamente.<br>";
+                    // Si subo una imagen, la guardo y la cargo en el html //
+                    //echo "La ruta es: <b>" . $rutaConNombreFichero . "</b><br>";
+                    //echo "<img src='" . $rutaConNombreFichero . "' alt='Imagen' width='100px' height='100px'>";
+                    //<img src="pic_trulli.jpg" alt="Italian Trulli">
+                } 
+                else
+                {
+                    ?> <label for="<?php echo $idCampo ?>" style="color:red;">Error al guardar el archivo</label> <?php
+                }
+            }
+            else
+            {
+                echo "<br>No existe FILES";
+            }
+        }
+    }
 ?>
