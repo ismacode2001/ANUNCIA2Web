@@ -63,11 +63,15 @@
 
         // Imagen 1 //
         if (empty($_REQUEST['imagen1']))
-            $correcto = false;
+            //$correcto = false;
 
         // Imagen 2 //
         if (empty($_REQUEST['imagen2']))
-            $correcto = false;
+            //$correcto = false;
+
+        if($correcto)
+          //guardaImagenLocal("","");
+          echo "x";
       }
       // Si no...
       else 
@@ -78,36 +82,56 @@
 
   // Funcion que guarda una imagen de manera temporal en la carpeta /temp (local) //
   function guardaImagenLocal($idCampo,$nameCampo)
+  {
+    if(isset($_REQUEST['crearAnuncio']))
     {
-        if(validaEnviado("crearAnuncio"))
+
+      if ((isset($_FILES))) 
+      {
+        // Se le dice donde se quiere que se guarde
+        $rutaGuardado = "./webroot/img/temp/";
+
+        // Se le establece el nombre al archivo a guardar
+        $rutaConNombreFichero = $rutaGuardado .  $_FILES[$nameCampo]['name'];
+
+      // Si se mueve el fichero del sitio temporal a la ruta especificada...
+      if (move_uploaded_file($_FILES[$nameCampo]['tmp_name'], $rutaConNombreFichero)) 
+      {
+        //echo "<br>El fichero se ha guardado correctamente.<br>";
+
+        // Si subo una imagen, la guardo y la cargo en el html //
+        //echo "El archivo es (ruta): <b>" . $rutaConNombreFichero . "</b><br>";
+
+        // Si es una imagen, lo imprimo
+        $patron = '/.png|.jpg$/';
+
+        // Si es una imagen .png o .jpeg...
+        if(preg_match($patron,$rutaConNombreFichero))
         {
 
-            if ((isset($_FILES))) 
-            {
-                // Se le dice donde se quiere que se guarde
-                $rutaGuardado = "../webroot/img/temp/";
+          $patronPng = '/.png$/';
+          $patronJpeg = '/.jpeg$/';
 
-                // Se le establece el nombre al archivo a guardar
-                $rutaConNombreFichero = $rutaGuardado .  $_FILES[$nameCampo]['name'];
-
-                // Si se mueve el fichero del sitio temporal a la ruta especificada...
-                if (move_uploaded_file($_FILES[$nameCampo]['tmp_name'], $rutaConNombreFichero)) 
-                {
-                    echo "<br>El archivo se ha guardado correctamente.<br>";
-                    // Si subo una imagen, la guardo y la cargo en el html //
-                    //echo "La ruta es: <b>" . $rutaConNombreFichero . "</b><br>";
-                    //echo "<img src='" . $rutaConNombreFichero . "' alt='Imagen' width='100px' height='100px'>";
-                    //<img src="pic_trulli.jpg" alt="Italian Trulli">
-                } 
-                else
-                {
-                    ?> <label for="<?php echo $idCampo ?>" style="color:red;">Error al guardar el archivo</label> <?php
-                }
-            }
-            else
-            {
-                echo "<br>No existe FILES";
-            }
+          // Filtro por la extension
+          if(preg_match($patronPng,$rutaConNombreFichero))
+          {
+            // La guardo como .png
+          }
+          else if(preg_match($patronJpeg,$rutaConNombreFichero))
+          {
+            // la guardo como .jpeg
+          }
+            
         }
+        else
+        {
+            echo "El archivo subido no es una imagen.";
+        }
+      } 
+      else
+      {
+        //echo "<br>Error al guardar el fichero.";
+      }
+      }
     }
-?>
+  }

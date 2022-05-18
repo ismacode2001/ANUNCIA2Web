@@ -1,7 +1,7 @@
 <h2>Crear Anuncio</h2>
 
 <div class="formulario">
-    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario">
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario" enctype="multipart/form-data">
         <!-- ID - (Oculto) -->
         <input type="hidden" name="idAnuncio" id="idAnuncio" size="25"  value="<?php
             echo "1";
@@ -42,19 +42,19 @@
             <div class="col-sm-5" id="idCategoria">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="categoria" id="idCategoriaInformatica" value="Informática">
-                    <label class="form-check-label" for="inlineRadio1">Informática</label>
+                    <label class="form-check-label" for="idCategoriaInformatica">Informática</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="categoria" id="idCategoriaDeportes" value="Deportes">
-                    <label class="form-check-label" for="inlineRadio2">Deportes</label>
+                    <label class="form-check-label" for="idCategoriaDeportes">Deportes</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="categoria" id="idCategoriaInmobiliaria" value="Inmobiliaria">
-                    <label class="form-check-label" for="inlineRadio3">Inmobiliaria</label>
+                    <label class="form-check-label" for="idCategoriaInmobiliaria">Inmobiliaria</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="categoria" id="idCategoriaMotor" value="Motor">
-                    <label class="form-check-label" for="inlineRadio3">Motor)</label>
+                    <label class="form-check-label" for="idCategoriaMotor">Motor</label>
                 </div>
             </div>
         </div>
@@ -111,7 +111,9 @@
             <input type="file" class="form-control" id="idImagen1" name="imagen1">
             </div>
         </div>
-        <?php guardaImagenLocal("idImagen1","imagen1"); ?>
+        <?php 
+            //guardaImagenLocal("idImagen1","imagen1"); 
+        ?>
         <!-- Imagen 2 -->
         <div class="row mb-3">
             <label for="idImagen2" class="col-sm-2 col-form-label">Imagen 2</label>
@@ -119,7 +121,7 @@
             <input type="file" class="form-control" id="idImagen2" name="imagen2">
             </div>
         </div>
-        <?php guardaImagenLocal("idImagen2","imagen2"); ?>
+        <?php //guardaImagenLocal("idImagen2","imagen2"); ?>
         <hr>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="crearAnuncio">Confirmar</button>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>

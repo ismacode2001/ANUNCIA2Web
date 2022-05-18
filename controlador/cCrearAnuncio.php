@@ -56,6 +56,9 @@
           $anuncio = AnuncioDAO::findByTitulo($nuevoAnuncio->titulo);
           AnuncioDAO::update($anuncio);
           
+          guardaImagenLocal("idImagen1","imagen1"); 
+          guardaImagenLocal("idImagen2","imagen2"); 
+
           unset($_SESSION["erroresAnuncio"]);
 
           $_SESSION['pagina'] = 'menu';
