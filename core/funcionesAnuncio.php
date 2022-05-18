@@ -62,16 +62,13 @@
             //$correcto = false;
 
         // Imagen 1 //
-        if (empty($_REQUEST['imagen1']))
-            //$correcto = false;
+        if(!isset($_FILES["imagen1"]))
+          $correcto = false;
 
         // Imagen 2 //
-        if (empty($_REQUEST['imagen2']))
-            //$correcto = false;
+        if(!isset($_FILES["imagen2"]))
+          $correcto = false;
 
-        if($correcto)
-          //guardaImagenLocal("","");
-          echo "x";
       }
       // Si no...
       else 
@@ -81,7 +78,7 @@
   }
 
   // Funcion que guarda una imagen de manera temporal en la carpeta /temp (local) //
-  function guardaImagenLocal($idCampo,$nameCampo)
+  function guardaImagenLocal($numImagen,$nameCampo)
   {
     if(isset($_REQUEST['crearAnuncio']))
     {
@@ -97,41 +94,63 @@
       // Si se mueve el fichero del sitio temporal a la ruta especificada...
       if (move_uploaded_file($_FILES[$nameCampo]['tmp_name'], $rutaConNombreFichero)) 
       {
-        //echo "<br>El fichero se ha guardado correctamente.<br>";
-
-        // Si subo una imagen, la guardo y la cargo en el html //
-        //echo "El archivo es (ruta): <b>" . $rutaConNombreFichero . "</b><br>";
-
-        // Si es una imagen, lo imprimo
+        // Valido el formato de imagen (jpeg o png)
         $patron = '/.png|.jpg$/';
 
         // Si es una imagen .png o .jpeg...
         if(preg_match($patron,$rutaConNombreFichero))
         {
-
           $patronPng = '/.png$/';
           $patronJpeg = '/.jpeg$/';
+
+          $data = base64_encode(file_get_contents($rutaConNombreFichero));
 
           // Filtro por la extension
           if(preg_match($patronPng,$rutaConNombreFichero))
           {
-            // La guardo como .png
+            // La guardo como .png en Firebase
+            $nombreImagen = $numImagen . "|" . $_SESSION["idUsuario"] . "|" ."png";
+            $imagen = new Imagen($numImagen,$data,$nombreImagen);
+            ImagenDAO::save($imagen);
+
+            // Actualizo el id de la imagen al dado por el documento
+            $imagenU = ImagenDAO::findById($numImagen);
+            ImagenDAO::update($imagenU);
+
+            // Recojo dicho id y lo establezco en la sesión
+            $idImagen = ImagenDAO::findByNombre($nombreImagen)->idImagen;
+            $_SESSION["idImagen" . $numImagen] = $idImagen;
           }
           else if(preg_match($patronJpeg,$rutaConNombreFichero))
           {
-            // la guardo como .jpeg
+            // La guardo como .jpeg en Firebase
+            $nombreImagen = $numImagen . "|" . $_SESSION["idUsuario"] . "|" ."jpeg";
+            $imagen = new Imagen($numImagen,$data,$nombreImagen);
+            ImagenDAO::save($imagen);
+
+            // Actualizo el id de la imagen al dado por el documento
+            $imagenU = ImagenDAO::findById($numImagen);
+            ImagenDAO::update($imagenU);
+
+            // Recojo dicho id y lo establezco en la sesión
+            $idImagen = ImagenDAO::findByNombre($nombreImagen)->idImagen;
+            $_SESSION["idImagen" . $numImagen] = $idImagen;
           }
             
         }
+        // Formato de imagen incorrecto
         else
         {
-            echo "El archivo subido no es una imagen.";
+            echo "<p>Solo se aceptan imágenes .png o .jpeg</p>";
         }
       } 
+      // Error al guardar la imagen
       else
       {
-        //echo "<br>Error al guardar el fichero.";
+        echo "<p>Error al guardar la imagen</p>";
       }
       }
     }
   }
+
+?>

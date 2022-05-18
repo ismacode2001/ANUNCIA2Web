@@ -47,7 +47,7 @@ class ImagenDAO implements DAO
   {
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Imagen/");
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Imagenes/");
     curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 
     // Ejecuto la conexion
@@ -64,8 +64,8 @@ class ImagenDAO implements DAO
     // Por cada Usuario...
     foreach ($arrayImagenes["documents"] as $arrayImagen)
     {
-      $arrayDatos = $arrayImagenes["fields"];
-      $idImagen = $arrayDatos["idUsuario"]["stringValue"];
+      $arrayDatos = $arrayImagen["fields"];
+      $idImagen = $arrayDatos["idImagen"]["stringValue"];
      
       if($idImagen == $id)
       {
@@ -77,6 +77,49 @@ class ImagenDAO implements DAO
         $nombre = $arrayDatos["nombre"]["stringValue"];
   
         $imagen = new Imagen($idImagen,$cadena,$nombre);
+      }
+      
+    }
+
+    return $imagen;
+  }
+
+  // Método que busca una Imagen por su nombre //
+  public static function findByNombre($nombre)
+  {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Imagenes/");
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+    // Ejecuto la conexion
+    $jsonImagenes = curl_exec($ch);
+
+    // Cierre de la conexión
+    curl_close($ch);
+
+    $arrayImagenes = json_decode($jsonImagenes,true); // decode the JSON feed
+    
+    // Array que contiene los objetos de tipo Usuario
+    $imagen = null;
+
+    // Por cada Usuario...
+    foreach ($arrayImagenes["documents"] as $arrayImagen)
+    {
+      $arrayDatos = $arrayImagen["fields"];
+      $nombreImagen = $arrayDatos["nombre"]["stringValue"];
+      $idImagen = $arrayDatos["idImagen"]["stringValue"];
+     
+      if($nombreImagen == $nombre)
+      {
+        $rutaDocumento = $arrayImagen["name"];
+        $partes = explode("/",$rutaDocumento);
+  
+        $idImagen = $partes[count($partes) - 1];
+        $cadena = $arrayDatos["cadena"]["stringValue"];
+        $nombreImagen = $arrayDatos["nombre"]["stringValue"];
+  
+        $imagen = new Imagen($idImagen,$cadena,$nombreImagen);
       }
       
     }

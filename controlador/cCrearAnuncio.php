@@ -47,17 +47,18 @@
 
       if(validaFormularioAnuncio("crearAnuncio"))
       {
+          // Guardo las imágenes
+          guardaImagenLocal("1","imagen1"); 
+          guardaImagenLocal("2","imagen2"); 
+
           // Creo el Anuncio
           $nuevoAnuncio = new Anuncio($_REQUEST["idAnuncio"],$_REQUEST["titulo"],$_REQUEST["descripcion"],$_REQUEST["categoria"],$_REQUEST["precio"],
-            $_REQUEST["fechaAnuncio"],$_REQUEST["ubicacion"],$_REQUEST["idUsuario"],$_REQUEST["numFavoritos"],$_REQUEST["imagen1"],$_REQUEST["imagen2"]);
+            $_REQUEST["fechaAnuncio"],$_REQUEST["ubicacion"],$_REQUEST["idUsuario"],$_REQUEST["numFavoritos"],$_SESSION["idImagen1"],$_SESSION["idImagen2"]);
           AnuncioDAO::save($nuevoAnuncio);
 
           // Le actualizo el id de Anuncio al dado por el documento de la BBDD
           $anuncio = AnuncioDAO::findByTitulo($nuevoAnuncio->titulo);
           AnuncioDAO::update($anuncio);
-          
-          guardaImagenLocal("idImagen1","imagen1"); 
-          guardaImagenLocal("idImagen2","imagen2"); 
 
           unset($_SESSION["erroresAnuncio"]);
 
