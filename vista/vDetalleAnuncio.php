@@ -3,18 +3,20 @@
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <!--<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="<?php echo IMAGENES . 'teclado.png'?>" class="d-block w-100" alt="..." height="450px">
+      <img src="<?php decodificaImagen($anuncio->imagen1)?>" class="d-block w-100" alt="..." height="450px">
     </div>
     <div class="carousel-item">
-      <img src="<?php echo IMAGENES . 'seatIbiza.png'?>" class="d-block w-100" alt="..." height="450px">
+      <img src="<?php decodificaImagen($anuncio->imagen2)?>" class="d-block w-100" alt="..." height="450px">
     </div>
+    <!--
     <div class="carousel-item">
-      <img src="<?php echo IMAGENES . 'portatil.png'?>" class="d-block w-100" alt="..." height="450px">
+      <img src="<?php //echo IMAGENES . 'portatil.png'?>" class="d-block w-100" alt="..." height="450px">
     </div>
+    -->
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

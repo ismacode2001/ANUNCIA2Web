@@ -8,36 +8,53 @@
         
     }
 
-    // Funcion que decodifica una cadena de bytes a imagen en formato .png
-    function decodificaImagenPng()
+    // Función que decodifica una cadena de bytes a imagen y la muestra en la etiqueta//
+    function decodificaImagen($idImagen)
     {
-        $data = 'iVBORw0KGgoAAAANSUhEUgAAABwAAAASCAMAAAB/2U7WAAAABl'
-        
-               . 'BMVEUAAAD///+l2Z/dAAAASUlEQVR4XqWQUQoAIAxC2/0vXZDr'
-        
-               . 'EX4IJTRkb7lobNUStXsB0jIXIAMSsQnWlsV+wULF4Avk9fLq2r'
-        
-               . '8a5HSE35Q3eO2XP1A1wQkZSgETvDtKdQAAAABJRU5ErkJggg==';
+        // Recupero la imagen en función de su id
+        $imagen = ImagenDAO::findById($idImagen);
+        $data = $imagen->cadena;
 
+        // La decodifico de cadena a imagen
         $data = base64_decode($data);
-        
+
+        // Creo la imagen
         $im = imagecreatefromstring($data);
         
+        // Si se ha creado correctamente...
         if ($im !== false) 
         {
-            //header('Content-Type: image/png');
-            imagepng($im, "a.png");
-            imagedestroy($im);
+            // Recupero el formato de la misma
+            $partes = explode("|",$imagen->nombre);
+            $formatoImagen = $partes[2];
+
+            // Si el formato es .png
+            if($formatoImagen == "png")
+            {
+                //header('Content-Type: image/png');
+                imagepng($im, "img.png");
+                imagedestroy($im);
+
+                // Imprimo la imagen en la etiqueta
+                echo "img.png";
+            }
+            // Si el formato es .jpeg
+            else if($formatoImagen == "jpeg")
+            {
+                imagejpeg($im, "img.jpeg");
+                imagedestroy($im);
+
+                // Imprimo la imagen en la etiqueta
+                echo "img.jpeg";
+                unlink("img.png");
+            }
+            
         }
+        // Error al crear la imagen
         else 
         {
-            echo 'Ocurrió un error.';
+            echo 'Error al mostrar la imagen.';
         }
     }
 
-    // Funcion que decodifica una cadena de bytes a imagen en formato .png
-
-?>
-        
-<!--<img src="<?php //echo "a.png" ?>" alt=”Test”>-->
-   
+?>   

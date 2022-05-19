@@ -13,7 +13,7 @@
     {
       ?>
       <div class="card mb-3">
-      <img src="<?php echo IMAGENES . 'teclado.png'?>" class="card-img-top" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
+      <img src="<?php decodificaImagen($anuncio->imagen1)?>" class="card-img-top" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
       <div class="card-body">
         <h5 class="card-title"><?php echo $anuncio->titulo?></h5>
         <p class="card-text"><?php echo $anuncio->descripcion?></p>
@@ -31,7 +31,9 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
   <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnDetalle" name="detalleAnuncio">Crear un nuevo Anuncio</button>
-  <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">
+  <?php
+  if(isset($anuncio))
+    echo "<input type='hidden' name='idAnuncio' value='" . $anuncio->idAnuncio . "'>"?>
 </form>
 
 <!-- Vertically centered modal -->

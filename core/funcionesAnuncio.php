@@ -120,6 +120,9 @@
             // Recojo dicho id y lo establezco en la sesión
             $idImagen = ImagenDAO::findByNombre($nombreImagen)->idImagen;
             $_SESSION["idImagen" . $numImagen] = $idImagen;
+
+            // Borro la imagen en local
+            unlink($rutaConNombreFichero);
           }
           else if(preg_match($patronJpeg,$rutaConNombreFichero))
           {
@@ -135,6 +138,9 @@
             // Recojo dicho id y lo establezco en la sesión
             $idImagen = ImagenDAO::findByNombre($nombreImagen)->idImagen;
             $_SESSION["idImagen" . $numImagen] = $idImagen;
+
+            // Borro la imagen en local
+            unlink($rutaConNombreFichero);
           }
             
         }
