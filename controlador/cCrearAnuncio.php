@@ -48,8 +48,8 @@
       if(validaFormularioAnuncio("crearAnuncio"))
       {
           // Guardo las imágenes
-          guardaImagenLocal("1","imagen1"); 
-          guardaImagenLocal("2","imagen2"); 
+          guardaImagenLocal("1","imagen1","crearAnuncio"); 
+          guardaImagenLocal("2","imagen2","crearAnuncio"); 
 
           // Creo el Anuncio
           $nuevoAnuncio = new Anuncio($_REQUEST["idAnuncio"],$_REQUEST["titulo"],$_REQUEST["descripcion"],$_REQUEST["categoria"],$_REQUEST["precio"],

@@ -136,6 +136,7 @@
       }
   }
 
+  /*
   // Funcion que formatea la fecha a String
   function fechaToString($fechaDate)
   {
@@ -146,5 +147,6 @@
 
     return $nuevaFecha;
   }
+  */
 
 ?>

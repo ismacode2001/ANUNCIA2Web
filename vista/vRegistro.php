@@ -1,7 +1,7 @@
 <h2>Registrar un nuevo Usuario</h2>
 
 <div class="formulario">
-    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario">
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario" enctype="multipart/form-data">
         <!-- ID - (Oculto) -->
         <input type="hidden" name="idUsuario" id="idUsuario" size="25"  value="<?php
             echo "1";
@@ -21,7 +21,7 @@
             ?>
             </div>
         </div>
-        <!-- Nombre -->
+        <!-- Apellido -->
         <div class="row mb-3 mt-3">
             <label for="idApellido" class="col-sm-2 col-form-label mt-3">Apellido</label>
             <div class="col-sm-5 mt-3">
@@ -111,6 +111,13 @@
             // Por defecto, los nuevos usuarios registrados no estarán activos
             echo "false";
         ?>">
+        <!-- Imagen de Perfil -->
+        <div class="row mb-3">
+            <label for="idImagenPerfil" class="col-sm-2 col-form-label">Imagen de Perfil</label>
+            <div class="col-sm-5">
+            <input type="file" class="form-control" id="idImagenPerfil" name="imagenPerfil">
+            </div>
+        </div>
         <hr>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="registro">Registrar</button>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
