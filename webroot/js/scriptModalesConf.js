@@ -21,5 +21,4 @@ function recogeIdEliminar(idUsuario)
   let id = idUsuario.id;
 
   document.cookie = "idUsuarioEliminar=" + id + ";max-age=60*60*24*1000";
-
 }

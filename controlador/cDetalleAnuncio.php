@@ -35,13 +35,39 @@
       header('Location: index.php');
       exit();
   }
+  // Insertar Comentario
+  else if(isset($_POST['insertarComentario']))
+	{
+    if(isset($_COOKIE["idAnuncioComentar"]))
+    {
+      $idAnuncio = $_COOKIE["idAnuncioComentar"];
+      $fecha = "01/01/2001";
+      $comentario = new Comentario("1",$idAnuncio,$_SESSION["idUsuario"],$fecha,$_REQUEST["comentario"]);
+
+      // Guardo el comentario
+      ComentarioDAO::save($comentario);
+
+      // Le actualizo el id al Comentario al dado por el documento de la BBDD
+      $comentarioU = ComentarioDAO::findById($comentario->idComentario);
+      ComentarioDAO::update($comentarioU);
+
+      $_SESSION['pagina'] = 'detalleAnuncio';
+      header('Location: index.php');
+      exit();
+    }
+    else
+    {
+      // Mensaje de error: "error al acceder al Anuncio"
+      $iu = "";
+    }
+	}
   // Ver Detalle del Anuncio
   else if(isset($_POST['detalleAnuncio']))
 	{
     if(isset($_POST["idAnuncio"]))
     {
       // Busco el Anuncio con dicho ID
-      //AnuncioDAO::findById($_POST["idAnuncio"]);
+      AnuncioDAO::findById($_POST["idAnuncio"]);
 
       $_SESSION['pagina'] = 'detalleAnuncio';
       header('Location: index.php');

@@ -15,12 +15,14 @@
   require './modelo/Usuario.php';
   require './modelo/Anuncio.php';
   require './modelo/Imagen.php';
+  require './modelo/Comentario.php';
 
   // DAO //
   require './dao/DAO.php';
   require './dao/UsuarioDAO.php';
   require './dao/AnuncioDAO.php';
   require './dao/ImagenDAO.php';
+  require './dao/ComentarioDAO.php';
 
   // Config //
   require './config/datosBD.php';

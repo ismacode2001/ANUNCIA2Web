@@ -59,15 +59,6 @@
       echo "<td>";
       echo "<a href='#idModalEliminarUsuario' rel='modal:open' class='modales' title='Eliminar Usuario' onclick='recogeIdEliminar(" . $usuario->idUsuario . ")'>Eliminar</a>";
       echo "</td>";
-      /*
-      echo
-        "<td>".
-        "<form action='". $_SERVER['PHP_SELF']."' method='post'>".
-        "<input type='submit' title='Eliminar usuario' value='Eliminar' name='eliminarUsuario'>".
-        "<input type='hidden' name='idUsuario' value='$usuario->idUsuario'>".
-        "</form>" .
-        "</td>";
-      */
       
       echo "</tr>";
     }

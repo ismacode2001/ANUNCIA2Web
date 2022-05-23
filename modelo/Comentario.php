@@ -7,16 +7,14 @@
     private $idAnuncio;
     private $idUsuario;
     private $fecha;
-    private $texto;
     private $comentario;
     
     // Constructor
-    function __construct($idComentario,$idAnuncio,$idUsuario,$fecha,$texto,$comentario){
+    function __construct($idComentario,$idAnuncio,$idUsuario,$fecha,$comentario){
         $this->idComentario = $idComentario;
         $this->idAnuncio = $idAnuncio;
         $this->idUsuario = $idUsuario;
         $this->fecha = $fecha;
-        $this->texto = $texto;
         $this->comentario = $comentario;
     }
 
