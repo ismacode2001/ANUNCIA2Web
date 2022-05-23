@@ -35,3 +35,11 @@ a:link, a:visited, a:active {
 #idDesactivarUsuario{
     color: red;
 }
+
+#idUsuarioActivo{
+    color: rgb(27, 216, 27);
+}
+
+#idUsuarioInactivo{
+    color: red;
+}

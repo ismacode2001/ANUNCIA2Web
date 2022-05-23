@@ -35,27 +35,31 @@
       echo "<td>" . $usuario->perfil . "</td>";
 
       if($usuario->activo)
-        echo "<td>" . "Activo" . "</td>";
+        echo "<td id='idUsuarioActivo'>" . "Activo" . "</td>";
       else
-        echo "<td>" . "Inactivo" . "</td>";
+        echo "<td id='idUsuarioInactivo'>" . "Inactivo" . "</td>";
 
       // Estado
       if($usuario->activo)
       {
         // Desactivar Usuario
         echo "<td>";
-        echo "<a href='#idModalDesactivarUsuario' rel='modal:open' id='idDesactivarUsuario' class='modales' title='Desactivar Usuario' onclick='recogeIdDesactivar(" . $usuario->idUsuario . ")'>Desactivar</a>";
+        echo "<a href='#idModalDesactivarUsuario' rel='modal:open' class='modales' title='Desactivar Usuario' onclick='recogeIdDesactivar(" . $usuario->idUsuario . ")'>Desactivar</a>";
         echo "</td>";
       }
       else
       {
         // Activar Usuario
         echo "<td>";
-        echo "<a href='#idModalActivarUsuario' rel='modal:open' id='idActivarUsuario' class='modales' title='Activar Usuario' onclick='recogeIdActivar(" . $usuario->idUsuario . ")'>Activar</a>";
+        echo "<a href='#idModalActivarUsuario' rel='modal:open' class='modales' title='Activar Usuario' onclick='recogeIdActivar(" . $usuario->idUsuario . ")'>Activar</a>";
         echo "</td>";
       }
 
       // Eliminar
+      echo "<td>";
+      echo "<a href='#idModalEliminarUsuario' rel='modal:open' class='modales' title='Eliminar Usuario' onclick='recogeIdEliminar(" . $usuario->idUsuario . ")'>Eliminar</a>";
+      echo "</td>";
+      /*
       echo
         "<td>".
         "<form action='". $_SERVER['PHP_SELF']."' method='post'>".
@@ -63,6 +67,7 @@
         "<input type='hidden' name='idUsuario' value='$usuario->idUsuario'>".
         "</form>" .
         "</td>";
+      */
       
       echo "</tr>";
     }
@@ -106,6 +111,24 @@
               <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="idFormularioDesactivarUsuario">
                   <input type='submit' rel="modal:open"  class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Desactivar usuario' value='Desactivar' name='desactivar'>
                   <small class="text-muted">Si desactiva el usuario, este no podrá iniciar sesión en ANUNCIA2 WEB</small>
+                  <hr class="my-4">
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal confirmación de Eliminación de Usuarios -->
+<div class="registro" tabindex="-1" role="dialog" id="idModalEliminarUsuario" style="padding: 0 12px; height: auto;">
+  <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
+      <div class="modal-content rounded-5 shadow">
+          <div class="modal-header p-4 pb-4 border-bottom-0">
+              <h3 class="fw-bold mb-0">¿Desea eliminar el usuario?</h3>
+          </div>
+          <div class="modal-body p-5 pt-0">
+              <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="idFormularioActivarUsuario">
+                  <input type='submit' rel="modal:open" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Eliminar usuario' value='Eliminar' name='eliminarUsuario'>
+                  <small class="text-muted">Una vez eliminado, la cuenta de Usuario no podrá ser restaurada</small>
                   <hr class="my-4">
               </form>
           </div>

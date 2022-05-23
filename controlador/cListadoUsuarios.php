@@ -31,50 +31,54 @@
   // Activar
 	else if(isset($_POST['activar']))
 	{
-        
-    $idUsuario = $_COOKIE["idUsuarioActivar"];
+    if(isset($_COOKIE["idUsuarioActivar"]))
+    {
+      $idUsuario = $_COOKIE["idUsuarioActivar"];
 
-    // Recojo el usuario con ese email
-    $usuario = UsuarioDAO::findById($idUsuario);
-    $usuario->activo = true;
-
-    UsuarioDAO::update($usuario);
-        
-    $_SESSION['pagina'] = 'listadoUsuarios';
-    header('Location: index.php');
-    exit();
+      // Recojo el usuario con ese email
+      $usuario = UsuarioDAO::findById($idUsuario);
+      $usuario->activo = true;
+  
+      UsuarioDAO::update($usuario);
+          
+      $_SESSION['pagina'] = 'listadoUsuarios';
+      header('Location: index.php');
+      exit();
+    }
 	}
   // Desactivar
 	else if(isset($_POST['desactivar']))
 	{
-    $idUsuario = $_COOKIE["idUsuarioDesactivar"];
+    if(isset($_COOKIE["idUsuarioDesactivar"]))
+    {
+      $idUsuario = $_COOKIE["idUsuarioDesactivar"];
        
-
-    // Recojo el usuario con ese email
-    $usuario = UsuarioDAO::findById($idUsuario);
-    $usuario->activo = 0;
-
-    UsuarioDAO::update($usuario);
-
-    $_SESSION['pagina'] = 'listadoUsuarios';
-    header('Location: index.php');
-    exit();
+      // Recojo el usuario con ese id
+      $usuario = UsuarioDAO::findById($idUsuario);
+      $usuario->activo = 0;
+  
+      UsuarioDAO::update($usuario);
+  
+      $_SESSION['pagina'] = 'listadoUsuarios';
+      header('Location: index.php');
+      exit();
+    }
 	}
   // Eliminar Usuario
 	else if(isset($_POST['eliminarUsuario']))
 	{
-    // Recojo el id del Usuario
-    if(isset($_POST["idUsuario"]))
+    if(isset($_COOKIE["idUsuarioEliminar"]))
     {
-        $idUsuario = $_POST["idUsuario"];
+      // Recojo el id guardado en la cookie
+      $idUsuario = $_COOKIE["idUsuarioEliminar"];        
 
-        // Lo elimino
-        UsuarioDAO::deleteById($idUsuario);
+      // Elimino el usuario en cuestión
+      UsuarioDAO::deleteById($idUsuario);
+
+      $_SESSION['pagina'] = 'listadoUsuarios';
+      header('Location: index.php');
+      exit();
     }
-
-    $_SESSION['pagina'] = 'listadoUsuarios';
-    header('Location: index.php');
-    exit();
 	}
   // Volver
   else if (isset($_POST['volver'])) 
