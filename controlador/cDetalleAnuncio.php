@@ -41,7 +41,8 @@
     if(isset($_COOKIE["idAnuncioComentar"]))
     {
       $idAnuncio = $_COOKIE["idAnuncioComentar"];
-      $fecha = "01/01/2001";
+      $arrayFecha = getdate();
+      $fecha = $arrayFecha['mday'] . "/" . $arrayFecha['mon'] . "/" . $arrayFecha['year'];
       $comentario = new Comentario("1",$idAnuncio,$_SESSION["idUsuario"],$fecha,$_REQUEST["comentario"]);
 
       // Guardo el comentario

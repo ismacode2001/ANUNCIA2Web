@@ -25,13 +25,5 @@
     }
 ?>
 
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-  <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnDetalle" name="detalleAnuncio">Crear un nuevo Anuncio</button>
-  <?php
-  if(isset($anuncio))
-    echo "<input type='hidden' name='idAnuncio' value='" . $anuncio->idAnuncio . "'>"?>
-</form>
-
-
 <!--<script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
 <script src="./webroot/js/modales/modalPrueba.js"></script>
