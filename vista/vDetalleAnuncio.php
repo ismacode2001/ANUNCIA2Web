@@ -6,10 +6,10 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="<?php decodificaImagen($anuncio->imagen1);?>" class="d-block w-100" alt="..." height="450px">
+      <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100" alt="..." height="450px">
     </div>
     <div class="carousel-item">
-      <img src="<?php decodificaImagen($anuncio->imagen2);?>" class="d-block w-100" alt="..." height="450px">
+      <img src="<?php decodificaImagen($anuncio->imagen2,"2");?>" class="d-block w-100" alt="..." height="450px">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -106,8 +106,8 @@
 ?>
 
 <!-- Enlace para crear un nuevo Comentario -->
-<a href="#idModalComentarAnuncio" rel="modal:open" class="modales" title="Añade un nuevo comentario" onclick="recogeIdAnuncio('<?php echo $anuncio->idAnuncio; ?>')">Comentar</a>
-
+<a href="#idModalComentarAnuncio" rel="modal:open" class="modales6" title="Añade un nuevo comentario" onclick="recogeIdAnuncio('<?php echo $anuncio->idAnuncio; ?>')">Comentar</a>
+<div id="pruebaModal">
 <!-- Modal Comentar un Anuncio -->
 <div class="registro" tabindex="-1" role="dialog" id="idModalComentarAnuncio" style="padding: 0 12px; height: auto;">
   <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
@@ -129,14 +129,15 @@
       </div>
   </div>
 </div>
+</div>
 
 <!-- Volver-->
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
 </form>
 
+<!-- Script para el movimiento del Carrousel -->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
+
 <!-- Script para la inserción de Comentarios -->
 <script src="./webroot/js/scriptModalDet.js"></script>
-
-<!-- Script para el movimiento del Carrousel -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

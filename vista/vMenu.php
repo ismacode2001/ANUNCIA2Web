@@ -4,12 +4,14 @@
 <hr>
 <?php
 
+  $_SESSION["numeracion"] = 0;
+
     // Por cada Anuncio... imprimo un card con su info asociada
     foreach ($arrayAnuncios as $anuncio)
     {
       ?>
       <div class="card mb-3">
-      <img src="<?php decodificaImagen($anuncio->imagen1)?>" class="card-img-top" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
+      <img src="<?php decodificaImagen($anuncio->imagen1,$_SESSION["numeracion"]);?>" class="card-img-top" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
       <div class="card-body">
         <h5 class="card-title"><?php echo $anuncio->titulo?></h5>
         <p class="card-text"><?php echo $anuncio->descripcion?></p>
@@ -22,5 +24,6 @@
       </div>
     </div>
     <?php
+    $_SESSION["numeracion"]+=1;
     }
 ?>

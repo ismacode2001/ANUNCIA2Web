@@ -83,7 +83,7 @@
   }
 
     // Función que decodifica una cadena de bytes a imagen y la muestra en la etiqueta//
-    function decodificaImagen($idImagen)
+    function decodificaImagen($idImagen,$numeracion)
     {
         // Recupero la imagen en función de su id
         $imagen = ImagenDAO::findById($idImagen);
@@ -106,21 +106,22 @@
             if($formatoImagen == "png")
             {
                 //header('Content-Type: image/png');
-                imagepng($im, "img.png");
+                imagepng($im, "img" . $numeracion .  ".png");
                 imagedestroy($im);
 
                 // Imprimo la imagen en la etiqueta
-                echo "img.png";
+                echo "img" . $numeracion .  ".png";
+                //unlink("img" . $numeracion .  ".png");
             }
             // Si el formato es .jpeg
             else if($formatoImagen == "jpeg")
             {
-                imagejpeg($im, "img.jpeg");
+                imagejpeg($im, "img" . $numeracion .  ".jpeg");
                 imagedestroy($im);
 
                 // Imprimo la imagen en la etiqueta
-                echo "img.jpeg";
-                unlink("img.png");
+                echo "img" . $numeracion .  ".jpeg";
+                //unlink("img" . $numeracion .  ".jpeg");
             }
             
         }
