@@ -1,6 +1,7 @@
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
   <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnCrear" name="crearAnuncio">Crear Anuncio</button>
 </form>
+<h3>Resultados de: <i><?php echo $textoABuscar; ?></i></h3>
 <hr>
 <?php
 

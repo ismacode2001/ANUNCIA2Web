@@ -59,7 +59,6 @@
 	{
     // Recojo el texto por el que realizar la búsqueda (en función del título)
     $textoABuscar = $_POST["buscaAnuncio"];
-    $_SESSION["textoABuscar"] = $textoABuscar;
     
     // Recojo todos los Anuncios
     $todosAnuncios = AnuncioDAO::findAll();
@@ -85,10 +84,26 @@
   // Que sea la primera vez que se entra en el Menú //
 	else
 	{
-    // Recojo los Anuncios de la BBDD
-    $arrayAnuncios = AnuncioDAO::findAll();
+    $textoABuscar = $_SESSION["textoABuscar"];
     
-    $_SESSION['vista'] = $vistas['menu'];
+    // Recojo todos los Anuncios
+    $todosAnuncios = AnuncioDAO::findAll();
+
+    // Array que albergará los anuncios ya filtrados
+    $arrayAnuncios = [];
+
+    // Por cada Anuncio
+    foreach ($todosAnuncios as $anuncio) 
+    {
+      // Si el título del anuncio actual contiene el mensaje a buscar
+      if(strpos($anuncio->titulo,$textoABuscar) !== false)
+      {
+          // Guardo el Anuncio en el array  
+          array_push($arrayAnuncios,$anuncio);
+      }
+    }
+    
+    $_SESSION['vista'] = $vistas['filtrarAnuncio'];
     require_once $vistas['layout'];    
-	}
+  }
 ?>

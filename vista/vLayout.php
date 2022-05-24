@@ -7,10 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANUNCIA2</title>
     
-    <!-- CSS -->
+    <!-- CSS Bootstrap Web -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- CSS Propio -->
     <link rel="stylesheet" href="./webroot/css/prueba.css">
+
+    <!-- CSS Bootstrap -->
     <!--<link rel="stylesheet" href="./webroot/bootstrap2/styles.css" />-->
+
+    <!-- CSS Modales Propio -->
     <link href="./webroot/css/jquery.modal.css" rel="stylesheet">
 
     <!-- jQuery -->
@@ -19,6 +25,7 @@
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.js"></script>
 
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -32,7 +39,7 @@
                 <!-- Logo -->
                 <!--
                 <div id="logoInicio">
-                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                    <form action="<?php //echo $_SERVER["PHP_SELF"]; ?>" method="post">
                         <input type="submit" value="Inicio" id="logoInicio" name="volver" class="nav-link px-2 link-dark">
                     </form>
                 </div>
@@ -97,8 +104,9 @@
                     ?>
                 </ul>
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                <!-- Búsqueda de Anuncios -->
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                    <input type="search" class="form-control" placeholder="Busca tu Anuncio..." aria-label="Search" name="buscaAnuncio">
                 </form>
 
                 <!-- Desplegable OK -->
@@ -111,23 +119,6 @@
                         <option value="3">Three</option>
                     </select>
                 </div>
-
-                <!--
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div>
-                -->
             </div>
         </header>
     </div>
@@ -144,27 +135,6 @@
         require_once $_SESSION['vista'];
     }
     ?>
-
-    <!-- Footer -->
-    <!--<footer>&copy;&nbsp;Ismael Maestre</footer>-->
-    <!--
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                    <svg class="bi" width="30" height="24">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
-                <span class="text-muted">© Ismael Maestre Carracedo</span>
-            </div>
-
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="#"><img src="./webroot/img/usuario.png" width="10%" /></a></li>
-            </ul>
-        </footer>
-    </div>
--->
 
     <!-- Footer -->
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -193,15 +163,6 @@
             </li>
         </ul>
     </footer>
-
-
-    <!-- Script -->
-    <!--<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
-
-    <!-- Script Cabecera -->
-    <!--<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
-    <!--<script src="./webroot/js/menuLayout.js"></script>-->
-    </div>
 </body>
 
 

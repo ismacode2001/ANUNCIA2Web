@@ -59,7 +59,6 @@
     else
     {
       // Mensaje de error: "error al acceder al Anuncio"
-      $iu = "";
     }
 	}
   // Ver Detalle del Anuncio
