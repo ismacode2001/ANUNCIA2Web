@@ -22,20 +22,23 @@ class ComentarioDAO implements DAO
     // Array que contiene los objetos de tipo Comentario
     $comentarios = [];
 
-    // Por cada Comentario...
-    foreach ($arrayComentarios["documents"] as $arrayComentario)
+    if(count($arrayComentarios) > 0)
     {
-      $arrayDatos = $arrayComentario["fields"];
-
-      $idComentario = $arrayDatos["idComentario"]["stringValue"];
-      $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
-      $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-      $fecha = $arrayDatos["fecha"]["stringValue"];
-      $comentario = $arrayDatos["comentario"]["stringValue"];
-
-      $comentario = new Comentario($idComentario,$idAnuncio,$idUsuario,$fecha,$comentario);
-
-      array_push($comentarios,$comentario);
+      // Por cada Comentario...
+      foreach ($arrayComentarios["documents"] as $arrayComentario)
+      {
+        $arrayDatos = $arrayComentario["fields"];
+  
+        $idComentario = $arrayDatos["idComentario"]["stringValue"];
+        $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
+        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $fecha = $arrayDatos["fecha"]["stringValue"];
+        $comentario = $arrayDatos["comentario"]["stringValue"];
+  
+        $comentario = new Comentario($idComentario,$idAnuncio,$idUsuario,$fecha,$comentario);
+  
+        array_push($comentarios,$comentario);
+      }
     }
 
     return $comentarios;
@@ -60,26 +63,29 @@ class ComentarioDAO implements DAO
     // Array que contiene los objetos de tipo Comentario
     $comentario = null;
 
-    // Por cada Comentario...
-    foreach ($arrayComentarios["documents"] as $arrayComentario)
+    if(count($arrayComentarios) > 0)
     {
-      $arrayDatos = $arrayComentario["fields"];
-      $idComentario = $arrayDatos["idComentario"]["stringValue"];
-     
-      if($idComentario == $id)
+      // Por cada Comentario...
+      foreach ($arrayComentarios["documents"] as $arrayComentario)
       {
-        $rutaDocumento = $arrayComentario["name"];
-        $partes = explode("/",$rutaDocumento);
-
-        $idComentario = $partes[count($partes) - 1];
-        $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
-        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];        
-        $fecha = $arrayDatos["fecha"]["stringValue"];
-        $comentario = $arrayDatos["comentario"]["stringValue"];
-  
-        $comentario = new Comentario($idComentario,$idAnuncio,$idUsuario,$fecha,$comentario);
-      }
+        $arrayDatos = $arrayComentario["fields"];
+        $idComentario = $arrayDatos["idComentario"]["stringValue"];
       
+        if($idComentario == $id)
+        {
+          $rutaDocumento = $arrayComentario["name"];
+          $partes = explode("/",$rutaDocumento);
+
+          $idComentario = $partes[count($partes) - 1];
+          $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
+          $idUsuario = $arrayDatos["idUsuario"]["stringValue"];        
+          $fecha = $arrayDatos["fecha"]["stringValue"];
+          $comentario = $arrayDatos["comentario"]["stringValue"];
+    
+          $comentario = new Comentario($idComentario,$idAnuncio,$idUsuario,$fecha,$comentario);
+        }
+        
+      }
     }
 
     return $comentario;

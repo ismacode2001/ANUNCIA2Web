@@ -22,21 +22,24 @@ class ImagenDAO implements DAO
     // Array que contiene los objetos de tipo Imagen
     $imagenes = [];
 
-    // Por cada Imagen...
-    foreach ($arrayImagenes["documents"] as $arrayImagen)
+    if(count($arrayImagenes) > 0)
     {
-      $arrayDatos = $arrayImagen["fields"];
+      // Por cada Imagen...
+      foreach ($arrayImagenes["documents"] as $arrayImagen)
+      {
+        $arrayDatos = $arrayImagen["fields"];
 
-      $rutaDocumento = $arrayImagen["name"];
-      $partes = explode("/",$rutaDocumento);
+        $rutaDocumento = $arrayImagen["name"];
+        $partes = explode("/",$rutaDocumento);
 
-      $idImagen = $partes[count($partes) - 1];
-      $cadena = $arrayDatos["cadena"]["stringValue"];
-      $nombre = $arrayDatos["nombre"]["stringValue"];
+        $idImagen = $partes[count($partes) - 1];
+        $cadena = $arrayDatos["cadena"]["stringValue"];
+        $nombre = $arrayDatos["nombre"]["stringValue"];
 
-      $imagen = new Imagen($idImagen,$cadena,$nombre);
+        $imagen = new Imagen($idImagen,$cadena,$nombre);
 
-      array_push($imagenes,$imagen);
+        array_push($imagenes,$imagen);
+      }
     }
 
     return $imagenes;
@@ -61,24 +64,26 @@ class ImagenDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $imagen = null;
 
-    // Por cada Usuario...
-    foreach ($arrayImagenes["documents"] as $arrayImagen)
+    if(count($arrayImagenes) > 0)
     {
-      $arrayDatos = $arrayImagen["fields"];
-      $idImagen = $arrayDatos["idImagen"]["stringValue"];
-     
-      if($idImagen == $id)
+      // Por cada Imagen...
+      foreach ($arrayImagenes["documents"] as $arrayImagen)
       {
-        $rutaDocumento = $arrayImagen["name"];
-        $partes = explode("/",$rutaDocumento);
-  
-        $idImagen = $partes[count($partes) - 1];
-        $cadena = $arrayDatos["cadena"]["stringValue"];
-        $nombre = $arrayDatos["nombre"]["stringValue"];
-  
-        $imagen = new Imagen($idImagen,$cadena,$nombre);
-      }
+        $arrayDatos = $arrayImagen["fields"];
+        $idImagen = $arrayDatos["idImagen"]["stringValue"];
       
+        if($idImagen == $id)
+        {
+          $rutaDocumento = $arrayImagen["name"];
+          $partes = explode("/",$rutaDocumento);
+    
+          $idImagen = $partes[count($partes) - 1];
+          $cadena = $arrayDatos["cadena"]["stringValue"];
+          $nombre = $arrayDatos["nombre"]["stringValue"];
+    
+          $imagen = new Imagen($idImagen,$cadena,$nombre);
+        }
+      }
     }
 
     return $imagen;
@@ -103,25 +108,27 @@ class ImagenDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $imagen = null;
 
-    // Por cada Usuario...
-    foreach ($arrayImagenes["documents"] as $arrayImagen)
+    if(count($arrayImagenes) > 0)
     {
-      $arrayDatos = $arrayImagen["fields"];
-      $nombreImagen = $arrayDatos["nombre"]["stringValue"];
-      $idImagen = $arrayDatos["idImagen"]["stringValue"];
-     
-      if($nombreImagen == $nombre)
+      // Por cada Imagen...
+      foreach ($arrayImagenes["documents"] as $arrayImagen)
       {
-        $rutaDocumento = $arrayImagen["name"];
-        $partes = explode("/",$rutaDocumento);
-  
-        $idImagen = $partes[count($partes) - 1];
-        $cadena = $arrayDatos["cadena"]["stringValue"];
+        $arrayDatos = $arrayImagen["fields"];
         $nombreImagen = $arrayDatos["nombre"]["stringValue"];
-  
-        $imagen = new Imagen($idImagen,$cadena,$nombreImagen);
-      }
+        $idImagen = $arrayDatos["idImagen"]["stringValue"];
       
+        if($nombreImagen == $nombre)
+        {
+          $rutaDocumento = $arrayImagen["name"];
+          $partes = explode("/",$rutaDocumento);
+    
+          $idImagen = $partes[count($partes) - 1];
+          $cadena = $arrayDatos["cadena"]["stringValue"];
+          $nombreImagen = $arrayDatos["nombre"]["stringValue"];
+    
+          $imagen = new Imagen($idImagen,$cadena,$nombreImagen);
+        }
+      }
     }
 
     return $imagen;
@@ -147,30 +154,30 @@ class ImagenDAO implements DAO
       }
     }";
 
-     // url
-     curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Imagenes/" . $imagen->idImagen);
+    // url
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Imagenes/" . $imagen->idImagen);
 
-     // Se le indica que lo queremos hacer por put, indicandole como va a ir la cabecera
-     curl_setopt($ch,CURLOPT_HTTPHEADER,
-         array("Content-Type: application/json",
-                 "Content.length: " . strlen($json)));
+    // Se le indica que lo queremos hacer por put, indicandole como va a ir la cabecera
+    curl_setopt($ch,CURLOPT_HTTPHEADER,
+        array("Content-Type: application/json",
+                "Content.length: " . strlen($json)));
 
-     // Se le pasan los parámetros a la cabecera del post
-     curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'PATCH');
+    // Se le pasan los parámetros a la cabecera del post
+    curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'PATCH');
 
-     // Parametros
-     curl_setopt($ch,CURLOPT_POSTFIELDS,$json);
+    // Parametros
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$json);
 
-     // Quiero respuesta
-     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    // Quiero respuesta
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 
-     // Ejecuto la conexion
-     $imagen = curl_exec($ch);
+    // Ejecuto la conexion
+    $imagen = curl_exec($ch);
 
-     // Cierre de la conexión
-     curl_close($ch);
+    // Cierre de la conexión
+    curl_close($ch);
 
-     return $imagen;
+    return $imagen;
   }
 
   // Método que inserta una nueva Imagen

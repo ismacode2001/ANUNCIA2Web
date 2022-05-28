@@ -22,6 +22,15 @@
           <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">
         </form>
       </div>
+      <div>
+        <?php
+          // Si el producto está marcado como Favorito por el Usuario
+          if(existeFavorito($_SESSION["idUsuario"],$anuncio->idAnuncio))
+            echo "<img src='" . IMAGENES . "corazonLleno.png' width='20px'>";
+          else
+            echo "<img src='" . IMAGENES . "corazonVacio.png' width='20px'>";
+        ?>
+      </div>
     </div>
     <?php
     $_SESSION["numeracion"]+=1;

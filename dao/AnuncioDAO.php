@@ -73,31 +73,35 @@ class AnuncioDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $anuncio = null;
 
-    // Por cada Anuncio...
-    foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
+    // Si hay Anuncios en la BBDD...
+    if(count($arrayAnuncios) > 0)
     {
-      $arrayDatos = $arrayAnuncio["fields"];
-     
-      $rutaDocumento = $arrayAnuncio["name"];
-      $partes = explode("/",$rutaDocumento);
-      $idAnuncio = $partes[count($partes) - 1];
-
-      if($idAnuncio == $id)
+      // Por cada Anuncio...
+      foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
       {
+        $arrayDatos = $arrayAnuncio["fields"];
+      
+        $rutaDocumento = $arrayAnuncio["name"];
+        $partes = explode("/",$rutaDocumento);
         $idAnuncio = $partes[count($partes) - 1];
-        $titulo = $arrayDatos["titulo"]["stringValue"];
-        $descripcion = $arrayDatos["descripcion"]["stringValue"];
-        $categoria = $arrayDatos["categoria"]["stringValue"];
-        $precio = $arrayDatos["precio"]["stringValue"];
-        $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
-        $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
-        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-        $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
-        $imagen1 = $arrayDatos["imagen1"]["stringValue"];
-        $imagen2 = $arrayDatos["imagen2"]["stringValue"];
-  
-        $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,
-            $ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2);
+
+        if($idAnuncio == $id)
+        {
+          $idAnuncio = $partes[count($partes) - 1];
+          $titulo = $arrayDatos["titulo"]["stringValue"];
+          $descripcion = $arrayDatos["descripcion"]["stringValue"];
+          $categoria = $arrayDatos["categoria"]["stringValue"];
+          $precio = $arrayDatos["precio"]["stringValue"];
+          $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
+          $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
+          $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+          $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
+          $imagen1 = $arrayDatos["imagen1"]["stringValue"];
+          $imagen2 = $arrayDatos["imagen2"]["stringValue"];
+    
+          $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,
+              $ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2);
+        }
       }
     }
 
@@ -123,32 +127,36 @@ class AnuncioDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $anuncio = null;
 
-    // Por cada Anuncio...
-    foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
+    // Si hay Anuncios en la BBDD...
+    if(count($arrayAnuncios) > 0)
     {
-      $arrayDatos = $arrayAnuncio["fields"];
-     
-      $rutaDocumento = $arrayAnuncio["name"];
-      $partes = explode("/",$rutaDocumento);
-      $idAnuncio = $partes[count($partes) - 1];
-      $tituloAnuncio = $arrayDatos["titulo"]["stringValue"];
-
-      if($tituloAnuncio == $titulo)
+      // Por cada Anuncio...
+      foreach ($arrayAnuncios["documents"] as $arrayAnuncio)
       {
+        $arrayDatos = $arrayAnuncio["fields"];
+      
+        $rutaDocumento = $arrayAnuncio["name"];
+        $partes = explode("/",$rutaDocumento);
         $idAnuncio = $partes[count($partes) - 1];
-        $titulo = $arrayDatos["titulo"]["stringValue"];
-        $descripcion = $arrayDatos["descripcion"]["stringValue"];
-        $categoria = $arrayDatos["categoria"]["stringValue"];
-        $precio = $arrayDatos["precio"]["stringValue"];
-        $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
-        $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
-        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-        $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
-        $imagen1 = $arrayDatos["imagen1"]["stringValue"];
-        $imagen2 = $arrayDatos["imagen2"]["stringValue"];
-  
-        $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,
-            $ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2);
+        $tituloAnuncio = $arrayDatos["titulo"]["stringValue"];
+
+        if($tituloAnuncio == $titulo)
+        {
+          $idAnuncio = $partes[count($partes) - 1];
+          $titulo = $arrayDatos["titulo"]["stringValue"];
+          $descripcion = $arrayDatos["descripcion"]["stringValue"];
+          $categoria = $arrayDatos["categoria"]["stringValue"];
+          $precio = $arrayDatos["precio"]["stringValue"];
+          $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
+          $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
+          $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+          $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
+          $imagen1 = $arrayDatos["imagen1"]["stringValue"];
+          $imagen2 = $arrayDatos["imagen2"]["stringValue"];
+    
+          $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,
+              $ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2);
+        }
       }
     }
 

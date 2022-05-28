@@ -22,19 +22,21 @@ class FavoritoDAO implements DAO
     // Array que contiene los objetos de tipo Favorito
     $favoritos = [];
 
-    // Por cada Favorito...
-    foreach ($arrayFavoritos["documents"] as $arrayFavorito)
+    if(count($arrayFavoritos) > 0)
     {
-      $arrayDatos = $arrayFavorito["fields"];
+      // Por cada Favorito...
+      foreach ($arrayFavoritos["documents"] as $arrayFavorito)
+      {
+        $arrayDatos = $arrayFavorito["fields"];
 
-      $idFavorito = $arrayDatos["idFavorito"]["stringValue"];
-      $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-      $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
-      $fecha = $arrayDatos["fecha"]["stringValue"];
+        $idFavorito = $arrayDatos["idFavorito"]["stringValue"];
+        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+        $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
 
-      $favorito = new Favorito($idFavorito,$idUsuario,$idAnuncio,$fecha);
+        $favorito = new Favorito($idFavorito,$idUsuario,$idAnuncio);
 
-      array_push($favoritos,$favorito);
+        array_push($favoritos,$favorito);
+      }
     }
 
     return $favoritos;
@@ -59,21 +61,71 @@ class FavoritoDAO implements DAO
     // Array que contiene los objetos de tipo Favorito
     $favorito = null;
 
-    // Por cada Usuario...
-    foreach ($arrayFavoritos["documents"] as $arrayFavorito)
+    if(count($arrayFavoritos) > 0)
     {
-      $arrayDatos = $arrayFavorito["fields"];
-      $idFavorito = $arrayDatos["idFavorito"]["stringValue"];
-     
-      if($idFavorito == $id)
+      // Por cada Favorito...
+      foreach ($arrayFavoritos["documents"] as $arrayFavorito)
       {
+        $arrayDatos = $arrayFavorito["fields"];
         $idFavorito = $arrayDatos["idFavorito"]["stringValue"];
+       
+        if($idFavorito == $id)
+        {
+          $rutaDocumento = $arrayFavorito["name"];
+          $partes = explode("/",$rutaDocumento);
+    
+          $idFavorito = $partes[count($partes) - 1];
+          $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+          $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
+    
+          $favorito = new Favorito($idFavorito,$idUsuario,$idAnuncio);
+        }
+      }
+    }
+
+    return $favorito;
+  }
+
+  // Método que busca un Favorito por el idUsuario y idAnuncio
+  public static function findByUsuarioYAnuncio($idUsr,$idAnu)
+  {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Favoritos/");
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+    // Ejecuto la conexion
+    $jsonFavoritos = curl_exec($ch);
+
+    // Cierre de la conexión
+    curl_close($ch);
+
+    $arrayFavoritos = json_decode($jsonFavoritos,true); // decode the JSON feed
+    
+    // Array que contiene los objetos de tipo Favorito
+    $favorito = null;
+
+    if(count($arrayFavoritos) > 0)
+    {
+      // Por cada Favorito...
+      foreach ($arrayFavoritos["documents"] as $arrayFavorito)
+      {
+        $arrayDatos = $arrayFavorito["fields"];
         $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
         $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
-        $fecha = $arrayDatos["fecha"]["stringValue"];
-  
-        $favorito = new Favorito($idFavorito,$idUsuario,$idAnuncio,$fecha);
-      }
+       
+        if(($idUsuario == $idUsr)&&($idAnuncio == $idAnu))
+        {
+          $rutaDocumento = $arrayFavorito["name"];
+          $partes = explode("/",$rutaDocumento);
+    
+          $idFavorito = $partes[count($partes) - 1];
+          $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
+          $idAnuncio = $arrayDatos["idAnuncio"]["stringValue"];
+    
+          $favorito = new Favorito($idFavorito,$idUsuario,$idAnuncio);
+        }
+    }
       
     }
 
@@ -81,9 +133,49 @@ class FavoritoDAO implements DAO
   }
 
   // Método que modifica/actualiza un Favorito
-  public static function update($usuario)
+  public static function update($favorito)
   {
-    
+     // Objeto de tipo curl para hacer la peticion
+     $ch = curl_init();
+
+     $json = "{
+       'fields':{
+           'idFavorito':{
+               'stringValue': '" . $favorito->idFavorito . "'
+           },
+           'idUsuario':{
+               'stringValue': '" . $favorito->idUsuario . "'
+           },
+           'idAnuncio':{
+               'stringValue': '" . $favorito->idAnuncio . "'
+           }
+       }
+     }";
+ 
+      // url
+      curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Favoritos/" . $favorito->idFavorito);
+ 
+      // Se le indica que lo queremos hacer por put, indicandole como va a ir la cabecera
+      curl_setopt($ch,CURLOPT_HTTPHEADER,
+          array("Content-Type: application/json",
+                  "Content.length: " . strlen($json)));
+ 
+      // Se le pasan los parámetros a la cabecera del post
+      curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'PATCH');
+ 
+      // Parametros
+      curl_setopt($ch,CURLOPT_POSTFIELDS,$json);
+ 
+      // Quiero respuesta
+      curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+ 
+      // Ejecuto la conexion
+      $favorito = curl_exec($ch);
+ 
+      // Cierre de la conexión
+      curl_close($ch);
+ 
+      return $favorito;
   }
 
   // Método que inserta un nuevo Favorito
@@ -103,9 +195,7 @@ class FavoritoDAO implements DAO
           },
           'idAnuncio':{
               'stringValue': '" . $favorito->idAnuncio . "'
-          },
-          'fecha':{
-            'stringValue': '" . $favorito->fecha . "'
+          }
         }
       }
     }";
@@ -131,7 +221,25 @@ class FavoritoDAO implements DAO
   // Método que elimina un Favorito en funcion de su id
   public static function deleteById($id)
   {
-    
+    // Objeto de tipo curl para hacer la peticion
+    $ch = curl_init();
+
+    // url
+    curl_setopt($ch, CURLOPT_URL, "https://firestore.googleapis.com/v1/projects/anuncia2web-a77cc/databases/(default)/documents/Favoritos/" . $id);
+
+    // Se le pasan los parámetros a la cabecera del post
+    curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'DELETE');
+
+    // Quiero respuesta
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+    // Ejecuto la conexion
+    $favorito = curl_exec($ch);
+
+    // Cierre de la conexión
+    curl_close($ch);
+
+    return $favorito;
   }
 
 }

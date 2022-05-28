@@ -22,29 +22,32 @@ class UsuarioDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $usuarios = [];
 
-    // Por cada Usuario...
-    foreach ($arrayUsuarios["documents"] as $arrayUsuario)
+    if(count($arrayUsuarios) > 0)
     {
-      $arrayDatos = $arrayUsuario["fields"];
-
-      $rutaDocumento = $arrayUsuario["name"];
-      $partes = explode("/",$rutaDocumento);
-
-      $idUsuario = $partes[count($partes) - 1];
-      $nombre = $arrayDatos["nombre"]["stringValue"];
-      $apellido = $arrayDatos["apellido"]["stringValue"];
-      $contraseña = $arrayDatos["contraseña"]["stringValue"];
-      $email = $arrayDatos["email"]["stringValue"];
-      $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
-      $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
-      $perfil = $arrayDatos["perfil"]["stringValue"];
-      $activo = $arrayDatos["activo"]["booleanValue"];
-      $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
-
-      $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
-        $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
-
-      array_push($usuarios,$usuario);
+      // Por cada Usuario...
+      foreach ($arrayUsuarios["documents"] as $arrayUsuario)
+      {
+        $arrayDatos = $arrayUsuario["fields"];
+  
+        $rutaDocumento = $arrayUsuario["name"];
+        $partes = explode("/",$rutaDocumento);
+  
+        $idUsuario = $partes[count($partes) - 1];
+        $nombre = $arrayDatos["nombre"]["stringValue"];
+        $apellido = $arrayDatos["apellido"]["stringValue"];
+        $contraseña = $arrayDatos["contraseña"]["stringValue"];
+        $email = $arrayDatos["email"]["stringValue"];
+        $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
+        $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
+        $perfil = $arrayDatos["perfil"]["stringValue"];
+        $activo = $arrayDatos["activo"]["booleanValue"];
+        $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
+  
+        $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
+          $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
+  
+        array_push($usuarios,$usuario);
+      }
     }
 
     return $usuarios;
@@ -69,36 +72,38 @@ class UsuarioDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $usuario = null;
 
-    // Por cada Usuario...
-    foreach ($arrayUsuarios["documents"] as $arrayUsuario)
+    if(count($arrayUsuarios) > 0)
     {
-      $arrayDatos = $arrayUsuario["fields"];
-
-      $emailU = $arrayDatos["email"]["stringValue"];
-      $contraseñaU = $arrayDatos["contraseña"]["stringValue"];
-
-      if(($emailU == $email)&&($contraseñaU == $contraseña))
+      // Por cada Usuario...
+      foreach ($arrayUsuarios["documents"] as $arrayUsuario)
       {
-        $rutaDocumento = $arrayUsuario["name"];
-        $partes = explode("/",$rutaDocumento);
+        $arrayDatos = $arrayUsuario["fields"];
 
-        $idUsuario = $partes[count($partes) - 1];
-        $nombre = $arrayDatos["nombre"]["stringValue"];
-        $apellido = $arrayDatos["apellido"]["stringValue"];
-        $contraseña = $arrayDatos["contraseña"]["stringValue"];
-        $email = $arrayDatos["email"]["stringValue"];
-        $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
-        $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
-        $perfil = $arrayDatos["perfil"]["stringValue"];
-        $activo = $arrayDatos["activo"]["booleanValue"];
-        $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
-  
-        $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
-          $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
-  
-        //array_push($usuarios,$usuario);
+        $emailU = $arrayDatos["email"]["stringValue"];
+        $contraseñaU = $arrayDatos["contraseña"]["stringValue"];
+
+        if(($emailU == $email)&&($contraseñaU == $contraseña))
+        {
+          $rutaDocumento = $arrayUsuario["name"];
+          $partes = explode("/",$rutaDocumento);
+
+          $idUsuario = $partes[count($partes) - 1];
+          $nombre = $arrayDatos["nombre"]["stringValue"];
+          $apellido = $arrayDatos["apellido"]["stringValue"];
+          $contraseña = $arrayDatos["contraseña"]["stringValue"];
+          $email = $arrayDatos["email"]["stringValue"];
+          $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
+          $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
+          $perfil = $arrayDatos["perfil"]["stringValue"];
+          $activo = $arrayDatos["activo"]["booleanValue"];
+          $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
+    
+          $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
+            $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
+    
+          //array_push($usuarios,$usuario);
+        }
       }
-      
     }
 
     return $usuario;
@@ -123,33 +128,35 @@ class UsuarioDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $usuario = null;
 
-    // Por cada Usuario...
-    foreach ($arrayUsuarios["documents"] as $arrayUsuario)
+    if(count($arrayUsuarios) > 0)
     {
-      $arrayDatos = $arrayUsuario["fields"];
-      $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-     
-      if($idUsuario == $id)
+      // Por cada Usuario...
+      foreach ($arrayUsuarios["documents"] as $arrayUsuario)
       {
-        $rutaDocumento = $arrayUsuario["name"];
-        $partes = explode("/",$rutaDocumento);
-  
-        $idUsuario = $partes[count($partes) - 1];
-        $nombre = $arrayDatos["nombre"]["stringValue"];
-        $apellido = $arrayDatos["apellido"]["stringValue"];
-        $contraseña = $arrayDatos["contraseña"]["stringValue"];
-        $email = $arrayDatos["email"]["stringValue"];
-        $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
-        $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
-        $perfil = $arrayDatos["perfil"]["stringValue"];
-        $activo = $arrayDatos["activo"]["booleanValue"];
-        $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
-  
-        $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
-          $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
-  
-      }
+        $arrayDatos = $arrayUsuario["fields"];
+        $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
       
+        if($idUsuario == $id)
+        {
+          $rutaDocumento = $arrayUsuario["name"];
+          $partes = explode("/",$rutaDocumento);
+    
+          $idUsuario = $partes[count($partes) - 1];
+          $nombre = $arrayDatos["nombre"]["stringValue"];
+          $apellido = $arrayDatos["apellido"]["stringValue"];
+          $contraseña = $arrayDatos["contraseña"]["stringValue"];
+          $email = $arrayDatos["email"]["stringValue"];
+          $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
+          $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
+          $perfil = $arrayDatos["perfil"]["stringValue"];
+          $activo = $arrayDatos["activo"]["booleanValue"];
+          $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
+    
+          $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
+            $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
+    
+        }
+      }
     }
 
     return $usuario;
@@ -174,33 +181,34 @@ class UsuarioDAO implements DAO
     // Array que contiene los objetos de tipo Usuario
     $usuario = null;
 
-    // Por cada Usuario...
-    foreach ($arrayUsuarios["documents"] as $arrayUsuario)
+    if(count($arrayUsuarios) > 0)
     {
-      $arrayDatos = $arrayUsuario["fields"];
-      $emailUsuario = $arrayDatos["email"]["stringValue"];
-     
-      if($emailUsuario == $email)
+      // Por cada Usuario...
+      foreach ($arrayUsuarios["documents"] as $arrayUsuario)
       {
-        $rutaDocumento = $arrayUsuario["name"];
-        $partes = explode("/",$rutaDocumento);
-  
-        $idUsuario = $partes[count($partes) - 1];
-        $nombre = $arrayDatos["nombre"]["stringValue"];
-        $apellido = $arrayDatos["apellido"]["stringValue"];
-        $contraseña = $arrayDatos["contraseña"]["stringValue"];
-        $email = $arrayDatos["email"]["stringValue"];
-        $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
-        $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
-        $perfil = $arrayDatos["perfil"]["stringValue"];
-        $activo = $arrayDatos["activo"]["booleanValue"];
-        $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
-  
-        $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
-          $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
-  
-      }
+        $arrayDatos = $arrayUsuario["fields"];
+        $emailUsuario = $arrayDatos["email"]["stringValue"];
       
+        if($emailUsuario == $email)
+        {
+          $rutaDocumento = $arrayUsuario["name"];
+          $partes = explode("/",$rutaDocumento);
+    
+          $idUsuario = $partes[count($partes) - 1];
+          $nombre = $arrayDatos["nombre"]["stringValue"];
+          $apellido = $arrayDatos["apellido"]["stringValue"];
+          $contraseña = $arrayDatos["contraseña"]["stringValue"];
+          $email = $arrayDatos["email"]["stringValue"];
+          $fechaNacimiento = $arrayDatos["fechaNacimiento"]["stringValue"];
+          $numTelefono = $arrayDatos["numTelefono"]["stringValue"];
+          $perfil = $arrayDatos["perfil"]["stringValue"];
+          $activo = $arrayDatos["activo"]["booleanValue"];
+          $imagenPerfil = $arrayDatos["imagenPerfil"]["stringValue"];
+    
+          $usuario = new Usuario($idUsuario,$nombre,$apellido,$contraseña,$email,
+            $fechaNacimiento,$numTelefono,$perfil,$activo,$imagenPerfil);
+        }
+      }
     }
 
     return $usuario;
@@ -367,16 +375,19 @@ class UsuarioDAO implements DAO
     $existe = false;
     $activo = false;
 
-    foreach ($usuarios as $usuario) 
+    if(count($usuarios) > 0)
     {
-      // Si coinciden las credenciales...
-      if(($usuario->email == $email)&&($usuario->contraseña == $contraseña))
+      foreach ($usuarios as $usuario) 
       {
-        $existe = true;
+        // Si coinciden las credenciales...
+        if(($usuario->email == $email)&&($usuario->contraseña == $contraseña))
+        {
+          $existe = true;
 
-        // Compruebo que esté activo (requisito para poder loguearse)
-        if($usuario->activo == true)
-          $activo = true;
+          // Compruebo que esté activo (requisito para poder loguearse)
+          if($usuario->activo == true)
+            $activo = true;
+        }
       }
     }
 

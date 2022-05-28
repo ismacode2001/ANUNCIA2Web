@@ -1,4 +1,7 @@
 <?php
+
+  include './core/funcionesFavoritos.php';
+
 	// Login //
 	if (isset($_POST['login'])) {
     $_SESSION['pagina'] = 'login';

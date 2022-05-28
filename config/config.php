@@ -16,6 +16,7 @@
   require './modelo/Anuncio.php';
   require './modelo/Imagen.php';
   require './modelo/Comentario.php';
+  require './modelo/Favorito.php';
 
   // DAO //
   require './dao/DAO.php';
@@ -23,6 +24,7 @@
   require './dao/AnuncioDAO.php';
   require './dao/ImagenDAO.php';
   require './dao/ComentarioDAO.php';
+  require './dao/FavoritoDAO.php';
 
   // Config //
   require './config/datosBD.php';
