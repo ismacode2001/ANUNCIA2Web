@@ -2,71 +2,74 @@
 
 include './core/funcionesPerfil.php';
 
-    //si se ha pulsado login
+    // Volver //
     if (isset($_POST['volver'])) 
     {
-        $_SESSION['pagina'] = 'menu';
-        header('Location: index.php');
-        exit();
+      $_SESSION['pagina'] = 'menu';
+      header('Location: index.php');
+      exit();
     }
-    // Logout
+    // Logout //
     else if(isset($_POST['logout']))
     {
-        // Cierre de la sesion
-        unset($_SESSION['validada']);
-        session_destroy();
-
-        //$_SESSION['pagina'] = 'inicio';
-        header('Location: index.php');
-        exit();
+      // Cierre de la sesion
+      unset($_SESSION['validada']);
+      session_destroy();
+      header('Location: index.php');
+      exit();
     }
-    // Listado Usuarios
-	else if(isset($_POST['mostrarUsuarios']))
-	{
-    $_SESSION['pagina'] = 'listadoUsuarios';
-    header('Location: index.php');
-    exit();
-	}
-    // Modificar
+    // Listado de Usuarios //
+    else if(isset($_POST['mostrarUsuarios']))
+    {
+      $_SESSION['pagina'] = 'listadoUsuarios';
+      header('Location: index.php');
+      exit();
+    }
+    // Modificar Perfil //
     else if(isset($_POST['modificar']))
     {
-        // Accedo a la página de modificar
-        $_SESSION['pagina'] = 'modificarPerfil';
-        header('Location: index.php');
-        exit();
-
+      // Accedo a la página de modificar
+      $_SESSION['pagina'] = 'modificarPerfil';
+      header('Location: index.php');
+      exit();
     }
-    else if(isset($_POST["usuarios"]))
+    // Buscar Anuncio //
+    else if(isset($_POST['buscaAnuncio']))
     {
-        if($_SESSION["perfil"] == "P_ADMIN")
+      // Recojo el texto por el que realizar la búsqueda (en función del título)
+      $textoABuscar = $_POST["buscaAnuncio"];
+      $_SESSION["textoABuscar"] = $textoABuscar;
+      
+      // Recojo todos los Anuncios
+      $todosAnuncios = AnuncioDAO::findAll();
+
+      // Array que albergará los anuncios ya filtrados
+      $arrayAnuncios = [];
+
+      // Por cada Anuncio
+      foreach ($todosAnuncios as $anuncio) 
+      {
+        // Si el título del anuncio actual contiene el mensaje a buscar
+        if(strpos($anuncio->titulo,$textoABuscar) !== false)
         {
-            $_SESSION['vista'] = $vistas['listaUsuarios'];
-
-            $lista = UsuarioDAO::findAll();
-
-            require_once $vistas['layout'];    
+          // Guardo el Anuncio en el array  
+          array_push($arrayAnuncios,$anuncio);
         }
-    }
-    else if(isset($_GET["mostrar"]))
-    {
-        if($_SESSION["perfil"] == "P_ADMIN")
-        {
-            $codUsuario = $_GET["mostrar"];
-            $usuario = UsuarioDAO::findById($codUsuario);
+      }
 
-            $_SESSION["vista"] = $vistas["perfil"];
-            require_once $vistas['layout'];
-        }
+      $_SESSION['pagina'] = 'filtrarAnuncio';
+      header('Location: index.php');
+      exit();
     }
+    // Por defecto (Vista de Perfil del Usuario) //
     else
     {
-        // Suponiendo que es mi perfil
         // Array que contendra los errores
         $arrayErrores = Array();
         $_SESSION["erroresPerfil"] = $arrayErrores;
 
-        $email = $_SESSION["email"];
-        $usuario = UsuarioDAO::findByEmail($email);
+        $idUsuario = $_SESSION["idUsuario"];
+        $usuario = UsuarioDAO::findById($idUsuario);
 
         $_SESSION['vista'] = $vistas['perfil'];
         require_once $vistas['layout'];

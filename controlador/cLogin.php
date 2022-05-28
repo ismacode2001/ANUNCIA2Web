@@ -1,17 +1,17 @@
 <?php 
   include './core/funcionesLogin.php';
 
-  //si se ha pulsado el registro
+  // Registro //
   if(isset($_POST['registro']))
   {
     $_SESSION['pagina'] = 'registro';
     header('Location: index.php');
     exit();
   }
-  // 
+  // Iniciar Sesión //
   else if (isset($_POST['iniciar']))
   {
-    // Array que contendra los errores
+    // Array que contendrá los errores
     $arrayErrores = Array();
     $_SESSION["erroresLogin"] = $arrayErrores;
 
@@ -92,12 +92,14 @@
         require_once $vistas["layout"];
     }
   }
+  // Volver //
   else if (isset($_POST['volver']))
   {
     $_SESSION['pagina'] = 'inicio';
     header('Location: index.php');
     exit();   
   }
+  // Por defecto (Login) //
   else
   {
     // Array que contendra los errores

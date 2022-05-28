@@ -1,11 +1,11 @@
 <?php
-	// Login
+	// Login //
 	if (isset($_POST['login'])) {
     $_SESSION['pagina'] = 'login';
     header('Location: index.php');
     exit();
 	}
-	// Logout
+	// Logout //
 	else if(isset($_POST['logout']))
 	{
     // Cierre de la sesion
@@ -14,21 +14,21 @@
     header('Location: index.php');
     exit();
 	}
-	// Perfil
+	// Perfil //
 	else if(isset($_POST['perfil']))
 	{
     $_SESSION['pagina'] = 'perfil';
     header('Location: index.php');
     exit();
 	}
-  // Listado Usuarios
+  // Listado de Usuarios //
 	else if(isset($_POST['mostrarUsuarios']))
 	{
     $_SESSION['pagina'] = 'listadoUsuarios';
     header('Location: index.php');
     exit();
 	}
-  // Ver Detalle del Anuncio
+  // Ver Detalle del Anuncio //
   else if(isset($_POST['detalleAnuncio']))
 	{
     if(isset($_POST["idAnuncio"]))
@@ -47,14 +47,14 @@
       // Mensaje de error: "error al acceder al Anuncio"
     }
 	}
-  // Crear Anuncio
+  // Crear Anuncio //
 	else if(isset($_POST['crearAnuncio']))
 	{
     $_SESSION['pagina'] = 'crearAnuncio';
     header('Location: index.php');
     exit();
 	}
-  // Buscar Anuncio
+  // Buscar Anuncio //
 	else if(isset($_POST['buscaAnuncio']))
 	{
     // Recojo el texto por el que realizar la búsqueda (en función del título)
@@ -81,14 +81,42 @@
     header('Location: index.php');
     exit();
 	}
-  // Volver
+  // Volver //
   else if (isset($_POST['volver'])) 
   {
       $_SESSION['pagina'] = 'menu';
       header('Location: index.php');
       exit();
   }
-  // Que sea la primera vez que se entra en el Menú //
+  // Buscar Anuncio //
+	else if(isset($_POST['buscaAnuncio']))
+	{
+    // Recojo el texto por el que realizar la búsqueda (en función del título)
+    $textoABuscar = $_POST["buscaAnuncio"];
+    $_SESSION["textoABuscar"] = $textoABuscar;
+    
+    // Recojo todos los Anuncios
+    $todosAnuncios = AnuncioDAO::findAll();
+
+    // Array que albergará los anuncios ya filtrados
+    $arrayAnuncios = [];
+
+    // Por cada Anuncio
+    foreach ($todosAnuncios as $anuncio) 
+    {
+      // Si el título del anuncio actual contiene el mensaje a buscar
+      if(strpos($anuncio->titulo,$textoABuscar) !== false)
+      {
+        // Guardo el Anuncio en el array  
+        array_push($arrayAnuncios,$anuncio);
+      }
+    }
+
+    $_SESSION['pagina'] = 'filtrarAnuncio';
+    header('Location: index.php');
+    exit();
+	}
+  // Por defecto (Anuncios Filtrados) //
 	else
 	{
     $textoABuscar = $_SESSION["textoABuscar"];

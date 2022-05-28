@@ -1,11 +1,11 @@
 <?php
-	// Login
+	// Login //
 	if (isset($_POST['login'])) {
     $_SESSION['pagina'] = 'login';
     header('Location: index.php');
     exit();
 	}
-	// Logout
+	// Logout //
 	else if(isset($_POST['logout']))
 	{
     // Cierre de la sesion
@@ -14,21 +14,21 @@
     header('Location: index.php');
     exit();
 	}
-	// Perfil
+	// Perfil //
 	else if(isset($_POST['perfil']))
 	{
     $_SESSION['pagina'] = 'perfil';
     header('Location: index.php');
     exit();
 	}
-  // Listado Usuarios
+  // Listado Usuarios //
 	else if(isset($_POST['mostrarUsuarios']))
 	{
     $_SESSION['pagina'] = 'listadoUsuarios';
     header('Location: index.php');
     exit();
 	}
-  // Ver Detalle del Anuncio
+  // Ver Detalle del Anuncio //
   else if(isset($_POST['detalleAnuncio']))
 	{
     if(isset($_POST["idAnuncio"]))
@@ -47,14 +47,14 @@
       // Mensaje de error: "error al acceder al Anuncio"
     }
 	}
-  // Crear Anuncio
+  // Crear Anuncio //
 	else if(isset($_POST['crearAnuncio']))
 	{
     $_SESSION['pagina'] = 'crearAnuncio';
     header('Location: index.php');
     exit();
 	}
-  // Buscar Anuncio
+  // Buscar Anuncio //
 	else if(isset($_POST['buscaAnuncio']))
 	{
     // Recojo el texto por el que realizar la búsqueda (en función del título)
@@ -82,7 +82,7 @@
     header('Location: index.php');
     exit();
 	}
-  // Que sea la primera vez que se entra en el Menú //
+  // Por defecto (Vista Anuncios (Menú)) //
 	else
 	{
     // Recojo los Anuncios de la BBDD

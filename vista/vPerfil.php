@@ -2,7 +2,7 @@
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     
     <!-- Imagen de Perfil -->
-    <img src="<?php decodificaImagen($usuario->imagenPerfil)?>" height="70px" alt="Imagen de Perfil"/>
+    <img src="<?php decodificaImagen($usuario->imagenPerfil,"")?>" height="70px" alt="Imagen de Perfil"/>
 
     <!-- Id del Usuario -->
     <div class="row mb-3 mt-3">

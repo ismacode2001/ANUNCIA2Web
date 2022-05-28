@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANUNCIA2</title>
+    <link rel="icon" type="image/x-icon" href="<?php echo IMAGENES ."favicon.ico";?>">
     
     <!-- CSS Bootstrap Web -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -52,12 +53,6 @@
                             <input type="submit" value="Inicio" id="titulo" name="volver" class="nav-link px-2 link-dark">
                         </form>
                     </li>
-                    <!-- Anuncios -->
-                    <li>
-                        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-                            <input type="submit" value="Anuncios" id="titulo" name="volver" class="nav-link px-2 link-dark">
-                        </form>
-                    </li>
 
                     <!-- Secciones con sesión activa -->
                     <?php
@@ -68,7 +63,7 @@
                             <!-- Listado de Usuario -->
                             <li>
                                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-                                    <input type="submit" value="Listado de Usuarios" id="mostrarUsuarios" name="mostrarUsuarios" class="nav-link px-2 link-dark">
+                                    <input type="submit" value="Usuarios" id="mostrarUsuarios" name="mostrarUsuarios" class="nav-link px-2 link-dark">
                                 </form>
                             </li>
                         <?php
