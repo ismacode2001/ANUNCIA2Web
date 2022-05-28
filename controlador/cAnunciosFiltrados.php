@@ -81,6 +81,13 @@
     header('Location: index.php');
     exit();
 	}
+  // Volver
+  else if (isset($_POST['volver'])) 
+  {
+      $_SESSION['pagina'] = 'menu';
+      header('Location: index.php');
+      exit();
+  }
   // Que sea la primera vez que se entra en el Menú //
 	else
 	{
