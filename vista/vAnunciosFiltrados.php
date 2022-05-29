@@ -23,6 +23,33 @@
             <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnDetalle" name="detalleAnuncio">Ver Producto</button>
             <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">
           </form>
+          </div>
+        <p align='right'>
+          <?php
+            // Si el producto está marcado como Favorito por el Usuario
+            if(existeFavorito($_SESSION["idUsuario"],$anuncio->idAnuncio))
+            {
+              echo "<img src='" . IMAGENES . "corazonLleno.png' width='3%' id='idCorazonLleno' title='Quitar de Favoritos'>";
+              ?>
+              <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnDetalle" name="quitarFavorito" title="Quitar de Favoritos">Quitar de Favoritos</button>
+                <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">
+              </form>
+              <?php
+            }
+            else
+            {
+              echo "<img src='" . IMAGENES . "corazonVacio.png' width='3%' id='idCorazonVacio' title='Añadir a Favoritos'>";
+              ?>
+              <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnDetalle" name="añadirFavorito" title="Añadir a Favoritos">Añadir a Favoritos</button>
+                <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">
+              </form>
+              <?php
+            }
+          ?>
+        </p>
+    </div>
         </div>
       </div>
     <?php

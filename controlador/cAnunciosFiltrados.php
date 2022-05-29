@@ -1,4 +1,6 @@
 <?php
+  include './core/funcionesFavoritos.php';
+
 	// Login //
 	if (isset($_POST['login'])) {
     $_SESSION['pagina'] = 'login';
@@ -116,9 +118,34 @@
     header('Location: index.php');
     exit();
 	}
+  // Añadir Anuncio a Favoritos //
+  else if(isset($_POST["añadirFavorito"]))
+  {
+    $favorito = new Favorito("x",$_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::save($favorito);
+
+    // Le actualizo el id de Favorito al dado por el documento de la BBDD
+    $nuevoFavorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::update($nuevoFavorito);
+    
+    $_SESSION['pagina'] = 'filtrarAnuncio';
+    header('Location: index.php');
+    exit();    
+  }
+  // Quitar Anuncio de Favoritos //
+  else if(isset($_POST["quitarFavorito"]))
+  {
+    $favorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::deleteById($favorito->idFavorito);
+    
+    $_SESSION['pagina'] = 'filtrarAnuncio';
+    header('Location: index.php');
+    exit();    
+  }
   // Por defecto (Anuncios Filtrados) //
 	else
 	{
+    //$textoABuscar = $_POST["buscaAnuncio"];
     $textoABuscar = $_SESSION["textoABuscar"];
     
     // Recojo todos los Anuncios
@@ -130,11 +157,14 @@
     // Por cada Anuncio
     foreach ($todosAnuncios as $anuncio) 
     {
-      // Si el título del anuncio actual contiene el mensaje a buscar
-      if(strpos($anuncio->titulo,$textoABuscar) !== false)
+      if(strlen($textoABuscar) > 0)
       {
-          // Guardo el Anuncio en el array  
-          array_push($arrayAnuncios,$anuncio);
+        // Si el título del anuncio actual contiene el mensaje a buscar
+        if(strpos($anuncio->titulo,$textoABuscar) !== false)
+        {
+            // Guardo el Anuncio en el array  
+            array_push($arrayAnuncios,$anuncio);
+        }
       }
     }
     

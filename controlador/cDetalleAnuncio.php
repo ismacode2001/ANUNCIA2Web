@@ -94,11 +94,14 @@
     // Por cada Anuncio
     foreach ($todosAnuncios as $anuncio) 
     {
-      // Si el título del anuncio actual contiene el mensaje a buscar
-      if(strpos($anuncio->titulo,$textoABuscar) !== false)
+      if(strlen($textoABuscar) > 0)
       {
-        // Guardo el Anuncio en el array  
-        array_push($arrayAnuncios,$anuncio);
+        // Si el título del anuncio actual contiene el mensaje a buscar
+        if(strpos($anuncio->titulo,$textoABuscar) !== false)
+        {
+          // Guardo el Anuncio en el array  
+          array_push($arrayAnuncios,$anuncio);
+        }
       }
     }
 

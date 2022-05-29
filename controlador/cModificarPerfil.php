@@ -57,6 +57,37 @@ include './core/funcionesPerfil.php';
         require_once $vistas['layout'];
       }
     }
+    // Buscar Anuncio //
+    else if(isset($_POST['buscaAnuncio']))
+    {
+      // Recojo el texto por el que realizar la búsqueda (en función del título)
+      $textoABuscar = $_POST["buscaAnuncio"];
+      $_SESSION["textoABuscar"] = $textoABuscar;
+      
+      // Recojo todos los Anuncios
+      $todosAnuncios = AnuncioDAO::findAll();
+
+      // Array que albergará los anuncios ya filtrados
+      $arrayAnuncios = [];
+
+      // Por cada Anuncio
+      foreach ($todosAnuncios as $anuncio) 
+      {
+        if(strlen($textoABuscar) > 0)
+        {
+          // Si el título del anuncio actual contiene el mensaje a buscar
+          if(strpos($anuncio->titulo,$textoABuscar) !== false)
+          {
+            // Guardo el Anuncio en el array  
+            array_push($arrayAnuncios,$anuncio);
+          }
+        }
+      }
+
+      $_SESSION['pagina'] = 'filtrarAnuncio';
+      header('Location: index.php');
+      exit();
+    }
     // Por defecto (Vista Modificar Perfil) //
     else
     {
