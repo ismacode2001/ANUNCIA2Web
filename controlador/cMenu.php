@@ -85,6 +85,30 @@
     header('Location: index.php');
     exit();
 	}
+  // Añadir Anuncio a Favoritos //
+  else if(isset($_POST["añadirFavorito"]))
+  {
+    $favorito = new Favorito("x",$_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::save($favorito);
+
+    // Le actualizo el id de Favorito al dado por el documento de la BBDD
+    $nuevoFavorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::update($nuevoFavorito);
+    
+    $_SESSION['pagina'] = 'menu';
+    header('Location: index.php');
+    exit();    
+  }
+  // Quitar Anuncio de Favoritos //
+  else if(isset($_POST["quitarFavorito"]))
+  {
+    $favorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::deleteById($favorito->idFavorito);
+    
+    $_SESSION['pagina'] = 'menu';
+    header('Location: index.php');
+    exit();    
+  }
   // Por defecto (Vista Anuncios (Menú)) //
 	else
 	{

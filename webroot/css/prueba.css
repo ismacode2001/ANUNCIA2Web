@@ -43,3 +43,11 @@ a:link, a:visited, a:active {
 #idUsuarioInactivo{
     color: red;
 }
+
+#idCorazonLleno{
+    margin-right: 2em;
+}
+
+#idCorazonVacio{
+    margin-right: 2em;
+}

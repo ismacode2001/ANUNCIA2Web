@@ -197,7 +197,6 @@ class FavoritoDAO implements DAO
               'stringValue': '" . $favorito->idAnuncio . "'
           }
         }
-      }
     }";
 
     curl_setopt_array($ch, array(
