@@ -41,6 +41,7 @@
       'detalleAnuncio' => 'controlador/cDetalleAnuncio.php',
       'crearAnuncio' => 'controlador/cCrearAnuncio.php',
       'filtrarAnuncio' => 'controlador/cAnunciosFiltrados.php',
+      'favoritos' => 'controlador/cFavoritos.php',
   ];
 
   // Vistas //
@@ -56,6 +57,7 @@
       'detalleAnuncio' => 'vista/vDetalleAnuncio.php',
       'crearAnuncio' => 'vista/vCrearAnuncio.php',
       'filtrarAnuncio' => 'vista/vAnunciosFiltrados.php',
+      'favoritos' => 'vista/vFavoritos.php',
   ];
 
 ?>
