@@ -1,11 +1,10 @@
 <?php
-
-include './core/funcionesPerfil.php';
+    include './core/funcionesFavoritos.php';
 
     // Volver //
     if (isset($_POST['volver'])) 
     {
-      $_SESSION['pagina'] = 'perfil';
+      $_SESSION['pagina'] = 'menu';
       header('Location: index.php');
       exit();
     }
@@ -24,38 +23,6 @@ include './core/funcionesPerfil.php';
       $_SESSION['pagina'] = 'listadoUsuarios';
       header('Location: index.php');
       exit();
-    }
-    // Modificar el Perfil de Usuario //
-    else if(isset($_POST['guardarMod']))
-    {
-      // Array que contendra los errores
-      $arrayErrores = Array();
-      $_SESSION["erroresModPerfil"] = $arrayErrores;
-
-      // Usuario con la sesion activa
-      $usuario = UsuarioDAO::findByEmail($_SESSION["email"]);
-
-      if(validaFormularioPerfil("guardarMod"))
-      {
-        // Encripto la contraseña
-        $contraseña = hash('sha256', $_REQUEST["contraseñaNueva"]);
-
-        $nuevoUsuario = new Usuario($_SESSION["idUsuario"],$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseña,$_REQUEST["email"],
-            $_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],$_REQUEST["perfil"],$_REQUEST["activo"],$_REQUEST["imagenPerfil"]);
-
-        // Modifico el Usuario
-        UsuarioDAO::update($nuevoUsuario);
-
-        $_SESSION['pagina'] = 'perfil';
-        header('Location: index.php');
-        exit();
-      }
-      else
-      {
-        // Me quedo en el perfil
-        $_SESSION['vista'] = $vistas['modificarPerfil'];
-        require_once $vistas['layout'];
-      }
     }
     // Buscar Anuncio //
     else if(isset($_POST['buscaAnuncio']))
@@ -88,6 +55,56 @@ include './core/funcionesPerfil.php';
       header('Location: index.php');
       exit();
     }
+    // Ver Detalle del Anuncio //
+    else if(isset($_POST['detalleAnuncio']))
+    {
+      if(isset($_POST["idAnuncio"]))
+      {
+          // Guardo el id del Anuncio
+          $_SESSION["idAnuncio"] = $_POST["idAnuncio"];
+
+          $anuncio = AnuncioDAO::findById(["idAnuncio"]);
+
+          $_SESSION['pagina'] = 'detalleAnuncio';
+          header('Location: index.php');
+          exit();
+      }
+      else
+      {
+          // Mensaje de error: "error al acceder al Anuncio"
+      }
+    }
+    // Añadir Anuncio a Favoritos //
+    else if(isset($_POST["añadirFavorito"]))
+    {
+      $favorito = new Favorito("x",$_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+      FavoritoDAO::save($favorito);
+
+      // Le actualizo el id de Favorito al dado por el documento de la BBDD
+      $nuevoFavorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+      FavoritoDAO::update($nuevoFavorito);
+      
+      $_SESSION['pagina'] = 'favoritos';
+      header('Location: index.php');
+      exit();    
+    }
+    // Quitar Anuncio de Favoritos //
+    else if(isset($_POST["quitarFavorito"]))
+    {
+      $favorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+      FavoritoDAO::deleteById($favorito->idFavorito);
+      
+      $_SESSION['pagina'] = 'favoritos';
+      header('Location: index.php');
+      exit();    
+    }
+    // Perfil //
+    else if(isset($_POST['perfil']))
+    {
+      $_SESSION['pagina'] = 'perfil';
+      header('Location: index.php');
+      exit();
+    }
     // Favoritos //
     else if(isset($_POST['favoritos']))
     {
@@ -102,24 +119,10 @@ include './core/funcionesPerfil.php';
       header('Location: index.php');
       exit();
     }
-    // Ayuda //
-    else if(isset($_POST['ayuda']))
-    {
-      $_SESSION['pagina'] = 'ayuda';
-      header('Location: index.php');
-      exit();
-    }
-    // Por defecto (Vista Modificar Perfil) //
+    // Por defecto (Ayuda) //
     else
     {
-      // Array que contendra los errores
-      $arrayErrores = Array();
-      $_SESSION["erroresModPerfil"] = $arrayErrores;
-
-      $emailUsuario = $_SESSION["email"];
-      $usuario = UsuarioDAO::findByEmail($emailUsuario);
-
-      $_SESSION['vista'] = $vistas['modificarPerfil'];
+      $_SESSION['vista'] = $vistas['ayuda'];
       require_once $vistas['layout'];
     }
 ?>

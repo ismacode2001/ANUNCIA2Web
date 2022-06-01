@@ -126,6 +126,13 @@
     header('Location: index.php');
     exit();
 	}
+  // Ayuda //
+  else if(isset($_POST['ayuda']))
+  {
+    $_SESSION['pagina'] = 'ayuda';
+    header('Location: index.php');
+    exit();
+  }
   // Por defecto (Vista Anuncios (Menú)) //
 	else
 	{

@@ -17,9 +17,9 @@
   // Registro //
   else if(isset($_POST['registro']))
   {
-      $_SESSION['pagina'] = 'registro';
-      header('Location: index.php');
-      exit();
+    $_SESSION['pagina'] = 'registro';
+    header('Location: index.php');
+    exit();
   }
 	// Perfil //
 	else if(isset($_POST['perfil']))
@@ -28,6 +28,20 @@
     header('Location: index.php');
     exit();
 	}
+  // Acerca De //
+	else if(isset($_POST['acercaDe']))
+	{
+    $_SESSION['pagina'] = 'acercaDe';
+    header('Location: index.php');
+    exit();
+	}
+  // Ayuda //
+  else if(isset($_POST['ayuda']))
+  {
+    $_SESSION['pagina'] = 'ayuda';
+    header('Location: index.php');
+    exit();
+  }
   // Por defecto (Vista Inicial) //
 	else
 	{

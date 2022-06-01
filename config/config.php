@@ -43,6 +43,7 @@
       'filtrarAnuncio' => 'controlador/cAnunciosFiltrados.php',
       'favoritos' => 'controlador/cFavoritos.php',
       'acercaDe' => 'controlador/cAcercaDe.php',
+      'ayuda' => 'controlador/cAyuda.php'
   ];
 
   // Vistas //
@@ -60,6 +61,7 @@
       'filtrarAnuncio' => 'vista/vAnunciosFiltrados.php',
       'favoritos' => 'vista/vFavoritos.php',
       'acercaDe' => 'vista/vAcercaDe.php',
+      'ayuda' => 'vista/vAyuda.php',
   ];
 
 ?>
