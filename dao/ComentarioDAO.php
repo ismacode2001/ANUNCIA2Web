@@ -3,7 +3,7 @@
 class ComentarioDAO implements DAO
 {
 
-  // Método que lista todos los Comentarios
+  // Método que lista todos los Comentarios //
   public static function findAll()
   {
     $ch = curl_init();
@@ -44,7 +44,7 @@ class ComentarioDAO implements DAO
     return $comentarios;
   }
 
-  // Método que busca un Comentario por su id
+  // Método que busca un Comentario por su id //
   public static function findById($id)
   {
     $ch = curl_init();
@@ -91,7 +91,7 @@ class ComentarioDAO implements DAO
     return $comentario;
   }
 
-  // Método que busca los Comentarios por el id del Anuncio
+  // Método que busca los Comentarios por el id del Anuncio //
   public static function findByIdAnuncio($idAnuncio)
   {
     $ch = curl_init();
@@ -140,7 +140,7 @@ class ComentarioDAO implements DAO
     return $comentarios;
   }
 
-  // Método que modifica/actualiza un Comentario
+  // Método que modifica/actualiza un Comentario //
   public static function update($comentario)
   {
     // Objeto de tipo curl para hacer la peticion
@@ -192,7 +192,7 @@ class ComentarioDAO implements DAO
      return $comentario;
   }
 
-  // Método que inserta un nuevo Comentario
+  // Método que inserta un nuevo Comentario //
   public static function save($comentario)
   {
     $ch = curl_init();
@@ -237,7 +237,7 @@ class ComentarioDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un Comentario en funcion de su id
+  // Método que elimina un Comentario en funcion de su id //
   public static function deleteById($id)
   {
     // Objeto de tipo curl para hacer la peticion

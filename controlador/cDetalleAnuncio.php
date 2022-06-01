@@ -109,6 +109,20 @@
     header('Location: index.php');
     exit();
 	}
+  // Favoritos //
+	else if(isset($_POST['favoritos']))
+	{
+    $_SESSION['pagina'] = 'favoritos';
+    header('Location: index.php');
+    exit();
+	}
+  // Acerca De //
+	else if(isset($_POST['acercaDe']))
+	{
+    $_SESSION['pagina'] = 'acercaDe';
+    header('Location: index.php');
+    exit();
+	}
   // Por defecto (Vista Detalle Anuncio) //
 	else
 	{

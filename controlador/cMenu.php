@@ -119,6 +119,13 @@
     header('Location: index.php');
     exit();
 	}
+  // Acerca De //
+	else if(isset($_POST['acercaDe']))
+	{
+    $_SESSION['pagina'] = 'acercaDe';
+    header('Location: index.php');
+    exit();
+	}
   // Por defecto (Vista Anuncios (Menú)) //
 	else
 	{

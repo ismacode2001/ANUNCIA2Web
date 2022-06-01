@@ -2,7 +2,7 @@
 
 class AnuncioDAO implements DAO
 {
-  // Método que lista todos los Anuncios
+  // Método que lista todos los Anuncios //
   public static function findAll()
   {
     $ch = curl_init();
@@ -54,7 +54,7 @@ class AnuncioDAO implements DAO
     return $anuncios;
   }
 
-  // Método que busca un Anuncio por su id
+  // Método que busca un Anuncio por su id //
   public static function findById($id)
   {
     $ch = curl_init();
@@ -108,7 +108,7 @@ class AnuncioDAO implements DAO
     return $anuncio;
   }
 
-  // Método que busca un Anuncio por su titulo
+  // Método que busca un Anuncio por su titulo //
   public static function findByTitulo($titulo)
   {
     $ch = curl_init();
@@ -163,7 +163,7 @@ class AnuncioDAO implements DAO
     return $anuncio;
   }
 
-  // Método que modifica/actualiza un Anuncio
+  // Método que modifica/actualiza un Anuncio //
   public static function update($anuncio)
   {
     // Objeto de tipo curl para hacer la peticion
@@ -234,7 +234,7 @@ class AnuncioDAO implements DAO
     return $anuncio;
   }
 
-  // Método que inserta un nuevo Anuncio
+  // Método que inserta un nuevo Anuncio //
   public static function save($anuncio)
   {
     // Objeto de tipo curl para hacer la peticion a la PR18
@@ -298,7 +298,7 @@ class AnuncioDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un Anuncio en funcion de su id
+  // Método que elimina un Anuncio en funcion de su id //
   public static function deleteById($id)
   {
     // Objeto de tipo curl para hacer la peticion

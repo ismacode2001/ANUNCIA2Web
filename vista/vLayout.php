@@ -85,6 +85,14 @@
                                 <input type="submit" value="Mis Favoritos" name="favoritos" class="nav-link px-2 link-dark">
                             </form>
                         </li>
+
+                        <!-- Acerca De -->
+                        <li>
+                            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                                <input type="submit" value="Acerca De" name="acercaDe" class="nav-link px-2 link-dark">
+                            </form>
+                        </li>
+
                         <!-- Logout -->
                         <li>
                             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">

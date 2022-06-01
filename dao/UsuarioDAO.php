@@ -3,7 +3,7 @@
 class UsuarioDAO implements DAO
 {
 
-  // Método que lista todos los Usuarios
+  // Método que lista todos los Usuarios //
   public static function findAll()
   {
     $ch = curl_init();
@@ -53,7 +53,7 @@ class UsuarioDAO implements DAO
     return $usuarios;
   }
 
-  // Método que busca un Usuario por su email y contraseña
+  // Método que busca un Usuario por su email y contraseña //
   public static function findByEmailAndPass($email,$contraseña)
   {
     $ch = curl_init();
@@ -109,7 +109,7 @@ class UsuarioDAO implements DAO
     return $usuario;
   }
 
-  // Método que busca un Usuario por su id
+  // Método que busca un Usuario por su id //
   public static function findById($id)
   {
     $ch = curl_init();
@@ -162,7 +162,7 @@ class UsuarioDAO implements DAO
     return $usuario;
   }
 
-  // Método que busca un Usuario por su email
+  // Método que busca un Usuario por su email //
   public static function findByEmail($email)
   {
     $ch = curl_init();
@@ -214,7 +214,7 @@ class UsuarioDAO implements DAO
     return $usuario;
   }
 
-  // Método que modifica/actualiza un Usuario
+  // Método que modifica/actualiza un Usuario //
   public static function update($usuario)
   {
      // Objeto de tipo curl para hacer la peticion
@@ -281,7 +281,7 @@ class UsuarioDAO implements DAO
      return $usuario;
   }
 
-  // Método que inserta un nuevo Usuario
+  // Método que inserta un nuevo Usuario //
   public static function save($usuario)
   {
     // Objeto de tipo curl para hacer la peticion a la PR18
@@ -342,7 +342,7 @@ class UsuarioDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un Usuario en funcion de su Id
+  // Método que elimina un Usuario en funcion de su Id //
   public static function deleteById($id)
   {
     // Objeto de tipo curl para hacer la peticion
@@ -366,7 +366,7 @@ class UsuarioDAO implements DAO
     return $usuario;
   }
 
-  // Método que valida si existe un Usuario (activo) mediante sus credenciales
+  // Método que valida si existe un Usuario (activo) mediante sus credenciales //
   public static function validaUser($email,$contraseña)
   {
     // Compruebo que existe dicho usuario con esas credenciales

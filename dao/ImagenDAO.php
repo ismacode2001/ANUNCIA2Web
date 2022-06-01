@@ -134,7 +134,7 @@ class ImagenDAO implements DAO
     return $imagen;
   }
 
-  // Método que modifica/actualiza una Imagen
+  // Método que modifica/actualiza una Imagen //
   public static function update($imagen)
   {
      // Objeto de tipo curl para hacer la peticion
@@ -180,7 +180,7 @@ class ImagenDAO implements DAO
     return $imagen;
   }
 
-  // Método que inserta una nueva Imagen
+  // Método que inserta una nueva Imagen //
   public static function save($imagen)
   {
     // Objeto de tipo curl para hacer la peticion
@@ -220,7 +220,7 @@ class ImagenDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina una Imagen en funcion de su Id
+  // Método que elimina una Imagen en funcion de su Id //
   public static function deleteById($id)
   {
     // Objeto de tipo curl para hacer la peticion

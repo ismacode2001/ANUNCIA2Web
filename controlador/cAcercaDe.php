@@ -105,22 +105,17 @@
       header('Location: index.php');
       exit();
     }
-    // Acerca De //
-    else if(isset($_POST['acercaDe']))
+    // Favoritos //
+    else if(isset($_POST['favoritos']))
     {
-      $_SESSION['pagina'] = 'acercaDe';
-      header('Location: index.php');
-      exit();
+        $_SESSION['pagina'] = 'favoritos';
+        header('Location: index.php');
+        exit();
     }
-    // Por defecto (Vista de Perfil del Usuario) //
+    // Por defecto (Acerca De) //
     else
     {
-      $idUsuario = $_SESSION["idUsuario"];
-      $usuario = UsuarioDAO::findById($idUsuario);
-
-      $arrayAnuncios = AnuncioDAO::findAll();
-
-      $_SESSION['vista'] = $vistas['favoritos'];
+      $_SESSION['vista'] = $vistas['acercaDe'];
       require_once $vistas['layout'];
     }
 ?>

@@ -3,7 +3,7 @@
 class FavoritoDAO implements DAO
 {
 
-  // Método que lista todos los Favoritos
+  // Método que lista todos los Favoritos //
   public static function findAll()
   {
     $ch = curl_init();
@@ -42,7 +42,7 @@ class FavoritoDAO implements DAO
     return $favoritos;
   }
 
-  // Método que busca un Favorito por su id
+  // Método que busca un Favorito por su id //
   public static function findById($id)
   {
     $ch = curl_init();
@@ -86,7 +86,7 @@ class FavoritoDAO implements DAO
     return $favorito;
   }
 
-  // Método que busca un Favorito por el idUsuario y idAnuncio
+  // Método que busca un Favorito por el idUsuario y idAnuncio //
   public static function findByUsuarioYAnuncio($idUsr,$idAnu)
   {
     $ch = curl_init();
@@ -132,7 +132,7 @@ class FavoritoDAO implements DAO
     return $favorito;
   }
 
-  // Método que modifica/actualiza un Favorito
+  // Método que modifica/actualiza un Favorito //
   public static function update($favorito)
   {
      // Objeto de tipo curl para hacer la peticion
@@ -178,7 +178,7 @@ class FavoritoDAO implements DAO
       return $favorito;
   }
 
-  // Método que inserta un nuevo Favorito
+  // Método que inserta un nuevo Favorito //
   public static function save($favorito)
   {
     $ch = curl_init();
@@ -217,7 +217,7 @@ class FavoritoDAO implements DAO
     return $respuesta;
   }
 
-  // Método que elimina un Favorito en funcion de su id
+  // Método que elimina un Favorito en funcion de su id //
   public static function deleteById($id)
   {
     // Objeto de tipo curl para hacer la peticion

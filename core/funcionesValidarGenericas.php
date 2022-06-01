@@ -1,6 +1,6 @@
 <?php
 
-  // Función que valida que se ha enviado el formulario
+  // Función que valida que se ha enviado el formulario //
   function validaEnviado($nombre)
   {
       // Si se ha enviado...
@@ -12,7 +12,7 @@
       return $correcto;
   }
 
-  // Funcion que valida si está vacío un campo
+  // Funcion que valida si un campo está vacío //
   function validaSiVacio($campo,$nombre)
   {
       // Si se ha enviado el formulario...
@@ -33,7 +33,7 @@
       }
   }
 
-  // Funcion que imprime un mensaje de error en el caso de que el campo esté vacío
+  // Funcion que imprime un mensaje de error en el caso de que el campo esté vacío //
   function imprimeError($arrayErrores,$idCampo,$nombre)
   {
       // Si el array de errores contiene un error de este campo
