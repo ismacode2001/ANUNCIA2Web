@@ -37,14 +37,7 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
         <!-- Logo -->
-        <!--
-        <div id="logoInicio">
-            <form action="<?php //echo $_SERVER["PHP_SELF"]; 
-                          ?>" method="post">
-                <input type="submit" value="Inicio" id="logoInicio" name="volver" class="nav-link px-2 link-dark">
-            </form>
-        </div>
-        -->
+        
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <!-- Inicio -->
@@ -60,7 +53,7 @@
             // Si el perfil del usuario es de tipo ADMINISTRADOR...
             if ($_SESSION['perfil'] == 'P_ADMIN') {
           ?>
-              <!-- Listado de Usuario -->
+              <!-- Listado de Usuarios -->
               <li>
                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
                   <input type="submit" value="Usuarios" id="mostrarUsuarios" name="mostrarUsuarios" class="nav-link px-2 link-dark">
@@ -183,10 +176,17 @@
         </form>
       </li>
 
-      <!-- Anuncios -->
+      <!-- Acerca De -->
       <li class="nav-item">
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-          <input type="submit" value="Anuncios" id="titulo" name="volver" class="nav-link px-2 link-dark">
+          <input type="submit" value="Acerca De" id="titulo" name="acercaDe" class="nav-link px-2 link-dark">
+        </form>
+      </li>
+
+      <!-- Ayuda -->
+      <li class="nav-item">
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+          <input type="submit" value="Ayuda" id="titulo" name="ayuda" class="nav-link px-2 link-dark">
         </form>
       </li>
     </ul>
