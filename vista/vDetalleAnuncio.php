@@ -6,10 +6,10 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100" alt="..." height="450px">
+      <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100 img-fluid" alt="..." height="450px">
     </div>
     <div class="carousel-item">
-      <img src="<?php decodificaImagen($anuncio->imagen2,"2");?>" class="d-block w-100" alt="..." height="450px">
+      <img src="<?php decodificaImagen($anuncio->imagen2,"2");?>" class="d-block w-100 img-fluid" alt="..." height="450px">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -75,33 +75,29 @@
   else if(count($arrayComentarios) >= 1)
   {
     // (Provisional) //
-    echo "<table class='table table-striped'>"
-          . "<thead>"
-          . "<th>Id comentario</th>"
-          . "<th>Id Anuncio</th>"
-          . "<th>Id Usuario</th>"
-          . "<th>Fecha</th>"
-          . "<th>Comentario</th>"
-          . "</thead>"
+    echo "<table class='table table-condensed table-striped'>"
           . "<tbody>";
 
     // Por cada comentario...
     foreach ($arrayComentarios as $comentario) 
     {
+      // Busco la imagen de Perfil del Usuario que ha comentado
+      $usuario = UsuarioDAO::findById($comentario->idUsuario);
+      $imagenPerfilComentador = $usuario->imagenPerfil;
+
       echo "<tr>";
       ?>
-        <td><?php echo $comentario->idComentario;?></td>
-        <td><?php echo $comentario->idAnuncio;?></td>
-        <td><?php echo $comentario->idUsuario;?></td>
-        <td><?php echo $comentario->fecha;?></td>
-        <td><?php echo $comentario->comentario;?></td>
+        <td class="col-sm-2"><img src="<?php decodificaImagen($imagenPerfilComentador,"");?>" class="img-fluid img-thumbnail" alt="" width="25%"></td>
+        <td class="col-sm-2"><b><?php echo $usuario->nombre;?></b></td>
+        <td class="col-sm-6"><?php echo $comentario->comentario;?></td>
+        <td class="col-sm-2"><a href="#" class="btn btn-primary">Ver Perfil</a></td>
       <?php
       echo "</tr>";
     }
 
     echo "</tbody>";
     echo "</table>";
-
+    
   }
 ?>
 

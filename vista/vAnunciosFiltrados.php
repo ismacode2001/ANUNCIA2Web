@@ -13,7 +13,7 @@
         <h3>Resultados de: <i>'<?php echo $textoABuscar; ?>'</i></h3>
         <hr>
         <div class="card mb-3">
-        <img src="<?php decodificaImagen($anuncio->imagen1,"1")?>" class="card-img-top" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
+        <img src="<?php decodificaImagen($anuncio->imagen1,"1")?>" class="card-img-top img-fluid" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
         <div class="card-body">
           <h5 class="card-title"><?php echo $anuncio->titulo?></h5>
           <p class="card-text"><?php echo $anuncio->descripcion?></p>

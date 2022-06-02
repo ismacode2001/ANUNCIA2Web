@@ -2,7 +2,7 @@
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     
     <!-- Imagen de Perfil -->
-    <img src="<?php decodificaImagen($usuario->imagenPerfil,"")?>" height="70px" alt="Imagen de Perfil"/>
+    <img src="<?php decodificaImagen($usuario->imagenPerfil,"")?>" class="img-thumbnail img-fluid" height="10%" width="10%" alt="Imagen de Perfil"/>
 
     <!-- Id del Usuario -->
     <div class="row mb-3 mt-3">
@@ -16,7 +16,6 @@
         ?>">
         </div>
     </div>
-
     <!-- Nombre -->
     <div class="row mb-3 mt-3">
         <label for="idNombre" class="col-sm-2 col-form-label mt-3">Nombre</label>

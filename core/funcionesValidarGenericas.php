@@ -43,6 +43,5 @@
           <label for="<?php echo $idCampo ?>" style="color:red;"><?php echo $arrayErrores[$nombre] ?></label>
           <?php
       }
-      
   }
 ?>
