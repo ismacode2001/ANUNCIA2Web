@@ -103,7 +103,7 @@
 
 <!-- Enlace para crear un nuevo Comentario -->
 <a href="#idModalComentarAnuncio" rel="modal:open" class="modales6" title="Añade un nuevo comentario" onclick="recogeIdAnuncio('<?php echo $anuncio->idAnuncio; ?>')">Comentar</a>
-<div id="pruebaModal">
+
 <!-- Modal Comentar un Anuncio -->
 <div class="registro" tabindex="-1" role="dialog" id="idModalComentarAnuncio" style="padding: 0 12px; height: auto;">
   <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
@@ -124,7 +124,6 @@
           </div>
       </div>
   </div>
-</div>
 </div>
 
 <!-- Volver-->
