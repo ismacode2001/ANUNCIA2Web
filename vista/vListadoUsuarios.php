@@ -5,62 +5,70 @@
   // Se le permite la visualización del resto de Usuarios
   if($_SESSION["perfil"] == "P_ADMIN")
   {
-    echo "<table class='table table-striped'>";
+    echo "<table class='table table-condensed table-striped'>";
     echo "<thead>";
-    echo "<th>Id Usuario</th>";
+    echo "<th>Id</th>";
     echo "<th>Nombre</th>";
     echo "<th>Apellido</th>";
-    //echo "<th>Contraseña</th>";
     echo "<th>Email</th>";
-    echo "<th>Fecha de Nacimiento</th>";
-    echo "<th>Nº de teléfono</th>";
+    echo "<th>Fecha Nacimiento</th>";
+    echo "<th>Nº Telf</th>";
     echo "<th>Perfil</th>";
     echo "<th>Activo</th>";
-    echo "<th>Imagen de Perfil</th>";
+    echo "<th>Imagen</th>";
     echo "<th>Estado</th>";
     echo "<th>Eliminar</th>";
     echo "<thead>";
     echo "<tbody>";
     
+    $c = 0;
     foreach ($arrayUsuarios as $usuario) 
     {
-      echo "<tr id='" . $usuario->idUsuario . "'>";
-      echo "<td>" . $usuario->idUsuario . "</td>";
-      echo "<td>" . $usuario->nombre . "</td>";
-      echo "<td>" . $usuario->apellido . "</td>";
-      //echo "<td>" . $usuario->contraseña . "</td>";
-      echo "<td>" . $usuario->email . "</td>";
-      echo "<td>" . $usuario->fechaNacimiento . "</td>";
-      echo "<td>" . $usuario->numTelefono . "</td>";
-      echo "<td>" . $usuario->perfil . "</td>";
-
-      if($usuario->activo)
-        echo "<td id='idUsuarioActivo'>" . "Activo" . "</td>";
-      else
-        echo "<td id='idUsuarioInactivo'>" . "Inactivo" . "</td>";
+      echo "<tr class='col-sm-2' id='" . $usuario->idUsuario . "'>";
+      echo "<td class='col-sm-2'>" . $usuario->idUsuario . "</td>";
+      echo "<td class='col-sm-2'>" . $usuario->nombre . "</td>";
+      echo "<td class='col-sm-2'>" . $usuario->apellido . "</td>";
+      echo "<td class='col-sm-2'>" . $usuario->email . "</td>";
+      echo "<td class='col-sm-2'>" . $usuario->fechaNacimiento . "</td>";
+      echo "<td class='col-sm-2'>" . $usuario->numTelefono . "</td>";
+      echo "<td class='col-sm-2'>" . $usuario->perfil . "</td>";
 
       // Estado
       if($usuario->activo)
+        echo "<td class='col-sm-2' id='idUsuarioActivo'>" . "Activo" . "</td>";
+      else
+        echo "<td class='col-sm-2' id='idUsuarioInactivo'>" . "Inactivo" . "</td>";
+
+      // Imagen de Perfil
+      ?>
+        <td  class='col-sm-4'>
+          <img src="<?php decodificaImagen($usuario->imagenPerfil,$c);?>" class="img-fluid img-thumbnail" alt="" width="95%">
+        </td>
+      <?php
+      // Activar/Desactivar
+      if($usuario->activo)
       {
         // Desactivar Usuario
-        echo "<td>";
+        echo "<td class='col-sm-2'>";
         echo "<a href='#idModalDesactivarUsuario' rel='modal:open' class='modales' title='Desactivar Usuario' onclick='recogeIdDesactivar(" . $usuario->idUsuario . ")'>Desactivar</a>";
         echo "</td>";
       }
       else
       {
         // Activar Usuario
-        echo "<td>";
+        echo "<td class='col-sm-2'>";
         echo "<a href='#idModalActivarUsuario' rel='modal:open' class='modales' title='Activar Usuario' onclick='recogeIdActivar(" . $usuario->idUsuario . ")'>Activar</a>";
         echo "</td>";
       }
 
       // Eliminar
-      echo "<td>";
+      echo "<td class='col-sm-2'>";
       echo "<a href='#idModalEliminarUsuario' rel='modal:open' class='modales' title='Eliminar Usuario' onclick='recogeIdEliminar(" . $usuario->idUsuario . ")'>Eliminar</a>";
       echo "</td>";
       
       echo "</tr>";
+
+      $c++;
     }
     echo "</tbody>";
     echo "</table>";
