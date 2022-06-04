@@ -5,6 +5,13 @@ input[type="submit"]{
     background-color: white;
 }
 
+a:link, a:visited,  a:hover, a:active
+{
+    color: black;
+    border: 0;
+    background-color: white;
+}
+
 /* Logo submit de Inicio */
 #logoInicio
 {

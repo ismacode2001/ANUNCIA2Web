@@ -81,9 +81,8 @@
 
             <!-- Logout -->
             <li>
-              <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-                <input type="submit" value="Cerrar Sesión" name="logout" class="nav-link px-2 link-dark">
-              </form>
+                <a href='#idModalCerrarSesion' rel='modal:open' class='modales nav-link px-2 link-dark' title='Cerrar Sesión'>Desactivar</a>
+                <!--<a href="#idModalCerrarSesion" id="idModalCerrarSesion" rel="modal:open" class="nav-link px-2 link-dark modales" title="Cerrar Sesión">Cerrar Sesión</a>-->
             </li>
           <?php
             } 
@@ -191,5 +190,27 @@
       </li>
     </ul>
   </footer>
+
+  <!-- Modal Cerrar Sesióon -->
+  <div class="registro" tabindex="-1" role="dialog" id="idModalCerrarSesion" style="padding: 0 12px; height: auto;">
+  <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
+      <div class="modal-content rounded-5 shadow">
+          <div class="modal-header p-4 pb-4 border-bottom-0">
+              <h3 class="fw-bold mb-0">¿Desea Cerrar Sesión?</h3>
+          </div>
+          <div class="modal-body p-5 pt-0">
+              <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="idFormularioActivarUsuario">
+                  <input type='submit' rel="modal:open"  class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Cerrar Sesión' value='Cerrar Sesión' name='logout'>
+                  <small class="text-muted">Tras cerrar Sesión, volverá a la pantalla de Inicio.</small>
+                  <p>
+                    <small class="text-muted">¡Esperamos que vuelva pronto!</small>
+                  </p>
+                  <hr class="my-4">
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
 </body>
 </html>

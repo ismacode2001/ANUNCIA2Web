@@ -45,6 +45,7 @@
           <img src="<?php decodificaImagen($usuario->imagenPerfil,$c);?>" class="img-fluid img-thumbnail" alt="" width="95%">
         </td>
       <?php
+      
       // Activar/Desactivar
       if($usuario->activo)
       {
