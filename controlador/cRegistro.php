@@ -18,7 +18,7 @@
 
     if(validaFormularioRegistro("registro"))
     {
-      // Guardo las imágenes
+      // Guardo la Imagen De Perfil
       guardaImagenPerfil("P","imagenPerfil","registro"); 
 
       // Enctripto la contraseña

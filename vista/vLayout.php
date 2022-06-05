@@ -29,7 +29,7 @@
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body class="text-center">
   <!-- Contenedor Principal -->
   <div class="container">
     <!-- Barra de Navegación Superior -->
@@ -81,8 +81,7 @@
 
             <!-- Logout -->
             <li>
-                <a href='#idModalCerrarSesion' rel='modal:open' class='modales nav-link px-2 link-dark' title='Cerrar Sesión'>Desactivar</a>
-                <!--<a href="#idModalCerrarSesion" id="idModalCerrarSesion" rel="modal:open" class="nav-link px-2 link-dark modales" title="Cerrar Sesión">Cerrar Sesión</a>-->
+                <a href='#idModalCerrarSesion' rel='modal:open' class='modales nav-link px-2 link-dark' title='Cerrar Sesión'>Cerrar Sesión</a>
             </li>
           <?php
             } 
@@ -159,12 +158,6 @@
   <!-- Footer -->
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-muted">&nbsp;&nbsp;© Ismael Maestre Carracedo</p>
-
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32">
-        <use xlink:href="#bootstrap"></use>
-      </svg>
-    </a>
 
     <!-- Enlaces -->
     <ul class="nav col-md-4 justify-content-end">

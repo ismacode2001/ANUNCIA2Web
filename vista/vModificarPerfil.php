@@ -1,9 +1,9 @@
 <h2>Modificar Perfil</h2>
 <div class="formulario">
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
     
     <!-- Imagen de Perfil -->
-    <img src="<?php decodificaImagen($usuario->imagenPerfil,"")?>" height="70px" alt="Imagen de Perfil"/>
+    <img src="<?php decodificaImagen($usuario->imagenPerfil,"")?>" class="img-thumbnail img-fluid" height="10%" width="10%" alt="Imagen de Perfil"/>
 
     <!-- Nombre -->
     <div class="row mb-3 mt-3">
@@ -112,17 +112,25 @@
         </div>
     </div>
     <!-- Activo -->
-        <input type="hidden" class="form-control" id="idActivo" name="activo" placeholder="Estado (Activo/Inactivo)" value="<?php
-            if($usuario->activo)
-                echo "true";
-            else
-                echo "false";
-        ?>">
+    <input type="hidden" class="form-control" id="idActivo" name="activo" placeholder="Estado (Activo/Inactivo)" value="<?php
+        if($usuario->activo)
+            echo "true";
+        else
+            echo "false";
+    ?>">
     </div>
     <!-- Perfil -->
     <input type="hidden" class="form-control" id="idPerfil" name="perfil" value="<?php
         echo $usuario->perfil;
     ?>">
+
+    <!-- Imagen de Perfil -->
+    <div class="row mb-3">
+        <label for="idImagenPerfil" class="col-sm-2 col-form-label">Imagen de Perfil</label>
+        <div class="col-sm-5">
+        <input type="file" class="form-control" id="idImagenPerfil" name="imagenPerfil">
+        </div>
+        </div>
     </div>
     <hr>
     <button type="submit" class="btn btn-primary mb-3 m-1" name="guardarMod">Guardar Cambios</button>
