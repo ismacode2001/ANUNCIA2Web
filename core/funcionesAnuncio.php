@@ -1,6 +1,7 @@
 <?php
     // Constantes //
   define("TXT_CAMPO_OBLIGATORIO","¡Campo obligatorio!");
+  define("TXT_FORMATO_IMAGEN","¡El formato de imagen debe ser .png o .jpeg!");
 
   // Funcion que invoca al resto de funciones que van validando el formulario
   function validaFormularioAnuncio($nombre)
@@ -62,12 +63,28 @@
             //$correcto = false;
 
         // Imagen 1 //
-        if(!isset($_FILES["imagen1"]))
-          $correcto = false;
+        if($_FILES["imagen1"]["size"] == 0)
+        {
+            $correcto = false;
+            $_SESSION["erroresAnuncio"]["imagen1"] = TXT_CAMPO_OBLIGATORIO;
+        }
+        else if(!compruebaFormatoImagen($_FILES["imagen1"]))
+        {
+            $correcto = false;
+            $_SESSION["erroresAnuncio"]["imagen1"] = TXT_FORMATO_IMAGEN;
+        }
 
         // Imagen 2 //
-        if(!isset($_FILES["imagen2"]))
-          $correcto = false;
+        if($_FILES["imagen2"]["size"] == 0)
+        {
+            $correcto = false;
+            $_SESSION["erroresAnuncio"]["imagen2"] = TXT_CAMPO_OBLIGATORIO;
+        }
+        else if(!compruebaFormatoImagen($_FILES["imagen2"]))
+        {
+            $correcto = false;
+            $_SESSION["erroresAnuncio"]["imagen2"] = TXT_FORMATO_IMAGEN;
+        }
 
       }
       // Si no...
@@ -77,5 +94,18 @@
       return $correcto;
   }
 
+  // Función que comprueba el formato de la Imagen //
+  function compruebaFormatoImagen($imagen)
+  {
 
+    $arrayFormatoImagen = explode("/",$imagen["type"]);
+    $formatoImagen = $arrayFormatoImagen[1];
+
+    $correcto = true;
+
+    if(($formatoImagen != "png")&&($formatoImagen != "jpeg"))
+        $correcto = false;
+
+    return $correcto;
+  }
 ?>

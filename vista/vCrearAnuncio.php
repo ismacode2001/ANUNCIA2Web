@@ -1,5 +1,4 @@
 <h2>Crear Anuncio</h2>
-
 <div class="formulario">
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario" enctype="multipart/form-data">
         <!-- ID - (Oculto) -->
@@ -34,7 +33,6 @@
             ?>
             </div>
         </div>
-
         <!-- Categoria -->
         <div class="row mb-3">
             <label for="idCategoria" class="col-sm-2 col-form-label">Categoría</label>
@@ -57,7 +55,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Precio -->
         <div class="row mb-3">
             <label for="idPrecio" class="col-sm-2 col-form-label">Precio (€)</label>
@@ -92,7 +89,7 @@
         </div>
         <!-- Id del Usuario -->
         <input type="hidden" class="form-control" id="idIdUsuario" name="idUsuario" value="<?php
-            echo $usuario->idUsuario;
+            echo $_SESSION["idUsuario"];
         ?>">
         <!-- Nº de Favoritos -->
         <input type="hidden" class="form-control" id="idNumFavoritos" name="numFavoritos" value="<?php
@@ -104,6 +101,10 @@
             <div class="col-sm-5">
             <input type="file" class="form-control" id="idImagen1" name="imagen1">
             </div>
+            <?php
+                // En caso de que esté vacío o mal formado, se muestra un error
+                imprimeError($_SESSION["erroresAnuncio"],'idImagen1','imagen1');
+            ?>
         </div>
         <!-- Imagen 2 -->
         <div class="row mb-3">
@@ -111,6 +112,10 @@
             <div class="col-sm-5">
             <input type="file" class="form-control" id="idImagen2" name="imagen2">
             </div>
+            <?php
+                // En caso de que esté vacío o mal formado, se muestra un error
+                imprimeError($_SESSION["erroresAnuncio"],'idImagen2','imagen2');
+            ?>
         </div>
         <hr>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="crearAnuncio">Confirmar</button>

@@ -115,6 +115,10 @@
             <div class="col-sm-5">
             <input type="file" class="form-control" id="idImagenPerfil" name="imagenPerfil">
             </div>
+            <?php
+                // En caso de que esté vacío o mal formado, se muestra un error
+                imprimeError($_SESSION["erroresRegistro"],'idImagenPerfil','imagenPerfil');
+            ?>
         </div>
         <hr>
         <button type="submit" class="btn btn-primary mb-3 m-1" name="registro">Registrar</button>

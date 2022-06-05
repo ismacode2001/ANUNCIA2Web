@@ -1,17 +1,14 @@
 <h2>Modificar Perfil</h2>
 <div class="formulario">
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
-    
     <!-- Imagen de Perfil -->
     <img src="<?php decodificaImagen($usuario->imagenPerfil,"")?>" class="img-thumbnail img-fluid" height="10%" width="10%" alt="Imagen de Perfil"/>
-
     <!-- Nombre -->
     <div class="row mb-3 mt-3">
         <label for="idNombre" class="col-sm-2 col-form-label mt-3">Nombre</label>
         <div class="col-sm-5 mt-3">
         <input type="text" class="form-control" id="idNombre" placeholder="Nombre" name="nombre" value="<?php 
             echo $usuario->nombre;
-            
         ?>">
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error
@@ -25,7 +22,6 @@
         <div class="col-sm-5 mt-3">
         <input type="text" class="form-control" id="idApellido" placeholder="Apellido" name="apellido" value="<?php 
             echo $usuario->apellido;
-            
         ?>">
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error
@@ -123,7 +119,6 @@
     <input type="hidden" class="form-control" id="idPerfil" name="perfil" value="<?php
         echo $usuario->perfil;
     ?>">
-
     <!-- Imagen de Perfil -->
     <div class="row mb-3">
         <label for="idImagenPerfil" class="col-sm-2 col-form-label">Imagen de Perfil</label>

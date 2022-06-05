@@ -1,6 +1,7 @@
 <?php
     // Constantes //
   define("TXT_CAMPO_OBLIGATORIO","¡Campo obligatorio!");
+  define("TXT_FORMATO_IMAGEN","¡El formato de imagen debe ser .png o .jpeg!");
 
   // Funcion que invoca al resto de funciones que van validando el formulario
   function validaFormularioPerfil($nombre)
@@ -90,7 +91,7 @@
         else if(!compruebaFormatoImagen($_FILES["imagenPerfil"]))
         {
             $correcto = false;
-            $_SESSION["erroresModPerfil"]["imagenPerfil"] = "El formato de imagen debe ser .png o .jpeg";
+            $_SESSION["erroresModPerfil"]["imagenPerfil"] = TXT_FORMATO_IMAGEN;
         }
   
       }

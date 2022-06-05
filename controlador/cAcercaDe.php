@@ -1,12 +1,30 @@
 <?php
     include './core/funcionesFavoritos.php';
 
+    // Login //
+    if (isset($_POST['login'])) {
+      $_SESSION['pagina'] = 'login';
+      header('Location: index.php');
+      exit();
+    }
     // Volver //
     if (isset($_POST['volver'])) 
     {
-      $_SESSION['pagina'] = 'menu';
-      header('Location: index.php');
-      exit();
+      if(isset($_SESSION["validada"]))
+      {
+        if($_SESSION["validada"] == true)
+        {
+          $_SESSION['pagina'] = 'menu';
+          header('Location: index.php');
+          exit();
+        }
+      }
+      else
+      {
+        $_SESSION['pagina'] = 'inicio';
+        header('Location: index.php');
+        exit();
+      }
     }
     // Logout //
     else if(isset($_POST['logout']))

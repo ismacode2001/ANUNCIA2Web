@@ -2,7 +2,7 @@
 
   // Constantes //
   define("TXT_CAMPO_OBLIGATORIO","¡Campo obligatorio!");
-
+  define("TXT_FORMATO_IMAGEN","¡El formato de imagen debe ser .png o .jpeg!");
 
   // Funcion que invoca al resto de funciones que van validando el formulario
   function validaFormularioRegistro($nombre)
@@ -67,6 +67,18 @@
               $correcto = false;
               $_SESSION["erroresRegistro"]["numTelefono"] = TXT_CAMPO_OBLIGATORIO;
           }
+
+          // Imagen de Perfil //
+            if($_FILES["imagenPerfil"]["size"] == 0)
+            {
+                $correcto = false;
+                $_SESSION["erroresRegistro"]["imagenPerfil"] = TXT_CAMPO_OBLIGATORIO;
+            }
+            else if(!compruebaFormatoImagen($_FILES["imagenPerfil"]))
+            {
+                $correcto = false;
+                $_SESSION["erroresRegistro"]["imagenPerfil"] = TXT_FORMATO_IMAGEN;
+            }
   
       }
       // Si no...
@@ -136,17 +148,19 @@
       }
   }
 
-  /*
-  // Funcion que formatea la fecha a String
-  function fechaToString($fechaDate)
+  // Función que comprueba el formato de la Imagen //
+  function compruebaFormatoImagen($imagen)
   {
-    $date = explode("/",$fechaDate);
-    list($day,$month,$year) = $date;
 
-    $nuevaFecha = $day . "/" . $month . "/" . $year;
+    $arrayFormatoImagen = explode("/",$imagen["type"]);
+    $formatoImagen = $arrayFormatoImagen[1];
 
-    return $nuevaFecha;
+    $correcto = true;
+
+    if(($formatoImagen != "png")&&($formatoImagen != "jpeg"))
+        $correcto = false;
+
+    return $correcto;
   }
-  */
 
 ?>
