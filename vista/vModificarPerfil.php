@@ -132,6 +132,10 @@
         </div>
         </div>
     </div>
+    <?php
+        // En caso de que esté vacío o mal formado, se muestra un error
+        imprimeError($_SESSION["erroresModPerfil"],'idImagenPerfil','imagenPerfil');
+    ?>
     <hr>
     <button type="submit" class="btn btn-primary mb-3 m-1" name="guardarMod">Guardar Cambios</button>
     <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>

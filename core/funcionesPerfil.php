@@ -8,78 +8,90 @@
       // Si se ha enviado el formulario...
       if (validaEnviado($nombre)) 
       {
-          $correcto = true;
+        $correcto = true;
 
-          // Nombre //
-          if (empty($_REQUEST['nombre']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["nombre"] = TXT_CAMPO_OBLIGATORIO;
-          }
+        // Nombre //
+        if (empty($_REQUEST['nombre']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["nombre"] = TXT_CAMPO_OBLIGATORIO;
+        }
+    
+        // Apellidos //
+        if (empty($_REQUEST['apellido']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["apellido"] = TXT_CAMPO_OBLIGATORIO;
+        }
+
+        // Contraseña Actual //
+        if(empty($_REQUEST['contraseñaActual']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["contraseñaActual"] = TXT_CAMPO_OBLIGATORIO;
+        }
+        else
+        {
+        $usuario = UsuarioDAO::findByEmail($_SESSION["email"]);
+
+        if($usuario->contraseña != hash('sha256', $_REQUEST["contraseñaActual"]))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["contraseñaActual"] = "La contraseña actual es incorrecta";
+        }
+        }
+
+        // Contraseña Nueva //
+        if(empty($_REQUEST['contraseñaNueva']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["contraseñaNueva"] = TXT_CAMPO_OBLIGATORIO;
+        }
+
+        // Contraseña (confirmacion) //
+        if (empty($_REQUEST['contraseñaConf']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["contraseñaConf"] = TXT_CAMPO_OBLIGATORIO;
+        }
+        else if(!coincidenContraseñas($nombre))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["contraseñaConf"] = "Las contraseñas no coinciden";
+        }
         
-          // Apellidos //
-          if (empty($_REQUEST['apellido']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["apellido"] = TXT_CAMPO_OBLIGATORIO;
-          }
+        // Email //
+        if(empty($_REQUEST['email']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["email"] = TXT_CAMPO_OBLIGATORIO;
+        }
+        
+        // Fecha de Nacimiento //
+        if(empty($_REQUEST['fechaNacimiento']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["fechaNacimiento"] = TXT_CAMPO_OBLIGATORIO;
+        }
 
-          // Contraseña Actual //
-          if(empty($_REQUEST['contraseñaActual']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["contraseñaActual"] = TXT_CAMPO_OBLIGATORIO;
-          }
-          else
-          {
-            $usuario = UsuarioDAO::findByEmail($_SESSION["email"]);
+        // Nº de teléfono //
+        if(empty($_REQUEST['numTelefono']))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["numTelefono"] = TXT_CAMPO_OBLIGATORIO;
+        }
 
-            if($usuario->contraseña != hash('sha256', $_REQUEST["contraseñaActual"]))
-            {
-                $correcto = false;
-                $_SESSION["erroresModPerfil"]["contraseñaActual"] = "La contraseña actual es incorrecta";
-            }
-          }
-
-          // Contraseña Nueva //
-          if(empty($_REQUEST['contraseñaNueva']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["contraseñaNueva"] = TXT_CAMPO_OBLIGATORIO;
-          }
-
-          // Contraseña (confirmacion) //
-          if (empty($_REQUEST['contraseñaConf']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["contraseñaConf"] = TXT_CAMPO_OBLIGATORIO;
-          }
-          else if(!coincidenContraseñas($nombre))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["contraseñaConf"] = "Las contraseñas no coinciden";
-          }
-          
-          // Email //
-          if (empty($_REQUEST['email']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["email"] = TXT_CAMPO_OBLIGATORIO;
-          }
-          
-          // Fecha de Nacimiento //
-          if (empty($_REQUEST['fechaNacimiento']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["fechaNacimiento"] = TXT_CAMPO_OBLIGATORIO;
-          }
-
-          // Nº de teléfono //
-          if (empty($_REQUEST['numTelefono']))
-          {
-              $correcto = false;
-              $_SESSION["erroresModPerfil"]["numTelefono"] = TXT_CAMPO_OBLIGATORIO;
-          }
+        // Imagen de Perfil //
+        if($_FILES["imagenPerfil"]["size"] == 0)
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["imagenPerfil"] = TXT_CAMPO_OBLIGATORIO;
+        }
+        else if(!compruebaFormatoImagen($_FILES["imagenPerfil"]))
+        {
+            $correcto = false;
+            $_SESSION["erroresModPerfil"]["imagenPerfil"] = "El formato de imagen debe ser .png o .jpeg";
+        }
   
       }
       // Si no...
@@ -147,5 +159,20 @@
               
           return $coincidentes;
       }
+  }
+
+  // Función que comprueba el formato de la Imagen //
+  function compruebaFormatoImagen($imagen)
+  {
+
+    $arrayFormatoImagen = explode("/",$imagen["type"]);
+    $formatoImagen = $arrayFormatoImagen[1];
+
+    $correcto = true;
+
+    if(($formatoImagen != "png")&&($formatoImagen != "jpeg"))
+        $correcto = false;
+
+    return $correcto;
   }
 ?>

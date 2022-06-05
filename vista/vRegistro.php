@@ -3,7 +3,7 @@
 <div class="formulario">
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario" enctype="multipart/form-data">
         <!-- ID - (Oculto) -->
-        <input type="hidden" name="idUsuario" id="idUsuario" size="25"  value="<?php
+        <input type="hidden" name="idUsuario" id="idUsuario" size="25" value="<?php
             echo "1";
         ?>">
         <!-- Nombre -->
@@ -13,7 +13,6 @@
             <input type="text" class="form-control" id="idNombre" placeholder="Nombre" name="nombre" value="<?php 
                 // Si no está vacío, se guarda el texto introducido
                 validaSiVacio("nombre","registro");
-                
             ?>">
             <?php
                 // En caso de que esté vacío o mal formado, se muestra un error
@@ -28,7 +27,6 @@
             <input type="text" class="form-control" id="idApellido" placeholder="Apellido" name="apellido" value="<?php 
                 // Si no está vacío, se guarda el texto introducido
                 validaSiVacio("apellido","registro");
-                
             ?>">
             <?php
                 // En caso de que esté vacío o mal formado, se muestra un error
@@ -69,7 +67,7 @@
             <label for="idEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-5">
             <input type="email" class="form-control" id="idEmail" name="email" placeholder="Email" value="<?php
-                
+                // Si no está vacío, se guarda el texto introducido
                 validaSiVacio("email","registro")
             ?>">
             <?php
@@ -83,7 +81,7 @@
             <label for="idFecha" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
             <div class="col-sm-5">
             <input type="date" class="form-control" id="idFecha" name="fechaNacimiento" placeholder="Fecha de nacimiento" value="<?php
-                
+                // Si no está vacío, se guarda el texto introducido
                 validaSiVacio("fechaNacimiento","registro")
             ?>">
             <?php

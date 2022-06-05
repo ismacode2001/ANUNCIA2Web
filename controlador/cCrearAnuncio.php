@@ -128,6 +128,9 @@
   // Por defecto (Vista Crear Anuncio) //
 	else
 	{
+    // Usuario con sesión Activa
+    $usuario = UsuarioDao::findById($_SESSION["idUsuario"]);
+    
     // Array que contendra los errores
     $arrayErrores = Array();
     $_SESSION["erroresAnuncio"] = $arrayErrores;
