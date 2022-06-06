@@ -1,3 +1,4 @@
+<!-- Botón Crear Anuncio -->
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
   <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnCrear" name="crearAnuncio">Crear Anuncio</button>
 </form>
@@ -52,3 +53,4 @@
     $_SESSION["numeracion"]+=1;
     }
 ?>
+

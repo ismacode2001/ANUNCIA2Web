@@ -40,10 +40,11 @@
       'modificarPerfil' => 'controlador/cModificarPerfil.php',
       'detalleAnuncio' => 'controlador/cDetalleAnuncio.php',
       'crearAnuncio' => 'controlador/cCrearAnuncio.php',
-      'filtrarAnuncio' => 'controlador/cAnunciosFiltrados.php',
+      'buscarAnuncio' => 'controlador/cAnunciosBuscados.php',
       'favoritos' => 'controlador/cFavoritos.php',
       'acercaDe' => 'controlador/cAcercaDe.php',
-      'ayuda' => 'controlador/cAyuda.php'
+      'ayuda' => 'controlador/cAyuda.php',
+      'filtrarAnuncio' => 'controlador/cAnunciosFiltrados.php',
   ];
 
   // Vistas //
@@ -58,10 +59,11 @@
       'modificarPerfil' => 'vista/vModificarPerfil.php',
       'detalleAnuncio' => 'vista/vDetalleAnuncio.php',
       'crearAnuncio' => 'vista/vCrearAnuncio.php',
-      'filtrarAnuncio' => 'vista/vAnunciosFiltrados.php',
+      'buscarAnuncio' => 'vista/vAnunciosBuscados.php',
       'favoritos' => 'vista/vFavoritos.php',
       'acercaDe' => 'vista/vAcercaDe.php',
       'ayuda' => 'vista/vAyuda.php',
+      'filtrarAnuncio' => 'vista/vAnunciosFiltrados.php',
   ];
 
 ?>

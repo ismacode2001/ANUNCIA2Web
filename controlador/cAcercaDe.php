@@ -69,7 +69,7 @@
         }
       }
 
-      $_SESSION['pagina'] = 'filtrarAnuncio';
+      $_SESSION['pagina'] = 'buscarAnuncio';
       header('Location: index.php');
       exit();
     }
@@ -134,6 +134,22 @@
     else if(isset($_POST['ayuda']))
     {
       $_SESSION['pagina'] = 'ayuda';
+      header('Location: index.php');
+      exit();
+    }
+    // Filtrar Anuncios //
+    else if(isset($_POST['filtrarAnuncios']))
+    {
+      $arrayCategorias = $_REQUEST["categoria"];
+      $_SESSION["categoriasFiltrar"] = $arrayCategorias;
+
+      $precioMin = $_REQUEST["precioMinimo"];
+      $_SESSION["precioMinFiltrar"] = $precioMin;
+
+      $precioMax = $_REQUEST["precioMaximo"];
+      $_SESSION["precioMaxFiltrar"] = $precioMax;
+      
+      $_SESSION['pagina'] = 'filtrarAnuncio';
       header('Location: index.php');
       exit();
     }

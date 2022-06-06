@@ -1,7 +1,6 @@
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
   <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnCrear" name="crearAnuncio">Crear Anuncio</button>
 </form>
-<h3>Anuncios Filtrados</h3>
 <?php
 
     // Si hay Anuncios coincidentes con el criteriop de búsqueda...
@@ -11,6 +10,7 @@
       foreach ($arrayAnuncios as $anuncio)
       {
         ?>
+        <h3>Resultados de: <i>'<?php echo $textoABuscar; ?>'</i></h3>
         <hr>
         <div class="card mb-3">
         <img src="<?php decodificaImagen($anuncio->imagen1,"1")?>" class="card-img-top img-fluid" alt="Imagen del Anuncio <?php echo $anuncio->titulo?>" width="100%" height="300px">
@@ -58,6 +58,8 @@
   // En caso contrario...
   else
   {
-    
+    ?>
+      <h3>No se han encontrado resultados de: <i>'<?php echo $textoABuscar; ?>'</i></h3>
+    <?php
   }
 ?>

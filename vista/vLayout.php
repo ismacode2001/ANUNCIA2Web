@@ -79,6 +79,11 @@
               </form>
             </li>
 
+            <!-- Filtros -->
+            <li>
+                <a href='#idModalFiltros' rel='modal:open' class='modales nav-link px-2 link-dark' title='Filtros'>Filtros</a>
+            </li>
+
             <!-- Logout -->
             <li>
                 <a href='#idModalCerrarSesion' rel='modal:open' class='modales nav-link px-2 link-dark' title='Cerrar Sesión'>Cerrar Sesión</a>
@@ -108,7 +113,7 @@
             <!-- Ayuda -->
             <li>
               <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-                <input type="submit" value="Ayuda" name="ayuda" class="nav-link px-2 link-dark">
+                <input type="submit" id="idBtnAyuda" value="Ayuda" name="ayuda" class="nav-link px-2 link-dark">
               </form>
             </li>
         </ul>
@@ -119,7 +124,7 @@
           ?>
             <!-- Búsqueda de Anuncios -->
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-              <input type="search" class="form-control" placeholder="Busca tu Anuncio..." aria-label="Search" name="buscaAnuncio">
+              <input type="search" class="form-control" id="idBtnBuscar" placeholder="Busca tu Anuncio..." aria-label="Search" name="buscaAnuncio">
             </form>
 
             <!-- Desplegable -->
@@ -186,24 +191,110 @@
 
   <!-- Modal Cerrar Sesióon -->
   <div class="registro" tabindex="-1" role="dialog" id="idModalCerrarSesion" style="padding: 0 12px; height: auto;">
-  <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
+    <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
       <div class="modal-content rounded-5 shadow">
-          <div class="modal-header p-4 pb-4 border-bottom-0">
-              <h3 class="fw-bold mb-0">¿Desea Cerrar Sesión?</h3>
-          </div>
-          <div class="modal-body p-5 pt-0">
-              <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="idFormularioActivarUsuario">
-                  <input type='submit' rel="modal:open"  class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Cerrar Sesión' value='Cerrar Sesión' name='logout'>
-                  <small class="text-muted">Tras cerrar Sesión, volverá a la pantalla de Inicio.</small>
-                  <p>
-                    <small class="text-muted">¡Esperamos que vuelva pronto!</small>
-                  </p>
-                  <hr class="my-4">
-              </form>
-          </div>
+            <div class="modal-header p-4 pb-4 border-bottom-0">
+                <h3 class="fw-bold mb-0">¿Desea Cerrar Sesión?</h3>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="idFormularioActivarUsuario">
+                    <input type='submit' rel="modal:open"  class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Cerrar Sesión' value='Cerrar Sesión' name='logout'>
+                    <small class="text-muted">Tras cerrar Sesión, volverá a la pantalla de Inicio.</small>
+                    <p>
+                      <small class="text-muted">¡Esperamos que vuelva pronto!</small>
+                    </p>
+                    <hr class="my-4">
+                </form>
+            </div>
+        </div>
       </div>
+    </div>
+  </div>
+
+    <!-- Modal Filtros -->
+    <div class="registro" tabindex="-1" role="dialog" id="idModalFiltros" style="padding: 0 12px; height: auto;">
+    <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
+      <div class="modal-content rounded-5 shadow">
+            <div class="modal-header p-4 pb-4 border-bottom-0">
+                <h3 class="fw-bold mb-0">Filtrar Anuncios</h3>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="idFormularioActivarUsuario">
+                    <!-- Filtros -->
+                  <div id="divFiltros">
+                    <h5>Filtra tu Anuncio</h5>
+                    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                      <!-- Categorías -->
+                      <!-- Motor -->
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="idCategoriaMotor" name="categoria[]" value="Motor">
+                        <label class="form-check-label" for="idCategoriaMotor">Motor</label>
+                      </div>
+                      <!-- Inmobiliaria -->
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="idCategoriaInmobiliaria" name="categoria[]" value="Inmobiliaria">
+                        <label class="form-check-label" for="idCategoriaInmobiliaria">Inmobiliaria</label>
+                      </div>
+                      <!-- Informática -->
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="idCategoriaInformatica" name="categoria[]" value="Informática">
+                        <label class="form-check-label" for="idCategoriaInformatica">Informática</label>
+                      </div>
+                      <!-- Deportes -->
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="idCategoriaDeportes" name="categoria[]" value="Deportes">
+                        <label class="form-check-label" for="idCategoriaDeportes">Deportes</label>
+                      </div>
+                      <!-- Precio Mínimo -->
+                      <div class="form-check form-check-inline">
+                        <input type="range" id="pMin" class="form-range" min="0" max="10000" name="precioMinimo" step="10" value="0" onchange="actualizaPrecio();">
+                        <label class="form-check-label" for="pMin">Precio Mínimo</label>
+                        <p id="idPrecioMinimo">
+                        <?php
+                          // En caso de que esté vacío o mal formado, se muestra un error
+                          imprimeError($_SESSION["erroresFiltros"],'idPrecioMinimo','precioMinimo');
+                        ?>
+                      </div>
+                      <!-- Precio Máximo -->
+                      <div class="form-check form-check-inline">
+                        <input type="range" class="form-range" id="pMax" min="0" max="10000" name="precioMaximo" step="10" value="0" onchange="actualizaPrecio();">
+                        <label class="form-check-label" for="inlineCheckbox2">Precio Máximo</label>
+                        <p id="idPrecioMaximo">
+                        <?php
+                          // En caso de que esté vacío o mal formado, se muestra un error
+                          imprimeError($_SESSION["erroresFiltros"],'idPrecioMaximo','precioMaximo');
+                        ?>
+                      </div>
+                      <br>
+                      <input type='submit' rel="modal:open"  class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Filtrar Anuncios' value='Filtrar' name='filtrarAnuncios'>
+                    </form>
+                  </div>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Prueba Bootstrap Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
   </div>
 </div>
 
+<!-- Script Toast Prueba -->
+<script src="./webroot/js/toast.js"></script>
+
+<!-- Script para el filtrado de los Anuncios -->
+<script src="./webroot/js/filtros.js"></script>
 </body>
 </html>

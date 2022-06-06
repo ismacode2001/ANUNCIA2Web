@@ -1,5 +1,4 @@
 <?php
-
   include './core/funcionesFavoritos.php';
 
 	// Login //
@@ -24,7 +23,7 @@
     header('Location: index.php');
     exit();
 	}
-  // Listado Usuarios //
+  // Listado de Usuarios //
 	else if(isset($_POST['mostrarUsuarios']))
 	{
     $_SESSION['pagina'] = 'listadoUsuarios';
@@ -62,6 +61,40 @@
 	{
     // Recojo el texto por el que realizar la búsqueda (en función del título)
     $textoABuscar = $_POST["buscaAnuncio"];
+    
+    // Recojo todos los Anuncios
+    $todosAnuncios = AnuncioDAO::findAll();
+
+    // Array que albergará los anuncios ya filtrados
+    $arrayAnuncios = [];
+
+    // Por cada Anuncio
+    foreach ($todosAnuncios as $anuncio) 
+    {
+      // Si el título del anuncio actual contiene el mensaje a buscar
+      if(strpos($anuncio->titulo,$textoABuscar) !== false)
+      {
+        // Guardo el Anuncio en el array  
+        array_push($arrayAnuncios,$anuncio);
+      }
+    }
+
+    $_SESSION['pagina'] = 'filtrarAnuncio';
+    header('Location: index.php');
+    exit();
+	}
+  // Volver //
+  else if (isset($_POST['volver'])) 
+  {
+      $_SESSION['pagina'] = 'menu';
+      header('Location: index.php');
+      exit();
+  }
+  // Buscar Anuncio //
+	else if(isset($_POST['buscaAnuncio']))
+	{
+    // Recojo el texto por el que realizar la búsqueda (en función del título)
+    $textoABuscar = $_POST["buscaAnuncio"];
     $_SESSION["textoABuscar"] = $textoABuscar;
     
     // Recojo todos los Anuncios
@@ -73,18 +106,15 @@
     // Por cada Anuncio
     foreach ($todosAnuncios as $anuncio) 
     {
-      if(strlen($textoABuscar) > 0)
+      // Si el título del anuncio actual contiene el mensaje a buscar
+      if(strpos($anuncio->titulo,$textoABuscar) !== false)
       {
-        // Si el título del anuncio actual contiene el mensaje a buscar
-        if(strpos($anuncio->titulo,$textoABuscar) !== false)
-        {
-          // Guardo el Anuncio en el array  
-          array_push($arrayAnuncios,$anuncio);
-        }
+        // Guardo el Anuncio en el array  
+        array_push($arrayAnuncios,$anuncio);
       }
     }
 
-    $_SESSION['pagina'] = 'buscarAnuncio';
+    $_SESSION['pagina'] = 'filtrarAnuncio';
     header('Location: index.php');
     exit();
 	}
@@ -98,7 +128,7 @@
     $nuevoFavorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
     FavoritoDAO::update($nuevoFavorito);
     
-    $_SESSION['pagina'] = 'menu';
+    $_SESSION['pagina'] = 'filtrarAnuncio';
     header('Location: index.php');
     exit();    
   }
@@ -108,7 +138,7 @@
     $favorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
     FavoritoDAO::deleteById($favorito->idFavorito);
     
-    $_SESSION['pagina'] = 'menu';
+    $_SESSION['pagina'] = 'filtrarAnuncio';
     header('Location: index.php');
     exit();    
   }
@@ -149,13 +179,33 @@
     header('Location: index.php');
     exit();
   }
-  // Por defecto (Vista Anuncios (Menú)) //
+  // Por defecto (Anuncios Filtrados) //
 	else
 	{
-    // Recojo los Anuncios de la BBDD
-    $arrayAnuncios = AnuncioDAO::findAll();
+    //$textoABuscar = $_POST["buscaAnuncio"];
+    $textoABuscar = $_SESSION["textoABuscar"];
     
-    $_SESSION['vista'] = $vistas['menu'];
+    // Recojo todos los Anuncios
+    $todosAnuncios = AnuncioDAO::findAll();
+
+    // Array que albergará los anuncios ya filtrados
+    $arrayAnuncios = [];
+
+    // Por cada Anuncio
+    foreach ($todosAnuncios as $anuncio) 
+    {
+      if(strlen($textoABuscar) > 0)
+      {
+        // Si el título del anuncio actual contiene el mensaje a buscar
+        if(strpos($anuncio->titulo,$textoABuscar) !== false)
+        {
+            // Guardo el Anuncio en el array  
+            array_push($arrayAnuncios,$anuncio);
+        }
+      }
+    }
+    
+    $_SESSION['vista'] = $vistas['buscarAnuncio'];
     require_once $vistas['layout'];    
-	}
+  }
 ?>

@@ -56,33 +56,6 @@
     header('Location: index.php');
     exit();
 	}
-  // Buscar Anuncio //
-	else if(isset($_POST['buscaAnuncio']))
-	{
-    // Recojo el texto por el que realizar la búsqueda (en función del título)
-    $textoABuscar = $_POST["buscaAnuncio"];
-    
-    // Recojo todos los Anuncios
-    $todosAnuncios = AnuncioDAO::findAll();
-
-    // Array que albergará los anuncios ya filtrados
-    $arrayAnuncios = [];
-
-    // Por cada Anuncio
-    foreach ($todosAnuncios as $anuncio) 
-    {
-      // Si el título del anuncio actual contiene el mensaje a buscar
-      if(strpos($anuncio->titulo,$textoABuscar) !== false)
-      {
-        // Guardo el Anuncio en el array  
-        array_push($arrayAnuncios,$anuncio);
-      }
-    }
-
-    $_SESSION['pagina'] = 'filtrarAnuncio';
-    header('Location: index.php');
-    exit();
-	}
   // Volver //
   else if (isset($_POST['volver'])) 
   {
@@ -163,11 +136,29 @@
     header('Location: index.php');
     exit();
   }
+  // Filtrar Anuncios //
+  else if(isset($_POST['filtrarAnuncios']))
+  {
+    $arrayCategorias = $_REQUEST["categoria"];
+    $_SESSION["categoriasFiltrar"] = $arrayCategorias;
+
+    $precioMin = $_REQUEST["precioMinimo"];
+    $_SESSION["precioMinFiltrar"] = $precioMin;
+
+    $precioMax = $_REQUEST["precioMaximo"];
+    $_SESSION["precioMaxFiltrar"] = $precioMax;
+    
+    $_SESSION['pagina'] = 'filtrarAnuncio';
+    header('Location: index.php');
+    exit();
+  }
   // Por defecto (Anuncios Filtrados) //
 	else
 	{
-    //$textoABuscar = $_POST["buscaAnuncio"];
-    $textoABuscar = $_SESSION["textoABuscar"];
+    // Recojo los parámetros para filtrar los Anuncios
+    $arrayCategorias = $_SESSION["categoriasFiltrar"];
+    $precioMin = $_SESSION["precioMinFiltrar"];
+    $precioMax = $_SESSION["precioMaxFiltrar"];
     
     // Recojo todos los Anuncios
     $todosAnuncios = AnuncioDAO::findAll();
@@ -178,17 +169,50 @@
     // Por cada Anuncio
     foreach ($todosAnuncios as $anuncio) 
     {
-      if(strlen($textoABuscar) > 0)
+      // Compruebo Categoría
+      $contieneCategoria = false;
+
+      if(is_array($arrayCategorias))
       {
-        // Si el título del anuncio actual contiene el mensaje a buscar
-        if(strpos($anuncio->titulo,$textoABuscar) !== false)
+        if(count($arrayCategorias) > 0)
         {
-            // Guardo el Anuncio en el array  
-            array_push($arrayAnuncios,$anuncio);
+          foreach ($arrayCategorias as $categoriaRecogida) 
+          {
+            if($anuncio->categoria == $categoriaRecogida)
+              $contieneCategoria = true;
+          }
         }
       }
+      
+      // Compruebo precio
+      $precioCorrecto = false;
+
+      // Si se ha seleccionado filtro de precios..
+      if($precioMax != 0)
+      {
+        if(($anuncio->precio >= $precioMin)&&($anuncio->precio <= $precioMax))
+          $precioCorrecto = true;
+
+          // Si se cumplen alguna de las condiciones...
+          if($precioCorrecto && $contieneCategoria)
+          {
+            // Guardo el Anuncio en el array  
+            array_push($arrayAnuncios,$anuncio);
+          }
+      }
+      else
+      {
+        if($contieneCategoria)
+          // Guardo el Anuncio en el array  
+          array_push($arrayAnuncios,$anuncio);
+      }
+
     }
     
+    $_SESSION["categoriasFiltrar"] = "";
+    $_SESSION["precioMinFiltrar"] = "";
+    $_SESSION["precioMaxFiltrar"] = "";
+
     $_SESSION['vista'] = $vistas['filtrarAnuncio'];
     require_once $vistas['layout'];    
   }
