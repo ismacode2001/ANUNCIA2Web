@@ -10,30 +10,37 @@
         <div class="row mb-3 mt-3">
             <label for="idNombre" class="col-sm-2 col-form-label mt-3">Nombre</label>
             <div class="col-sm-5 mt-3">
-            <input type="text" class="form-control" id="idNombre" placeholder="Nombre" name="nombre" value="<?php 
-                // Si no está vacío, se guarda el texto introducido
-                validaSiVacio("nombre","registro");
-            ?>">
-            <?php
-                // En caso de que esté vacío o mal formado, se muestra un error
-                imprimeError($_SESSION["erroresRegistro"],"idNombre",'nombre');
-            ?>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="idNombre" placeholder="Nombre" name="nombre" maxlength="20" value="<?php 
+                        // Si no está vacío, se guarda el texto introducido
+                        validaSiVacio("nombre","registro");
+                    ?>">
+                    <div class="input-group-text"><i><small>x/20</small></i></div>
+                </div>
+                <?php
+                    // En caso de que esté vacío o mal formado, se muestra un error
+                    imprimeError($_SESSION["erroresRegistro"],"idNombre",'nombre');
+                ?>
             </div>
         </div>
-        <!-- Apellido -->
+        <!-- Apellidos -->
         <div class="row mb-3 mt-3">
-            <label for="idApellido" class="col-sm-2 col-form-label mt-3">Apellido</label>
+            <label for="idApellido" class="col-sm-2 col-form-label mt-3">Apellidos</label>
             <div class="col-sm-5 mt-3">
-            <input type="text" class="form-control" id="idApellido" placeholder="Apellido" name="apellido" value="<?php 
-                // Si no está vacío, se guarda el texto introducido
-                validaSiVacio("apellido","registro");
-            ?>">
-            <?php
-                // En caso de que esté vacío o mal formado, se muestra un error
-                imprimeError($_SESSION["erroresRegistro"],"idApellido",'apellido');
-            ?>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="idApellido" placeholder="Apellidos" name="apellido" maxlength="30" value="<?php 
+                        // Si no está vacío, se guarda el texto introducido
+                        validaSiVacio("apellido","registro");
+                    ?>">
+                    <div class="input-group-text"><i><small>x/30</small></i></div>
+                </div>
+                <?php
+                    // En caso de que esté vacío o mal formado, se muestra un error
+                    imprimeError($_SESSION["erroresRegistro"],"idApellido",'apellido');
+                ?>
             </div>
         </div>
+        
         <!-- Contraseña -->
         <div class="row mb-3">
             <label for="idContraseña" class="col-sm-2 col-form-label">Contraseña</label>

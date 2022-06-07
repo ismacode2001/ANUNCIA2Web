@@ -1,3 +1,4 @@
+/*
 var toastTrigger = document.getElementById('idBtnBuscar');
 var toastLiveExample = document.getElementById('liveToast');
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
@@ -15,3 +16,4 @@ else
 {
     console.log("no toast");
 }
+*/

@@ -12,13 +12,6 @@ a:link, a:visited,  a:hover, a:active
     background-color: white;
 }
 
-/* Logo submit de Inicio */
-#logoInicio
-{
-    background-image: url(../img/logoClaudio.png);
-    cursor:pointer; 
-}
-
 #formulario
 {
     justify-content: center;
