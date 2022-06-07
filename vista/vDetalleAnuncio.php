@@ -69,10 +69,15 @@
   if(($anuncio->idUsuario == $usuario->idUsuario)||($usuario->perfil == "P_ADMIN"))
   {
     ?>
+      <!-- Modificar Anuncio -->
       <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">      
         <button type="submit" class="btn btn-primary mb-3 m-1" name="modificarAnuncio">Editar Anuncio</button>
       </form>
+
+      <!-- Eliminar Anuncio -->
+      <!-- Enlace para crear un nuevo Comentario -->
+      <a href="#idModalEliminarAnuncio" rel="modal:open" class="modales6" title="Eliminar el Anuncio" onclick="recogeIdAnuncio('<?php echo $anuncio->idAnuncio; ?>')">Eliminar</a>
     <?php
   }
 ?>
@@ -142,6 +147,25 @@
       </div>
   </div>
 </div>
+
+<!-- Modal Eliminar un Anuncio -->
+<div class="registro" tabindex="-1" role="dialog" id="idModalEliminarAnuncio" style="padding: 0 12px; height: auto;">
+    <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
+      <div class="modal-content rounded-5 shadow">
+            <div class="modal-header p-4 pb-4 border-bottom-0">
+                <h3 class="fw-bold mb-0">¿Desea eliminar el Anuncio?</h3>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="idFormularioEliminarAnuncio">
+                    <input type='submit' rel="modal:open"  class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Eliminar Anuncio' value='Eliminar Anuncio' name='eliminarAnuncio'>
+                    <small class="text-muted">Tras eliminar el anuncio, volverá a la pantalla de Anuncios.</small>
+                    <hr class="my-4">
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- Volver-->
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">

@@ -156,6 +156,25 @@
     header('Location: index.php');
     exit();
   }
+  // Eliminar Anuncio //
+  else if(isset($_POST['eliminarAnuncio']))
+	{
+    if(isset($_COOKIE["idAnuncioComentar"]))
+    {
+      $idAnuncio = $_COOKIE["idAnuncioComentar"];
+      
+      // Elimino el Anuncio
+      AnuncioDAO::deleteById($idAnuncio);
+
+      $_SESSION['pagina'] = 'menu';
+      header('Location: index.php');
+      exit();
+    }
+    else
+    {
+      // Mensaje de error: "error al acceder al Anuncio"
+    }
+	}
   // Por defecto (Vista Detalle Anuncio) //
 	else
 	{
