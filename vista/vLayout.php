@@ -250,20 +250,12 @@
                         <input type="range" id="pMin" class="form-range" min="0" max="10000" name="precioMinimo" step="10" value="0" onchange="actualizaPrecio();">
                         <label class="form-check-label" for="pMin">Precio Mínimo</label>
                         <p id="idPrecioMinimo">
-                        <?php
-                          // En caso de que esté vacío o mal formado, se muestra un error
-                          imprimeError($_SESSION["erroresFiltros"],'idPrecioMinimo','precioMinimo');
-                        ?>
                       </div>
                       <!-- Precio Máximo -->
                       <div class="form-check form-check-inline">
                         <input type="range" class="form-range" id="pMax" min="0" max="10000" name="precioMaximo" step="10" value="0" onchange="actualizaPrecio();">
                         <label class="form-check-label" for="inlineCheckbox2">Precio Máximo</label>
                         <p id="idPrecioMaximo">
-                        <?php
-                          // En caso de que esté vacío o mal formado, se muestra un error
-                          imprimeError($_SESSION["erroresFiltros"],'idPrecioMaximo','precioMaximo');
-                        ?>
                       </div>
                       <br>
                       <input type='submit' rel="modal:open"  class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" title='Filtrar Anuncios' value='Filtrar' name='filtrarAnuncios'>

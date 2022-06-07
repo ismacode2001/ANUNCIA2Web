@@ -49,7 +49,7 @@
 <p class="card-text m-3">
 <small class="text-muted">
   <?php 
-    if(isset(UsuarioDAO::findById($anuncio->idUsuario)->nombre))
+    if(null != (UsuarioDAO::findById($anuncio->idUsuario)))
       echo "<b>Usuario Anunciante:</b> " . UsuarioDAO::findById($anuncio->idUsuario)->nombre;
     else
     echo "<b>Usuario Anunciante:</b> " . "<i>Usuario no encontrado<i>";
@@ -59,9 +59,26 @@
 <!-- Favorito (+ nº de Favs) -->
 <p class="card-text m-3"><small class="text-muted"><?php echo "<b>Nº de favoritos:</b> " . $anuncio->numFavoritos;?></small></p>
 
+<!-- Modificar Anuncio -->
+<?php
+
+  // Usuario Actual
+  $usuario = UsuarioDAO::findById($_SESSION["idUsuario"]);
+
+  // Si el usuario es Administrador, o es el propietario del Anuncio...
+  if(($anuncio->idUsuario == $usuario->idUsuario)||($usuario->perfil == "P_ADMIN"))
+  {
+    ?>
+      <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+        <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">      
+        <button type="submit" class="btn btn-primary mb-3 m-1" name="modificarAnuncio">Editar Anuncio</button>
+      </form>
+    <?php
+  }
+?>
 <!-- Comentarios -->
-<h2 class="mt-4">Comentarios</h2>
 <hr>
+<h2 class="mt-4">Comentarios</h2>
 <?php
   // Recojo los comentarios del Anuncio
   $arrayComentarios = ComentarioDAO::findByIdAnuncio($anuncio->idAnuncio);

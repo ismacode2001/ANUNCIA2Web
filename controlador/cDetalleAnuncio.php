@@ -146,6 +146,16 @@
     header('Location: index.php');
     exit();
   }
+  // Modificar Anuncio //
+  else if(isset($_POST['modificarAnuncio']))
+  {
+    $idAnuncio = $_REQUEST["idAnuncio"];
+    $_SESSION["idAnuncioModificar"] = $idAnuncio;
+
+    $_SESSION['pagina'] = 'modificarAnuncio';
+    header('Location: index.php');
+    exit();
+  }
   // Por defecto (Vista Detalle Anuncio) //
 	else
 	{
