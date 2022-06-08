@@ -69,10 +69,6 @@
             ?>
             </div>
         </div>
-        <!-- Fecha de Anuncio -->
-        <input type="hidden" class="form-control" id="idFecha" name="fechaAnuncio" value="<?php    
-            echo "x";
-        ?>">
         <!-- Ubicación -->
         <div class="row mb-3">
             <label for="idUbicacion" class="col-sm-2 col-form-label">Ubicación</label>

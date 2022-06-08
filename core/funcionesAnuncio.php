@@ -43,10 +43,6 @@
             $_SESSION["erroresAnuncio"]["precio"] = TXT_CAMPO_OBLIGATORIO;
         }
 
-        // Fecha Anuncio //
-        if (empty($_REQUEST['fechaAnuncio']))
-            $correcto = false;
-
         // Ubicacion //
         if (empty($_REQUEST['ubicacion']))
         {

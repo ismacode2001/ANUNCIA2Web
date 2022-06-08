@@ -52,8 +52,11 @@
       guardaImagenLocal("2","imagen2","crearAnuncio"); 
 
       // Creo el Anuncio
+      $arrayFecha = getdate();
+      $fecha = $arrayFecha['mday'] . "/" . $arrayFecha['mon'] . "/" . $arrayFecha['year'];
+
       $nuevoAnuncio = new Anuncio($_REQUEST["idAnuncio"],$_REQUEST["titulo"],$_REQUEST["descripcion"],$_REQUEST["categoria"],$_REQUEST["precio"],
-        $_REQUEST["fechaAnuncio"],$_REQUEST["ubicacion"],$_REQUEST["idUsuario"],$_REQUEST["numFavoritos"],$_SESSION["idImagen1"],$_SESSION["idImagen2"]);
+        $fecha,$_REQUEST["ubicacion"],$_REQUEST["idUsuario"],$_REQUEST["numFavoritos"],$_SESSION["idImagen1"],$_SESSION["idImagen2"]);
       AnuncioDAO::save($nuevoAnuncio);
 
       // Le actualizo el id de Anuncio al dado por el documento de la BBDD
