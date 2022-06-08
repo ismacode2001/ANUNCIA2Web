@@ -1,5 +1,6 @@
 <?php
     include './core/funcionesFavoritos.php';
+    include './core/funcionesAcercaDe.php';
 
     // Login //
     if (isset($_POST['login'])) {
@@ -156,6 +157,9 @@
     // Por defecto (Acerca De) //
     else
     {
+      // Establezco el nº de anuncios por categoria en las cookies
+      estableceCategoriasAnuncio();
+
       $_SESSION['vista'] = $vistas['acercaDe'];
       require_once $vistas['layout'];
     }
