@@ -149,6 +149,13 @@
     header('Location: index.php');
     exit();
   }
+  // Mapa //
+	else if(isset($_POST['mapa']))
+	{
+    $_SESSION['pagina'] = 'mapa';
+    header('Location: index.php');
+    exit();
+	}
   // Por defecto (Vista Anuncios (Menú)) //
 	else
 	{
