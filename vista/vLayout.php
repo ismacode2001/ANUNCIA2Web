@@ -293,7 +293,10 @@
 <!-- Script para el filtrado de los Anuncios -->
 <script src="./webroot/js/filtros.js"></script>
 
-<!-- Script para el filtrado de los Anuncios -->
+<!-- Script para el Cierre de Sesión -->
 <script src="./webroot/js/cerrarSesion.js"></script>
+
+<!-- Script para la validación de Formularios -->
+<script src="./webroot/js/validarFormularios.js"></script>
 </body>
 </html>

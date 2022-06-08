@@ -11,11 +11,11 @@
             <label for="idNombre" class="col-sm-2 col-form-label mt-3">Nombre</label>
             <div class="col-sm-5 mt-3">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="idNombre" placeholder="Nombre" name="nombre" maxlength="20" value="<?php 
+                    <input type="text" class="form-control" id="idNombre" placeholder="Nombre" name="nombre" maxlength="20" onkeyup="compruebaLongitud('idNombre','contadorNombreRegistro','20')" value="<?php 
                         // Si no está vacío, se guarda el texto introducido
                         validaSiVacio("nombre","registro");
                     ?>">
-                    <div class="input-group-text"><i><small>x/20</small></i></div>
+                    <div class="input-group-text"><i><small id="contadorNombreRegistro">0/20</small></i></div>
                 </div>
                 <?php
                     // En caso de que esté vacío o mal formado, se muestra un error
@@ -28,11 +28,11 @@
             <label for="idApellido" class="col-sm-2 col-form-label mt-3">Apellidos</label>
             <div class="col-sm-5 mt-3">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="idApellido" placeholder="Apellidos" name="apellido" maxlength="30" value="<?php 
+                    <input type="text" class="form-control" id="idApellido" placeholder="Apellidos" name="apellido" maxlength="30" onkeyup="compruebaLongitud('idApellido','contadorApellidoRegistro','30')" value="<?php 
                         // Si no está vacío, se guarda el texto introducido
                         validaSiVacio("apellido","registro");
                     ?>">
-                    <div class="input-group-text"><i><small>x/30</small></i></div>
+                    <div class="input-group-text"><i><small id="contadorApellidoRegistro">0/30</small></i></div>
                 </div>
                 <?php
                     // En caso de que esté vacío o mal formado, se muestra un error
@@ -42,13 +42,16 @@
         </div>
         
         <!-- Contraseña -->
-        <div class="row mb-3">
-            <label for="idContraseña" class="col-sm-2 col-form-label">Contraseña</label>
-            <div class="col-sm-5">
-            <input type="password" class="form-control" id="idContraseña" name="contraseña" placeholder="Contraseña" value="<?php
-                
-                validaSiVacio("contraseña","registro")
-            ?>">
+        <div class="row mb-3 mt-3">
+            <label for="idContraseña" class="col-sm-2 col-form-label m3-t">Contraseña</label>
+            <div class="col-sm-5 mt-3">
+            <div class="input-group">
+                <input type="password" class="form-control" id="idContraseña" name="contraseña" maxlength="20" onkeyup="compruebaLongitud('idContraseña','contadorContraseñaRegistro','20')" placeholder="Contraseña" value="<?php
+                    // Si no está vacío, se guarda el texto introducido
+                    validaSiVacio("contraseña","registro")
+                ?>">
+                <div class="input-group-text"><i><small  id="contadorContraseñaRegistro">0/20</small></i></div>
+            </div>
             <?php
                 // En caso de que esté vacío o mal formado, se muestra un error
                 imprimeError($_SESSION["erroresRegistro"],'idContraseña','contraseña');
@@ -58,11 +61,14 @@
         <!-- Confirmar Contraseña -->
         <div class="row mb-3">
             <label for="idContraseñaConf" class="col-sm-2 col-form-label">Confirmar Contraseña</label>
-            <div class="col-sm-5">
-            <input type="password" class="form-control" id="idContraseñaConf" name="contraseñaConf" placeholder="Confirmar contraseña" value="<?php
-                
-                validaSiVacio("contraseñaConf","registro")
-            ?>">
+            <div class="col-sm-5 mt-3">
+                <div class="input-group">
+                <input type="password" class="form-control" id="idContraseñaConf" name="contraseñaConf" maxlength="20" onkeyup="compruebaLongitud('idContraseñaConf','contadorContraseñaConfRegistro','20')" placeholder="Confirmar contraseña" value="<?php
+                    // Si no está vacío, se guarda el texto introducido
+                    validaSiVacio("contraseñaConf","registro")
+                ?>">
+                <div class="input-group-text"><i><small id="contadorContraseñaConfRegistro">0/20</small></i></div>
+            </div>
             <?php
                 // En caso de que esté vacío o mal formado, se muestra un error
                 imprimeError($_SESSION["erroresRegistro"],'idContraseñaConf','contraseñaConf');
@@ -72,11 +78,14 @@
         <!-- Email -->
         <div class="row mb-3">
             <label for="idEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-5">
-            <input type="email" class="form-control" id="idEmail" name="email" placeholder="Email" value="<?php
-                // Si no está vacío, se guarda el texto introducido
-                validaSiVacio("email","registro")
-            ?>">
+            <div class="col-sm-5 mt-3">
+                <div class="input-group">
+                <input type="email" class="form-control" id="idEmail" name="email" placeholder="Email" maxlength="30" onkeyup="compruebaLongitud('idEmail','contadorEmailRegistro','30')" value="<?php
+                    // Si no está vacío, se guarda el texto introducido
+                    validaSiVacio("email","registro")
+                ?>">
+                <div class="input-group-text"><i><small id="contadorEmailRegistro">0/30</small></i></div>
+            </div>
             <?php
                 // En caso de que esté vacío o mal formado, se muestra un error
                 imprimeError($_SESSION["erroresRegistro"],'idEmail','email');
@@ -86,7 +95,7 @@
         <!-- Fecha de Nacimiento -->
         <div class="row mb-3">
             <label for="idFecha" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
-            <div class="col-sm-5">
+            <div class="col-sm-5 mt-3">
             <input type="date" class="form-control" id="idFecha" name="fechaNacimiento" placeholder="Fecha de nacimiento" value="<?php
                 // Si no está vacío, se guarda el texto introducido
                 validaSiVacio("fechaNacimiento","registro")
@@ -100,11 +109,14 @@
         <!-- Nº de teléfono -->
         <div class="row mb-3">
             <label for="idNumTelf" class="col-sm-2 col-form-label">Nº de teléfono</label>
-            <div class="col-sm-5">
-            <input type="number" class="form-control" id="idNumTelf" name="numTelefono" placeholder="Nº de teléfono" value="<?php
-                
-                validaSiVacio("numTelefono","registro")
-            ?>">
+            <div class="col-sm-5 mt-3">
+                <div class="input-group">
+                <input type="tel" class="form-control" id="idNumTelf" name="numTelefono" maxlength="9" placeholder="Nº de teléfono" onkeyup="compruebaLongitud('idNumTelf','contadorTelfRegistro','9')" value="<?php
+                    // Si no está vacío, se guarda el texto introducido
+                    validaSiVacio("numTelefono","registro")
+                ?>">
+                <div class="input-group-text"><i><small id="contadorTelfRegistro">0/9</small></i></div>
+            </div>
             <?php
                 // En caso de que esté vacío o mal formado, se muestra un error
                 imprimeError($_SESSION["erroresRegistro"],'idNumTelf','numTelefono');
