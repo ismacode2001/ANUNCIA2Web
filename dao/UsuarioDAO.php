@@ -333,6 +333,9 @@ class UsuarioDAO implements DAO
       CURLOPT_POSTFIELDS=>$json
       ));
 
+    // Quiero respuesta
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
     // Ejecuto la conexion
     $respuesta = curl_exec($ch);
 
