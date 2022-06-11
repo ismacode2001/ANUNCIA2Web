@@ -117,12 +117,6 @@
               </form>
             </li>
 
-            <!-- Mapa -->
-            <li>
-              <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-                <input type="submit" id="idBtnAyuda" value="Mapa" name="mapa" class="nav-link px-2 link-dark">
-              </form>
-            </li>
         </ul>
 
         <?php
