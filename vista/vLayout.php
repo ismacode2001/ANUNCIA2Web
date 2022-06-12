@@ -32,13 +32,14 @@
 <body class="text-center">
   <!-- Contenedor Principal -->
   <div class="container">
+    
     <!-- Barra de Navegación Superior -->
-    <header class="p-3 mb-1 border-bottom">
+    <header class="p-3 mb-1 border-bottom barraNav">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
         <!-- Logo -->
+        <img src="<?php echo IMAGENES . "logoAnuncia2.png"; ?>" alt="" width="45" height="45">
         
-
+        <!-- Elementos Barra Navegación -->
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <!-- Inicio -->
           <li>
@@ -134,22 +135,6 @@
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
               <input type="search" class="form-control" id="idBtnBuscar" placeholder="Busca tu Anuncio..." aria-label="Search" name="buscaAnuncio">
             </form>
-
-            <!-- Desplegable -->
-            <!--
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-              <div class="col-auto">
-                <label class="visually-hidden" for="autoSizingSelect">Preference</label>
-                <select class="form-select" id="idDesplegableOpciones" name="Opciones" onchange="compruebaCambioSelect()">
-                  <option selected><?php echo $_SESSION['nombreUsuario']; ?></option>
-                  <option value="perfil">Perfil</option>
-                  <option value="ayuda">Ayuda</option>
-                  <option value="Cerrar Sesión">Cerrar Sesion
-                  </option>
-                </select>
-              </div>
-            </form>
-        -->
           <?php
         }
         ?>
@@ -159,49 +144,51 @@
   </div>
 
   <!-- Vista (Cuerpo de la página) -->
-  <?php
-  // Si no hay ninguna vista cargada...
-  // Se carga la de inicio
-  if (!isset($_SESSION['vista'])) {
-    require_once $vista['inicio'];
-  }
-  // Si sí la hay... la carga
-  else {
-    require_once $_SESSION['vista'];
-  }
-  ?>
-
+  <div class="vista">
+    <?php
+      // Si no hay ninguna vista cargada...
+      // Se carga la de inicio
+      if (!isset($_SESSION['vista'])) {
+        require_once $vista['inicio'];
+      }
+      // Si sí la hay... la carga
+      else {
+        require_once $_SESSION['vista'];
+      }
+    ?>
+  </div>
+  
   <!-- Otro Footer -->
   <!--<p class="mt-5 mb-3 text-muted">© 2017–2022</p>-->
 
   <!-- Footer -->
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">&nbsp;&nbsp;© Ismael Maestre Carracedo</p>
-
-    <!-- Enlaces -->
-    <ul class="nav col-md-4 justify-content-end">
-      <!-- Inicio -->
-      <li class="nav-item">
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-          <input type="submit" value="Inicio" id="titulo" name="volver" class="nav-link px-2 link-dark">
-        </form>
-      </li>
-
-      <!-- Acerca De -->
-      <li class="nav-item">
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-          <input type="submit" value="Acerca De" id="titulo" name="acercaDe" class="nav-link px-2 link-dark">
-        </form>
-      </li>
-
-      <!-- Ayuda -->
-      <li class="nav-item">
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-          <input type="submit" value="Ayuda" id="titulo" name="ayuda" class="nav-link px-2 link-dark">
-        </form>
-      </li>
-    </ul>
-  </footer>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top fixed-bottom">
+      <p class="col-md-4 mb-0 text-muted">&nbsp;&nbsp;© Ismael Maestre Carracedo</p>
+  
+      <!-- Enlaces -->
+      <ul class="nav col-md-4 justify-content-end">
+        <!-- Inicio -->
+        <li class="nav-item">
+          <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <input type="submit" value="Inicio" id="titulo" name="volver" class="nav-link px-2 link-dark">
+          </form>
+        </li>
+  
+        <!-- Acerca De -->
+        <li class="nav-item">
+          <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <input type="submit" value="Acerca De" id="titulo" name="acercaDe" class="nav-link px-2 link-dark">
+          </form>
+        </li>
+  
+        <!-- Ayuda -->
+        <li class="nav-item">
+          <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <input type="submit" value="Ayuda" id="titulo" name="ayuda" class="nav-link px-2 link-dark">
+          </form>
+        </li>
+      </ul>
+  </div>
 
   <!-- Modal Cerrar Sesióon -->
   <div class="registro" tabindex="-1" role="dialog" id="idModalCerrarSesion" style="padding: 0 12px; height: auto;">

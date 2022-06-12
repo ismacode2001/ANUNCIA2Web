@@ -1,5 +1,3 @@
-//import Chart from 'chart.js';
-
 // Estableco el lienzo donde se mostrará el gráfico
 const ctx = document.getElementById('lienzo').getContext('2d');
 

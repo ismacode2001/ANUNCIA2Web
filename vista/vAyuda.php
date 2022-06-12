@@ -5,7 +5,7 @@
 <h2>¿En qué podemos ayudarte?</h2>
 
 <!-- Apartados de Ayuda -->
-<div class="accordion accordion-flush" id="accordionFlushExample">
+<div class="accordion accordion-flush acordeon" id="accordionFlushExample">
   <!-- Publicar un Anuncio -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">

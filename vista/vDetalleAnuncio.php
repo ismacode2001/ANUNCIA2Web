@@ -6,7 +6,9 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100 img-fluid" alt="..." height="450px">
+      <picture width="20px" height="20px">
+        <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100 img-fluid" alt="..." height="10px" width="15px">
+      </picture>
     </div>
     <div class="carousel-item">
       <img src="<?php decodificaImagen($anuncio->imagen2,"2");?>" class="d-block w-100 img-fluid" alt="..." height="450px">
