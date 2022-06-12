@@ -58,6 +58,6 @@
   // En caso contrario...
   else
   {
-    
+    echo "<h3><i>¡Actualmente no hay Anuncios que coincidan con el criterio de filtros que has usado!</i></h3>";
   }
 ?>

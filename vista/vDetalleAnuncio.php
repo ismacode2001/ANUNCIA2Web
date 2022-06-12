@@ -59,7 +59,7 @@
 </small></p>
 
 <!-- Favorito (+ nº de Favs) -->
-<p class="card-text m-3"><small class="text-muted"><?php echo "<b>Nº de favoritos:</b> " . $anuncio->numFavoritos;?></small></p>
+<p class="card-text m-3"><small class="text-muted"><?php echo "<b>Nº de favoritos:</b> " . compruebaNumFavoritos($anuncio->idAnuncio);?></small></p>
 
 <!-- Modificar Anuncio -->
 <?php

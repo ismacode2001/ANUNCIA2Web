@@ -100,7 +100,7 @@ include './core/funcionesAnuncio.php';
       header('Location: index.php');
       exit();
     }
-    // Modificar el Perfil de Usuario //
+    // Modificar el Anuncio //
     else if(isset($_POST['guardarModAnuncio']))
     {
       // Array que contendra los errores

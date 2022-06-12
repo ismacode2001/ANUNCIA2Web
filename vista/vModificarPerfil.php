@@ -1,5 +1,5 @@
 <h2>Modificar Perfil</h2>
-<div class="formulario">
+<div class="formulario" id="formulario">
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
     <!-- Imagen de Perfil -->
     <img src="<?php decodificaImagen($usuario->imagenPerfil,"")?>" class="img-thumbnail img-fluid" height="10%" width="10%" alt="Imagen de Perfil"/>
@@ -114,7 +114,6 @@
         else
             echo "false";
     ?>">
-    </div>
     <!-- Perfil -->
     <input type="hidden" class="form-control" id="idPerfil" name="perfil" value="<?php
         echo $usuario->perfil;
@@ -136,3 +135,4 @@
     <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
 </form>
 </div>
+<br><br><br><br>

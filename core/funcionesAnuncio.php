@@ -202,4 +202,19 @@
       if($anuncio->categoria == $categoria)
         echo "checked";
   }
+
+  // Función que comprueba el nº de Favoritos que posee actualmente el Anuncio //
+  function compruebaNumFavoritos($idAnuncio)
+  {
+    $favoritos = FavoritoDAO::findAll();
+
+    $c = 0;
+
+    foreach ($favoritos as $favorito) {
+        if($favorito->idAnuncio == $idAnuncio)
+          $c++;
+    }
+
+    return $c;
+  }
 ?>
