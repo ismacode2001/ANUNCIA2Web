@@ -1,5 +1,8 @@
 <!-- Formulario de Login del Usuario -->
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="formulario">
+  <!-- Logo -->
+  <img class="mb-4" src="<?php echo IMAGENES . "logoAnuncia2.png"; ?>" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 fw-normal">Inicie Sesión</h1>
   <!-- Email -->
   <div class="row mb-3 mt-3">
     <label for="email" class="col-sm-2 col-form-label mt-3">Email</label>

@@ -1,4 +1,5 @@
 <?php
+
 	// Login //
 	if (isset($_POST['login'])) {
     $_SESSION['pagina'] = 'login';
@@ -28,29 +29,15 @@
     header('Location: index.php');
     exit();
 	}
-  // Volver //
-  else if (isset($_POST['volver'])) 
-  {
-    $_SESSION['pagina'] = 'menu';
-    header('Location: index.php');
-    exit();
-  }
-  // Insertar Comentario //
-  else if(isset($_POST['insertarComentario']))
+  // Ver Detalle del Anuncio //
+  else if(isset($_POST['detalleAnuncio']))
 	{
-    if(isset($_COOKIE["idAnuncioComentar"]))
+    if(isset($_POST["idAnuncio"]))
     {
-      $idAnuncio = $_COOKIE["idAnuncioComentar"];
-      $arrayFecha = getdate();
-      $fecha = $arrayFecha['mday'] . "/" . $arrayFecha['mon'] . "/" . $arrayFecha['year'];
-      $comentario = new Comentario("1",$idAnuncio,$_SESSION["idUsuario"],$fecha,$_REQUEST["comentario"]);
+      // Guardo el id del Anuncio
+      $_SESSION["idAnuncio"] = $_POST["idAnuncio"];
 
-      // Guardo el comentario
-      ComentarioDAO::save($comentario);
-
-      // Le actualizo el id al Comentario al dado por el documento de la BBDD
-      $comentarioU = ComentarioDAO::findById($comentario->idComentario);
-      ComentarioDAO::update($comentarioU);
+      $anuncio = AnuncioDAO::findById(["idAnuncio"]);
 
       $_SESSION['pagina'] = 'detalleAnuncio';
       header('Location: index.php');
@@ -61,22 +48,12 @@
       // Mensaje de error: "error al acceder al Anuncio"
     }
 	}
-  // Ver Detalle del Anuncio //
-  else if(isset($_POST['detalleAnuncio']))
+  // Crear Anuncio //
+	else if(isset($_POST['crearAnuncio']))
 	{
-    if(isset($_POST["idAnuncio"]))
-    {
-      // Busco el Anuncio con dicho ID
-      AnuncioDAO::findById($_POST["idAnuncio"]);
-
-      $_SESSION['pagina'] = 'detalleAnuncio';
-      header('Location: index.php');
-      exit();
-    }
-    else
-    {
-      // Mensaje de error: "error al acceder al Anuncio"
-    }
+    $_SESSION['pagina'] = 'crearAnuncio';
+    header('Location: index.php');
+    exit();
 	}
   // Buscar Anuncio //
 	else if(isset($_POST['buscaAnuncio']))
@@ -109,6 +86,30 @@
     header('Location: index.php');
     exit();
 	}
+  // Añadir Anuncio a Favoritos //
+  else if(isset($_POST["añadirFavorito"]))
+  {
+    $favorito = new Favorito("x",$_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::save($favorito);
+
+    // Le actualizo el id de Favorito al dado por el documento de la BBDD
+    $nuevoFavorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::update($nuevoFavorito);
+    
+    $_SESSION['pagina'] = 'menu';
+    header('Location: index.php');
+    exit();    
+  }
+  // Quitar Anuncio de Favoritos //
+  else if(isset($_POST["quitarFavorito"]))
+  {
+    $favorito = FavoritoDAO::findByUsuarioYAnuncio($_SESSION["idUsuario"],$_REQUEST["idAnuncio"]);
+    FavoritoDAO::deleteById($favorito->idFavorito);
+    
+    $_SESSION['pagina'] = 'menu';
+    header('Location: index.php');
+    exit();    
+  }
   // Favoritos //
 	else if(isset($_POST['favoritos']))
 	{
@@ -146,63 +147,10 @@
     header('Location: index.php');
     exit();
   }
-  // Modificar Anuncio //
-  else if(isset($_POST['modificarAnuncio']))
+  // Por defecto (Vista Prueba) //
+  else
   {
-    $idAnuncio = $_REQUEST["idAnuncio"];
-    $_SESSION["idAnuncioModificar"] = $idAnuncio;
-
-    $_SESSION['pagina'] = 'modificarAnuncio';
-    header('Location: index.php');
-    exit();
+    $_SESSION['vista'] = $vistas['prueba'];
+    require_once $vistas['layout'];    
   }
-  // Eliminar Anuncio //
-  else if(isset($_POST['eliminarAnuncio']))
-	{
-    if(isset($_COOKIE["idAnuncioComentar"]))
-    {
-      $idAnuncio = $_COOKIE["idAnuncioComentar"];
-      
-      // Elimino el Anuncio
-      AnuncioDAO::deleteById($idAnuncio);
-
-      $_SESSION['pagina'] = 'menu';
-      header('Location: index.php');
-      exit();
-    }
-    else
-    {
-      // Mensaje de error: "error al acceder al Anuncio"
-    }
-	}
-  // Ver Perfil //
-  else if(isset($_POST['verPerfil']))
-  {
-    if(isset($_POST["idUsuario"]))
-    {
-      // Guardo el id del Usuario
-      $_SESSION["idUsuarioVer"] = $_POST["idUsuario"];
-
-      $_SESSION['pagina'] = 'verPerfil';
-      header('Location: index.php');
-      exit();
-    }
-    else
-    {
-      // Mensaje de error: "error al acceder al Anuncio"
-    }
-  }
-  // Por defecto (Vista Detalle Anuncio) //
-	else
-	{
-   // Array que contendra los errores
-   $arrayErrores = Array();
-   $_SESSION["erroresDetalle"] = $arrayErrores;
-
-   $idAnuncio = $_SESSION["idAnuncio"];
-   $anuncio = AnuncioDAO::findById($idAnuncio);
-
-   $_SESSION['vista'] = $vistas['detalleAnuncio'];
-   require_once $vistas['layout'];
-	}
 ?>

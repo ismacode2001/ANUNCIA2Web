@@ -163,6 +163,9 @@
   }
   ?>
 
+  <!-- Otro Footer -->
+  <!--<p class="mt-5 mb-3 text-muted">© 2017–2022</p>-->
+
   <!-- Footer -->
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-muted">&nbsp;&nbsp;© Ismael Maestre Carracedo</p>

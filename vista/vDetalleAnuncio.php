@@ -112,7 +112,12 @@
         <td class="col-sm-2"><img src="<?php decodificaImagen($imagenPerfilComentador,"");?>" class="img-fluid img-thumbnail" alt="" width="25%"></td>
         <td class="col-sm-2"><b><?php echo $usuario->nombre;?></b></td>
         <td class="col-sm-6"><?php echo $comentario->comentario;?></td>
-        <td class="col-sm-2"><a href="#" class="btn btn-primary">Ver Perfil</a></td>
+        <td class="col-sm-2">
+          <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+            <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnVerPerfil" name="verPerfil">Ver Perfil</button>
+            <input type="hidden" name="idUsuario" value="<?php echo $anuncio->idUsuario?>">
+          </form>
+        </td>
       <?php
       echo "</tr>";
     }
