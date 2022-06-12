@@ -117,6 +117,13 @@
               </form>
             </li>
 
+            <!-- Prueba -->
+            <li class="nav-item">
+              <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                <input type="submit" value="Prueba" id="titulo" name="prueba" class="nav-link px-2 link-dark">
+              </form>
+            </li>
+
         </ul>
 
         <?php
@@ -129,6 +136,7 @@
             </form>
 
             <!-- Desplegable -->
+            <!--
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
               <div class="col-auto">
                 <label class="visually-hidden" for="autoSizingSelect">Preference</label>
@@ -137,11 +145,11 @@
                   <option value="perfil">Perfil</option>
                   <option value="ayuda">Ayuda</option>
                   <option value="Cerrar Sesión">Cerrar Sesion
-                    <!--<a href='#idModalCerrarSesion' rel='modal:open' class='modales nav-link px-2 link-dark'  title='Cerrar Sesión'>Cerrar Sesión</a>-->
                   </option>
                 </select>
               </div>
             </form>
+        -->
           <?php
         }
         ?>

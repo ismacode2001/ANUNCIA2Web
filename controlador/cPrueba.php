@@ -150,6 +150,8 @@
   // Por defecto (Vista Prueba) //
   else
   {
+    $anuncios = AnuncioDAO::findAll();
+    
     $_SESSION['vista'] = $vistas['prueba'];
     require_once $vistas['layout'];    
   }

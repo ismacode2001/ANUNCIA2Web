@@ -133,6 +133,13 @@
     header('Location: index.php');
     exit();
   }
+  // Prueba //
+  else if(isset($_POST['prueba']))
+  {
+    $_SESSION['pagina'] = 'prueba';
+    header('Location: index.php');
+    exit();
+  }
   // Filtrar Anuncios //
   else if(isset($_POST['filtrarAnuncios']))
   {
