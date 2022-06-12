@@ -2,11 +2,11 @@
 <h4>Anuncios publicados en función de su categoría</h4>
 
 <!-- Lienzo donde se mostrará el gráfico -->
-<div id="idCanvas" class="mt-3 mb-3" width="70%" height="70%">
+<div id="idCanvas" class="mt-3 mb-3">
     <!-- Canvas -->
-    <canvas id="lienzo" width="70px" height="70px"></canvas>
+    <canvas id="lienzo"></canvas>
 </div>
-
+<br><br><br><br>
 <!-- Scrpt Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
 

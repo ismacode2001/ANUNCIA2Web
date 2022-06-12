@@ -111,3 +111,11 @@ input[type="text"], [type="number"],[type="password"],[type="email"],[type="date
 .vista{
     background-color: #b9f1e1;
 }
+
+#idCanvas
+{
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    display: inline-block;
+}

@@ -1,6 +1,11 @@
 // Estableco el lienzo donde se mostrará el gráfico
 const ctx = document.getElementById('lienzo').getContext('2d');
 
+// Dimensiones del contenedor
+let canvas = document.getElementById("idCanvas");
+canvas.style.width = "75%";
+canvas.style.height = "75%";
+
 // Recojo el nº de Anuncios por categoria //
 let todasCookies = document.cookie;
 
@@ -9,6 +14,7 @@ let cAnunciosMotor = getCookie("cAnunciosMotor");
 let cAnunciosInformatica = getCookie("cAnunciosInformatica");
 let cAnunciosDeportes = getCookie("cAnunciosDeportes");
 
+// Muestro el gráfico
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -39,7 +45,7 @@ const myChart = new Chart(ctx, {
       scales: {
         y: {
           beginAtZero: true
-        }
+        },
       }
     }
 });
