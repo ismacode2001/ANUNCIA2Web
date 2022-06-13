@@ -116,9 +116,11 @@ input[type="text"], [type="number"],[type="password"],[type="email"],[type="date
     width: 80%;
 }
 
+/*
 .vista{
     background-color: #b9f1e1;
 }
+*/
 
 #idCanvas
 {
@@ -128,18 +130,35 @@ input[type="text"], [type="number"],[type="password"],[type="email"],[type="date
     display: inline-block;
 }
 
-.cmn-divfloat {
-    position: fixed !important;
-    bottom: 45px;
-    right: 15px;
-    display: none;
+#idModalFiltros
+{
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
 }
 
-.cmn-btncircle {
-    width: 40px !important;
-    height: 40px !important;
-    padding: 6px 0px;
-    border-radius: 15px;
-    font-size: 18px;
-    text-align: center;
+.btn-flotante {
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffffff;
+	border-radius: 1px;
+	background-color: #b9f1e1;
+	padding: 18px 30px;
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	transition: all 300ms ease 0ms;
+	box-shadow: 0px 8px 15px #ffffff;
+	z-index: 99;
+}
+.btn-flotante:hover {
+	background-color: #5fc9a9; /* Color de fondo al pasar el cursor */
+	box-shadow: 0px 8px 15px #ffffff;
+	transform: translateY(-7px);
+}
+
+.submitFooter
+{
+    background-color: #5fc9a9;
+    color: #5fc9a9;
 }

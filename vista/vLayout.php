@@ -170,21 +170,21 @@
         <!-- Inicio -->
         <li class="nav-item">
           <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-            <input type="submit" value="Inicio" id="titulo" name="volver" class="nav-link px-2 link-dark">
+            <input type="submit" value="Inicio" id="titulo" name="volver" class="nav-link px-2 link-dark submitFooter">
           </form>
         </li>
   
         <!-- Acerca De -->
         <li class="nav-item">
           <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-            <input type="submit" value="Acerca De" id="titulo" name="acercaDe" class="nav-link px-2 link-dark">
+            <input type="submit" value="Acerca De" id="titulo" name="acercaDe" class="nav-link px-2 link-dark submitFooter">
           </form>
         </li>
   
         <!-- Ayuda -->
         <li class="nav-item">
           <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-            <input type="submit" value="Ayuda" id="titulo" name="ayuda" class="nav-link px-2 link-dark">
+            <input type="submit" value="Ayuda" id="titulo" name="ayuda" class="nav-link px-2 link-dark submitFooter">
           </form>
         </li>
       </ul>
@@ -213,7 +213,7 @@
   </div>
 
   <!-- Modal Filtros -->
-  <div class="registro" tabindex="-1" role="dialog" id="idModalFiltros" style="padding: 0 12px; height: auto;">
+  <div class="registro formLogin" tabindex="-1" role="dialog" id="idModalFiltros" style="padding: 0 12px; height: auto;">
   <div class="modal-dialog" role="document" style="margin: 0.75rem auto">
     <div class="modal-content rounded-5 shadow">
           <div class="modal-header p-4 pb-4 border-bottom-0">
@@ -236,6 +236,7 @@
                       <input class="form-check-input" type="checkbox" id="idCategoriaInmobiliaria" name="categoria[]" value="Inmobiliaria">
                       <label class="form-check-label" for="idCategoriaInmobiliaria">Inmobiliaria</label>
                     </div>
+                    <br>
                     <!-- Informática -->
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="idCategoriaInformatica" name="categoria[]" value="Informática">
@@ -246,6 +247,7 @@
                       <input class="form-check-input" type="checkbox" id="idCategoriaDeportes" name="categoria[]" value="Deportes">
                       <label class="form-check-label" for="idCategoriaDeportes">Deportes</label>
                     </div>
+                    <br><br>
                     <!-- Precio Mínimo -->
                     <div class="form-check form-check-inline">
                       <input type="range" id="pMin" class="form-range" min="0" max="10000" name="precioMinimo" step="10" value="0" onchange="actualizaPrecio();">
@@ -268,23 +270,6 @@
     </div>
   </div>
 </div>
-
-<!-- Prueba Bootstrap Toast -->
-<!--
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div>
--->
 
 <!-- Script Toast Prueba -->
 <script src="./webroot/js/toast.js"></script>

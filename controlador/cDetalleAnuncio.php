@@ -166,8 +166,22 @@
     {
       $idAnuncio = $_COOKIE["idAnuncioComentar"];
       
+      $anuncio = AnuncioDAO::findById($idAnuncio);
+
       // Elimino el Anuncio
       AnuncioDAO::deleteById($idAnuncio);
+
+      // Elimino las imágenes asociadas al Anuncio
+      ImagenDAO::deleteById($anuncio->imagen1);
+      ImagenDAO::deleteById($anuncio->imagen2);
+
+      // Elimino los Favoritos asociados al Anuncio
+      $favoritos = FavoritoDAO::findAll();
+
+      foreach ($favoritos as $favorito) {
+        if($favorito->idAnuncio == $idAnuncio)
+          FavoritoDAO::deleteById($favorito->idFavorito);
+      }
 
       $_SESSION['pagina'] = 'menu';
       header('Location: index.php');

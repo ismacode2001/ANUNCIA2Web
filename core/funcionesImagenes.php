@@ -41,7 +41,7 @@
             ImagenDAO::update($imagenU);
 
             // Recojo dicho id y lo establezco en la sesión
-            $idImagen = ImagenDAO::findByNombre($nombreImagen)->idImagen;
+            $idImagen = $imagenU->idImagen;
             $_SESSION["idImagen" . $numImagen] = $idImagen;
 
             // Borro la imagen en local
@@ -59,7 +59,7 @@
             ImagenDAO::update($imagenU);
 
             // Recojo dicho id y lo establezco en la sesión
-            $idImagen = ImagenDAO::findByNombre($nombreImagen)->idImagen;
+            $idImagen = $imagenU->idImagen;
             $_SESSION["idImagen" . $numImagen] = $idImagen;
 
             // Borro la imagen en local
