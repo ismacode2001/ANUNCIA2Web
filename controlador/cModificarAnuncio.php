@@ -118,7 +118,7 @@ include './core/funcionesAnuncio.php';
   
         // Creo el Anuncio
         $anuncioModificado = new Anuncio($_REQUEST["idAnuncio"],$_REQUEST["titulo"],$_REQUEST["descripcion"],$_REQUEST["categoria"],$_REQUEST["precio"],
-          $_REQUEST["fechaAnuncio"],$_REQUEST["ubicacion"],$_REQUEST["idUsuario"],$_REQUEST["numFavoritos"],$_SESSION["idImagen1"],$_SESSION["idImagen2"]);
+          $_REQUEST["fechaAnuncio"],$_REQUEST["ubicacion"],$_REQUEST["idUsuario"],$_SESSION["idImagen1"],$_SESSION["idImagen2"]);
         
         AnuncioDAO::update($anuncioModificado);
   

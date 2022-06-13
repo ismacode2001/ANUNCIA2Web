@@ -162,3 +162,15 @@ input[type="text"], [type="number"],[type="password"],[type="email"],[type="date
     background-color: #5fc9a9;
     color: #5fc9a9;
 }
+
+.columna {
+    float: left;
+    width: 50%;
+    padding-right: 5px;
+  }
+  
+  .fila::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

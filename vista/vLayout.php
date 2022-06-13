@@ -118,13 +118,6 @@
               </form>
             </li>
 
-            <!-- Prueba -->
-            <li class="nav-item">
-              <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-                <input type="submit" value="Prueba" id="titulo" name="prueba" class="nav-link px-2 link-dark">
-              </form>
-            </li>
-
         </ul>
 
         <?php

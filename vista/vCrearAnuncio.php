@@ -87,10 +87,6 @@
         <input type="hidden" class="form-control" id="idIdUsuario" name="idUsuario" value="<?php
             echo $_SESSION["idUsuario"];
         ?>">
-        <!-- Nº de Favoritos -->
-        <input type="hidden" class="form-control" id="idNumFavoritos" name="numFavoritos" value="<?php
-            echo "0";
-        ?>">
         <!-- Imagen 1 -->
         <div class="row mb-3">
             <label for="idImagen1" class="col-sm-2 col-form-label">Imagen 1</label>

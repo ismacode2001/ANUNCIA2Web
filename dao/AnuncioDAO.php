@@ -40,12 +40,11 @@ class AnuncioDAO implements DAO
         $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
         $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
         $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-        $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
         $imagen1 = $arrayDatos["imagen1"]["stringValue"];
         $imagen2 = $arrayDatos["imagen2"]["stringValue"];
 
         $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,$ubicacion,
-          $idUsuario,$numFavoritos,$imagen1,$imagen2);
+          $idUsuario,$imagen1,$imagen2);
 
         array_push($anuncios,$anuncio);
       }
@@ -95,12 +94,11 @@ class AnuncioDAO implements DAO
           $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
           $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
           $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-          $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
           $imagen1 = $arrayDatos["imagen1"]["stringValue"];
           $imagen2 = $arrayDatos["imagen2"]["stringValue"];
     
           $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,
-              $ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2);
+              $ubicacion,$idUsuario,$imagen1,$imagen2);
         }
       }
     }
@@ -150,12 +148,11 @@ class AnuncioDAO implements DAO
           $fechaAnuncio = $arrayDatos["fechaAnuncio"]["stringValue"];
           $ubicacion = $arrayDatos["ubicacion"]["stringValue"];
           $idUsuario = $arrayDatos["idUsuario"]["stringValue"];
-          $numFavoritos = $arrayDatos["numFavoritos"]["stringValue"];
           $imagen1 = $arrayDatos["imagen1"]["stringValue"];
           $imagen2 = $arrayDatos["imagen2"]["stringValue"];
     
           $anuncio = new Anuncio($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,
-              $ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2);
+              $ubicacion,$idUsuario,$imagen1,$imagen2);
         }
       }
     }
@@ -194,9 +191,6 @@ class AnuncioDAO implements DAO
           },
           'idUsuario':{
             'stringValue': '" . $anuncio->idUsuario ."'
-          },
-          'numFavoritos':{
-            'stringValue': '" . $anuncio->numFavoritos . "'
           },
           'imagen1':{
             'stringValue': '" . $anuncio->imagen1 . "'
@@ -267,9 +261,6 @@ class AnuncioDAO implements DAO
           },
           'idUsuario':{
             'stringValue': '" . $anuncio->idUsuario ."'
-          },
-          'numFavoritos':{
-            'stringValue': '" . $anuncio->numFavoritos . "'
           },
           'imagen1':{
             'stringValue': '" . $anuncio->imagen1 . "'

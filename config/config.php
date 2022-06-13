@@ -46,7 +46,6 @@
       'filtrarAnuncio' => 'controlador/cAnunciosFiltrados.php',
       'modificarAnuncio' => 'controlador/cModificarAnuncio.php',
       'verPerfil' => 'controlador/cVerPerfil.php',
-      'prueba' => 'controlador/cPrueba.php',
   ];
 
   // Vistas //
@@ -68,7 +67,6 @@
       'filtrarAnuncio' => 'vista/vAnunciosFiltrados.php',
       'modificarAnuncio' => 'vista/vModificarAnuncio.php',
       'verPerfil' => 'vista/vVerPerfil.php',
-      'prueba' => 'vista/vPrueba.php',
   ];
 
 ?>

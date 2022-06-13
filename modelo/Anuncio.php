@@ -11,12 +11,11 @@
     private $fechaAnuncio;
     private $ubicacion;
     private $idUsuario;
-    private $numFavoritos;
     private $imagen1;
     private $imagen2;
 
     // Constructor
-    function __construct($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,$ubicacion,$idUsuario,$numFavoritos,$imagen1,$imagen2){
+    function __construct($idAnuncio,$titulo,$descripcion,$categoria,$precio,$fechaAnuncio,$ubicacion,$idUsuario,$imagen1,$imagen2){
         $this->idAnuncio = $idAnuncio;
         $this->titulo = $titulo;
         $this->descripcion = $descripcion;
@@ -25,7 +24,6 @@
         $this->fechaAnuncio = $fechaAnuncio;
         $this->ubicacion = $ubicacion;
         $this->idUsuario = $idUsuario;
-        $this->numFavoritos = $numFavoritos;
         $this->imagen1 = $imagen1;
         $this->imagen2 = $imagen2;
     }
