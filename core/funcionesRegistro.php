@@ -34,6 +34,12 @@
               $correcto = false;
               $_SESSION["erroresRegistro"]["contraseña"] = TXT_CAMPO_OBLIGATORIO;
           }
+          // Patrón de contraseña
+          else if((validaContraseña(false,"contraseña") == false))
+            {
+                $correcto = false;
+                $_SESSION["erroresRegistro"]["contraseña"] = "La contraseña introducida no cumple el patrón.";
+            }
 
           // Contraseña (confirmacion) //
           if (empty($_REQUEST['contraseñaConf']))

@@ -25,7 +25,10 @@
       $contraseñaEncrip = hash('sha256', $_REQUEST["contraseña"]);
 
       // Creo el Usuario (Por defecto 'inactivo' y con Perfil 'P_NORMAL')
-      $nuevoUsuario = new Usuario("",$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseñaEncrip,$_REQUEST["email"],$_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],"P_NORMAL",$_REQUEST["activo"],$_SESSION["idImagenP"]);
+      $nuevoUsuario = new Usuario("",$_REQUEST["nombre"],$_REQUEST["apellido"],$contraseñaEncrip,$_REQUEST["email"],
+          $_REQUEST["fechaNacimiento"],$_REQUEST["numTelefono"],"P_NORMAL",$_REQUEST["activo"],$_SESSION["idImagenP"]);
+
+      // Se guarda en la BBDD
       UsuarioDAO::save($nuevoUsuario);
 
       // Le actualizo el id de Usuario al dado por el documento de la BBDD

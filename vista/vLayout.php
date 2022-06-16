@@ -5,17 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ANUNCIA2</title>
+  <title>ANUNCIA2 WEB</title>
   <link rel="icon" type="image/x-icon" href="<?php echo IMAGENES . "favicon.ico"; ?>">
-
+  
   <!-- CSS Bootstrap Web -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <!-- CSS Propio -->
-  <link rel="stylesheet" href="./webroot/css/prueba.css">
-
-  <!-- CSS Bootstrap -->
-  <!--<link rel="stylesheet" href="./webroot/bootstrap2/styles.css" />-->
+  <link rel="stylesheet" href="./webroot/css/style.css">
 
   <!-- CSS Modales Propio -->
   <link href="./webroot/css/jquery.modal.css" rel="stylesheet">
@@ -25,8 +22,6 @@
 
   <!-- jQuery Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.js"></script>
-
-  <!--<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
 </head>
 
 <body class="text-center">
@@ -140,19 +135,16 @@
   <div class="vista">
     <?php
       // Si no hay ninguna vista cargada...
-      // Se carga la de inicio
+      // Se carga la  vista de inicio
       if (!isset($_SESSION['vista'])) {
         require_once $vista['inicio'];
       }
-      // Si sí la hay... la carga
+      // Si sí la hay... se carga la vista correspondiente
       else {
         require_once $_SESSION['vista'];
       }
     ?>
   </div>
-  
-  <!-- Otro Footer -->
-  <!--<p class="mt-5 mb-3 text-muted">© 2017–2022</p>-->
 
   <!-- Footer -->
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top fixed-bottom">

@@ -1,6 +1,6 @@
 <?php
 
-include './core/funcionesPerfil.php';
+  include './core/funcionesPerfil.php';
 
   // Volver //
   if (isset($_POST['volver'])) 

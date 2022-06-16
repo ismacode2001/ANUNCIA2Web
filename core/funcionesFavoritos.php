@@ -1,10 +1,4 @@
 <?php
-    
-  // Función que añade un Anuncio como Favorito //
-  function añadeFavorito()
-  {
-
-  }
 
   // Función que comprueba si un Anuncio está marcado como Favorito //
   function existeFavorito($idUsuario,$idAnuncio)

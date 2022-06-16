@@ -1,5 +1,5 @@
 <h2>Modificar Anuncio</h2>
-<div class="formulario">
+<div class="formulario" id="formularioAnuncio">
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario" enctype="multipart/form-data">
         <!-- ID - (Oculto) -->
         <input type="hidden" name="idAnuncio" id="idAnuncio" size="25" value="<?php

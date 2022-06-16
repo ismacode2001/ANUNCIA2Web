@@ -87,10 +87,6 @@
           header('Location: index.php');
           exit();
       }
-      else
-      {
-          // Mensaje de error: "error al acceder al Anuncio"
-      }
     }
     // Añadir Anuncio a Favoritos //
     else if(isset($_POST["añadirFavorito"]))

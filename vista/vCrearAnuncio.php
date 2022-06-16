@@ -1,5 +1,5 @@
 <h2>Crear Anuncio</h2>
-<div class="formulario" id="formulario">
+<div class="formulario" id="formularioAnuncio">
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="formulario" id="idFormulario" enctype="multipart/form-data">
         <!-- ID - (Oculto) -->
         <input type="hidden" name="idAnuncio" id="idAnuncio" size="25" value="<?php
@@ -114,3 +114,4 @@
         <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
     </form>
 </div>
+<br><br><br><br>

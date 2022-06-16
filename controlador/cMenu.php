@@ -45,10 +45,6 @@
       header('Location: index.php');
       exit();
     }
-    else
-    {
-      // Mensaje de error: "error al acceder al Anuncio"
-    }
 	}
   // Crear Anuncio //
 	else if(isset($_POST['crearAnuncio']))

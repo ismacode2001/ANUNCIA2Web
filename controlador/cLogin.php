@@ -87,7 +87,6 @@
     }
     else
     {
-        //$_SESSION["mensaje"] = "No existe el usuario o contraseña";
         $_SESSION["vista"] = $vistas["login"];
         require_once $vistas["layout"];
     }

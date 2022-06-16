@@ -76,10 +76,6 @@
       header('Location: index.php');
       exit();
     }
-    else
-    {
-      // Mensaje de error: "error al acceder al Anuncio"
-    }
 	}
   // Buscar Anuncio //
 	else if(isset($_POST['buscaAnuncio']))

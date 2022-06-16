@@ -15,6 +15,7 @@
     <canvas id="lienzo"></canvas>
 </div>
 <br><br><br><br>
+
 <!-- Scrpt Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
 
