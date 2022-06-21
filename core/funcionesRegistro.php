@@ -72,6 +72,11 @@
         $correcto = false;
         $_SESSION["erroresRegistro"]["numTelefono"] = TXT_CAMPO_OBLIGATORIO;
       }
+      else if((validaNumTelf(false,"numTelefono") == false))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["numTelefono"] = "El nº de teléfono no es correcto.";
+      }
 
       // Imagen de Perfil //
       if($_FILES["imagenPerfil"]["size"] == 0)
@@ -129,6 +134,41 @@
       }
 
       return $correcto;
+  }
+
+  // Función que valida el nº de teléfono
+  function validaNumTelf($validando,$campo)
+  {
+    $patron = "/(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}/";
+    $correcto = false;
+
+    if((isset($_REQUEST[$campo])&&(!empty($_REQUEST[$campo]))))
+    {
+        $numTelf = $_REQUEST[$campo];
+
+        // Si cumple el patrón...
+        if(preg_match($patron, $numTelf) == true)
+        {
+            $correcto = true;
+        }
+        // Si no...
+        else
+        {
+            $correcto = false;
+
+            // En el caso de que esté validando...
+            if($validando)
+            {
+                ?>
+                <label for="<?php  ?>" style="color:red;"><?php echo "Debe introducir un nº de teléfono válido" ?></label>
+                <?php
+            }
+            
+        }
+    }
+
+    return $correcto;
+
   }
 
   // Funcion que comprueba si ambas contraseñas coinciden //

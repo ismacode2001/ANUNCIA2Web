@@ -111,11 +111,11 @@
         <label for="idNumTelf" class="col-sm-2 col-form-label">Nº de teléfono</label>
         <div class="col-sm-5 mt-3">
             <div class="input-group">
-            <input type="tel" class="form-control" id="idNumTelf" name="numTelefono" maxlength="9" placeholder="Nº de teléfono" onkeyup="compruebaLongitud('idNumTelf','contadorTelfRegistro','9')" value="<?php
+            <input type="tel" class="form-control" id="idNumTelf" name="numTelefono" maxlength="13" placeholder="Nº de teléfono" onkeyup="compruebaLongitud('idNumTelf','contadorTelfRegistro','9')" value="<?php
                 // Si no está vacío, se guarda el texto introducido
                 validaSiVacio("numTelefono","registro")
             ?>">
-            <div class="input-group-text"><i><small id="contadorTelfRegistro">0/9</small></i></div>
+            <div class="input-group-text"><i><small id="contadorTelfRegistro">0/13</small></i></div>
         </div>
         <?php
             // En caso de que esté vacío o mal formado, se muestra un error
