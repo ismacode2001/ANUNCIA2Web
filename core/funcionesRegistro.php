@@ -7,91 +7,90 @@
   // Funcion que invoca al resto de funciones que van validando el formulario
   function validaFormularioRegistro($nombre)
   {
-      // Si se ha enviado el formulario...
-      if (validaEnviado($nombre)) 
+    // Si se ha enviado el formulario...
+    if (validaEnviado($nombre)) 
+    {
+      $correcto = true;
+
+      // ID //
+      // Nombre //
+      if (empty($_REQUEST['nombre']))
       {
-          $correcto = true;
-
-          // ID //
-
-          // Nombre //
-          if (empty($_REQUEST['nombre']))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["nombre"] = TXT_CAMPO_OBLIGATORIO;
-          }
-        
-          // Apellido //
-          if (empty($_REQUEST['apellido']))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["apellido"] = TXT_CAMPO_OBLIGATORIO;
-          }
-
-          // Contraseña //
-          if(empty($_REQUEST['contraseña']))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["contraseña"] = TXT_CAMPO_OBLIGATORIO;
-          }
-          // Patrón de contraseña
-          else if((validaContraseña(false,"contraseña") == false))
-            {
-                $correcto = false;
-                $_SESSION["erroresRegistro"]["contraseña"] = "La contraseña introducida no cumple el patrón.";
-            }
-
-          // Contraseña (confirmacion) //
-          if (empty($_REQUEST['contraseñaConf']))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["contraseñaConf"] = TXT_CAMPO_OBLIGATORIO;
-          }
-          else if(!coincidenContraseñas($nombre))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["contraseñaConf"] = "Las contraseñas no coinciden";
-          }
-          
-          // Email //
-          if (empty($_REQUEST['email']))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["email"] = TXT_CAMPO_OBLIGATORIO;
-          }
-          
-          // Fecha de Nacimiento //
-          if (empty($_REQUEST['fechaNacimiento']))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["fechaNacimiento"] = TXT_CAMPO_OBLIGATORIO;
-          }
-
-          // Nº de teléfono //
-          if (empty($_REQUEST['numTelefono']))
-          {
-              $correcto = false;
-              $_SESSION["erroresRegistro"]["numTelefono"] = TXT_CAMPO_OBLIGATORIO;
-          }
-
-          // Imagen de Perfil //
-            if($_FILES["imagenPerfil"]["size"] == 0)
-            {
-                $correcto = false;
-                $_SESSION["erroresRegistro"]["imagenPerfil"] = TXT_CAMPO_OBLIGATORIO;
-            }
-            else if(!compruebaFormatoImagen($_FILES["imagenPerfil"]))
-            {
-                $correcto = false;
-                $_SESSION["erroresRegistro"]["imagenPerfil"] = TXT_FORMATO_IMAGEN;
-            }
-  
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["nombre"] = TXT_CAMPO_OBLIGATORIO;
       }
-      // Si no...
-      else 
-          $correcto = false;
+    
+      // Apellido //
+      if (empty($_REQUEST['apellido']))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["apellido"] = TXT_CAMPO_OBLIGATORIO;
+      }
+
+      // Contraseña //
+      if(empty($_REQUEST['contraseña']))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["contraseña"] = TXT_CAMPO_OBLIGATORIO;
+      }
+      // Patrón de contraseña
+      else if((validaContraseña(false,"contraseña") == false))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["contraseña"] = "La contraseña introducida no cumple el patrón.";
+      }
+
+      // Contraseña (confirmacion) //
+      if (empty($_REQUEST['contraseñaConf']))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["contraseñaConf"] = TXT_CAMPO_OBLIGATORIO;
+      }
+      else if(!coincidenContraseñas($nombre))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["contraseñaConf"] = "Las contraseñas no coinciden";
+      }
       
-      return $correcto;
+      // Email //
+      if (empty($_REQUEST['email']))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["email"] = TXT_CAMPO_OBLIGATORIO;
+      }
+      
+      // Fecha de Nacimiento //
+      if (empty($_REQUEST['fechaNacimiento']))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["fechaNacimiento"] = TXT_CAMPO_OBLIGATORIO;
+      }
+
+      // Nº de teléfono //
+      if (empty($_REQUEST['numTelefono']))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["numTelefono"] = TXT_CAMPO_OBLIGATORIO;
+      }
+
+      // Imagen de Perfil //
+      if($_FILES["imagenPerfil"]["size"] == 0)
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["imagenPerfil"] = TXT_CAMPO_OBLIGATORIO;
+      }
+      else if(!compruebaFormatoImagen($_FILES["imagenPerfil"]))
+      {
+        $correcto = false;
+        $_SESSION["erroresRegistro"]["imagenPerfil"] = TXT_FORMATO_IMAGEN;
+      }
+
+    }
+    // Si no...
+    else 
+        $correcto = false;
+    
+    return $correcto;
   }
 
   // Funcion que valida la contraseña del usuario con un patrón

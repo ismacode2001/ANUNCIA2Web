@@ -54,10 +54,6 @@
       if (empty($_REQUEST['idUsuario']))
           $correcto = false;
 
-      // Nº de Favoritos //
-      if (empty($_REQUEST['numFavoritos']))
-          //$correcto = false;
-
       // Imagen 1 //
       if($_FILES["imagen1"]["size"] == 0)
       {
@@ -144,10 +140,6 @@
       // Id Usuario //
       if (empty($_REQUEST['idUsuario']))
           $correcto = false;
-
-      // Nº de Favoritos //
-      if (empty($_REQUEST['numFavoritos']))
-          //$correcto = false;
 
       // Imagen 1 //
       if($_FILES["imagen1"]["size"] == 0)

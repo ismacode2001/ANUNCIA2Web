@@ -25,9 +25,6 @@
   require './dao/ComentarioDAO.php';
   require './dao/FavoritoDAO.php';
 
-  // Config //
-  require './config/datosBD.php';
-
   // Controladores //
   $controladores = [
       'inicio' => 'controlador/cInicio.php',

@@ -49,7 +49,6 @@
                   ?>
                 </div>
                 
-
                 <div class="btnsVisualizarAnuncio">
                   <!-- Fav -->
                   <div class="btn1Vis">
@@ -57,7 +56,6 @@
                     // Si el producto está marcado como Favorito por el Usuario
                       if(existeFavorito($_SESSION["idUsuario"],$anuncio->idAnuncio))
                       {
-                        //echo "<img src='" . IMAGENES . "corazonLleno.png' width='3%' id='idCorazonLleno' title='Quitar de Favoritos'>";
                         ?>
                         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
                           <button type="submit" class="btn btn-primary mb-3 m-1" id="btnFav" name="quitarFavorito" title="Quitar de Favoritos">Quitar de Favoritos</button>
@@ -67,7 +65,6 @@
                       }
                       else
                       {
-                        //echo "<img src='" . IMAGENES . "corazonVacio.png' width='3%' id='idCorazonVacio' title='Añadir a Favoritos'>";
                         ?>
                         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
                           <button type="submit" class="btn btn-primary mb-3 m-1" id="btnFav" name="añadirFavorito" title="Añadir a Favoritos">Añadir a Favoritos</button>
@@ -81,8 +78,8 @@
                   <!-- Ver Producto -->
                   <div class="btn2Vis">
                     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-                        <button type="submit" class="btn btn-primary mb-3 m-1" id="btnVerDetalle" name="detalleAnuncio">Ver Producto</button>
-                        <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">
+                        <button type="submit" class="btn btn-primary mb-3 m-1" id="btnVerDetalle" name="detalleAnuncio" title="Ver Anuncio">Ver Anuncio</button>
+                        <input type="hidden" name="idAnuncio" title="Ver el detallo del Anuncio" value="<?php echo $anuncio->idAnuncio?>">
                       </form>
                   </div>
                 </div>
@@ -91,7 +88,6 @@
         </div>
                 
       <?php
-      //$_SESSION["numeracion"]+=1;
       $c++;
     }
   }

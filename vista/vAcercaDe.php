@@ -1,8 +1,8 @@
-<h3>Acerca de Anuncia2 WEB</h3>
+<h3 title="Acerca de Anuncia2 WEB">Acerca de Anuncia2 WEB</h3>
 
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    <h4 class=" fw-normal">¿Qué es Anuncia2Web?</h4>
-    <p class="fs-5 text-muted">
+    <h4 class=" fw-normal" title="¿Qué es Anuncia2Web?">¿Qué es Anuncia2Web?</h4>
+    <p class="fs-5 text-muted" title="Anuncia2 Web es un proyecto realizado por el alumno Ismael Maestre Carracedo para el trabajo final del CFGS 2º DAW.">
         Anuncia2 Web es un proyecto realizado por el alumno Ismael Maestre Carracedo para el trabajo final del CFGS 2º DAW.
     </p>
 </div>

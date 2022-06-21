@@ -70,6 +70,7 @@
     // Si tiene algún Anuncio publicado...
     if(count($anunciosUsuario) > 0)
     {
+      $c = 0;
       foreach ($anunciosUsuario as $anuncio) 
       {
         ?>
@@ -83,7 +84,7 @@
                     <p class="card-text mb-auto"><?php echo $anuncio->descripcion;?></p>
                   </div>
                   <div class="col-auto d-none d-lg-block">
-                    <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100 img-fluid" alt="..." height="450px">
+                    <img src="<?php decodificaImagen($anuncio->imagen1,$c);?>" class="d-block w-100 img-fluid" alt="..." height="450px">
                     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
                       <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnDetalle" name="detalleAnuncio">Ver Producto</button>
                       <input type="hidden" name="idAnuncio" value="<?php echo $anuncio->idAnuncio?>">
@@ -93,6 +94,7 @@
               </div>
             </div>
         <?php
+        $c++;
       }
     }
     else

@@ -256,9 +256,6 @@
   </div>
 </div>
 
-<!-- Script Toast Prueba -->
-<script src="./webroot/js/toast.js"></script>
-
 <!-- Script para el filtrado de los Anuncios -->
 <script src="./webroot/js/filtros.js"></script>
 

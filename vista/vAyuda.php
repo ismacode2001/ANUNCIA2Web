@@ -1,13 +1,13 @@
 <!-- Bootstrapp JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-<h3>Ayuda</h3>
-<h2>¿En qué podemos ayudarte?</h2>
+<h3 title="Ayuda">Ayuda</h3>
+<h2 title="¿En qué podemos ayudarte?">¿En qué podemos ayudarte?</h2>
 <br>
 <!-- Apartados de Ayuda -->
 <div class="accordion accordion-flush acordeon mb-3" id="accordionFlushExample">
   <!-- Publicar un Anuncio -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Publicar un Anuncio">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
         Publicar un Anuncio
@@ -25,7 +25,7 @@
     </div>
   </div>
   <!-- Eliminar un Anuncio -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Eliminar un Anuncio">
     <h2 class="accordion-header" id="flush-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
         Eliminar un Anuncio
@@ -43,7 +43,7 @@
     </div>
   </div>
   <!-- Comentar un Anuncio -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Comentar un Anuncio">
     <h2 class="accordion-header" id="flush-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
         Comentar un Anuncio
@@ -61,7 +61,7 @@
     </div>
   </div>
   <!-- Contactar con un Anunciante -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Contactar con un Anunciante">
     <h2 class="accordion-header" id="flush-headingFour">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
         Contactar con un Anunciante
@@ -79,7 +79,7 @@
       </div>
     </div>
   <!-- Filtrar Anuncios -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Filtrar Anuncios">
     <h2 class="accordion-header" id="flush-headingFive">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
         Filtrar un Anuncio
@@ -97,7 +97,7 @@
       </div>
     </div>
     <!-- Buscar Anuncios -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Buscar Anuncios">
     <h2 class="accordion-header" id="flush-headingBusq">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBusq" aria-expanded="false" aria-controls="flush-collapseBusq">
         Buscar un Anuncio
@@ -115,7 +115,7 @@
       </div>
     </div>
   <!-- Editar el Perfil -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Editar el Perfil">
     <h2 class="accordion-header" id="flush-headingSix">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
         Editar el Perfil
@@ -133,7 +133,7 @@
     </div>
   </div>
   <!-- Cerrar Sesión -->
-  <div class="accordion-item">
+  <div class="accordion-item" title="Cerrar Sesión">
     <h2 class="accordion-header" id="flush-headingSeven">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
         Cerrar Sesión

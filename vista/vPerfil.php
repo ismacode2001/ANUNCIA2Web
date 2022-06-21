@@ -99,8 +99,8 @@
         </div>
     </div>
     <hr>
-    <button type="submit" class="btn btn-primary mb-3 m-1" name="modificar">Modificar</button>
-    <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
+    <button type="submit" class="btn btn-primary mb-3 m-1" name="modificar" title="Modificar Perfil">Modificar</button>
+    <button type="submit" class="btn btn-primary mb-3 m-1" name="volver" title="Volver a Inicio">Volver</button>
   </form>
 </div>
 <br><br><br><br>

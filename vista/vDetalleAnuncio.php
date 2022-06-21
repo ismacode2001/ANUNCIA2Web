@@ -2,10 +2,12 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col" height="40%" width="40%">
-      <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100 img-fluid" alt="..." height="40%" width="40%">
+      <img src="<?php decodificaImagen($anuncio->imagen1,"1");?>" class="d-block w-100 img-fluid" alt="Imagen 1 del anuncio: '<?php echo $anuncio->titulo;?>'"
+        title="Imagen del anuncio: '<?php echo $anuncio->titulo;?>'" height="40%" width="40%">
     </div>
     <div class="col" height="40%" width="40%">
-      <img src="<?php decodificaImagen($anuncio->imagen2,"2");?>" class="d-block w-100 img-fluid" alt="..." height="40%" width="40%">
+      <img src="<?php decodificaImagen($anuncio->imagen2,"2");?>" class="d-block w-100 img-fluid" alt="Imagen 2 del anuncio: '<?php echo $anuncio->titulo;?>'"
+        title="Imagen del anuncio: '<?php echo $anuncio->titulo;?>'" height="40%" width="40%">
     </div>
   </div>
 </div>
@@ -102,7 +104,7 @@
         <td class="col-sm-6"><?php echo $comentario->comentario;?></td>
         <td class="col-sm-2">
           <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-            <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnVerPerfil" name="verPerfil">Ver Perfil</button>
+            <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnVerPerfil" name="verPerfil" title="Ver el Perfil de <?php echo $usuario->nombre;?>">Ver Perfil</button>
             <input type="hidden" name="idUsuario" value="<?php echo $anuncio->idUsuario?>">
           </form>
         </td>
@@ -162,7 +164,7 @@
 
 <!-- Volver-->
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-    <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
+    <button type="submit" class="btn btn-primary mb-3 m-1" name="volver" title="Volver a Inicio">Volver</button>
 </form>
 
 <br><br><br><br>

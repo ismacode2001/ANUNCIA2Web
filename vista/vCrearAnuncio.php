@@ -110,8 +110,8 @@
             ?>
         </div>
         <hr>
-        <button type="submit" class="btn btn-primary mb-3 m-1" name="crearAnuncio">Confirmar</button>
-        <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
+        <button type="submit" class="btn btn-primary mb-3 m-1" name="crearAnuncio" title="Crear el Anuncio">Confirmar</button>
+        <button type="submit" class="btn btn-primary mb-3 m-1" name="volver" title="Volver a Inicio">Volver</button>
     </form>
 </div>
 <br><br><br><br>

@@ -179,6 +179,14 @@
           FavoritoDAO::deleteById($favorito->idFavorito);
       }
 
+      // Elimino los Comentarios asociados al Anuncio
+      $comentarios = ComentarioDAO::findAll();
+
+      foreach ($comentarios as $comentario) {
+        if($comentario->idAnuncio == $idAnuncio)
+          ComentarioDAO::deleteById($comentario->idComentario);
+      }
+
       $_SESSION['pagina'] = 'menu';
       header('Location: index.php');
       exit();

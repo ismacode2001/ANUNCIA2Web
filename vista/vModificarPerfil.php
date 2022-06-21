@@ -132,8 +132,8 @@
     ?>
     <br><br><br><br>
     <hr>
-    <button type="submit" class="btn btn-primary mb-3 m-1" name="guardarMod">Guardar Cambios</button>
-    <button type="submit" class="btn btn-primary mb-3 m-1" name="volver">Volver</button>
+    <button type="submit" class="btn btn-primary mb-3 m-1" name="guardarMod" title="Guardar Cambios">Guardar Cambios</button>
+    <button type="submit" class="btn btn-primary mb-3 m-1" name="volver" title="Volver al Perfil">Volver</button>
 </form>
 </div>
 <br><br><br><br>

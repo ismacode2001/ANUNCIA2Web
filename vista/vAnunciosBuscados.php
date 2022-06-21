@@ -1,5 +1,5 @@
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-  <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnCrear" name="crearAnuncio">Crear Anuncio</button>
+  <button type="submit" class="btn btn-primary mb-3 m-1" id="idBtnCrear" name="crearAnuncio" title="Crear Anuncio">Crear Anuncio</button>
 </form>
 
 
@@ -18,7 +18,8 @@ if (count($arrayAnuncios) > 0) {
           <div class="col mb-5">
             <div class="card h-100">
               <!-- Imagen -->
-              <img class="card-img-top" src="<?php decodificaImagen($anuncio->imagen1, $c); ?>" alt="..." width="50px" />
+              <img class="card-img-top" src="<?php decodificaImagen($anuncio->imagen1, $c); ?>" alt="Imagen del anuncio: '<?php echo $anuncio->titulo;?>'"
+                title="Imagen del anuncio: '<?php echo $anuncio->titulo;?>'" width="50px" />
 
               <div class="card-body p-4">
                 <div class="text-center">
@@ -52,7 +53,6 @@ if (count($arrayAnuncios) > 0) {
                   <?php
                   // Si el producto está marcado como Favorito por el Usuario
                   if (existeFavorito($_SESSION["idUsuario"], $anuncio->idAnuncio)) {
-                    //echo "<img src='" . IMAGENES . "corazonLleno.png' width='3%' id='idCorazonLleno' title='Quitar de Favoritos'>";
                   ?>
                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                       <button type="submit" class="btn btn-primary mb-3 m-1" id="btnFav" name="quitarFavorito" title="Quitar de Favoritos">Quitar de Favoritos</button>
@@ -60,7 +60,6 @@ if (count($arrayAnuncios) > 0) {
                     </form>
                   <?php
                   } else {
-                    //echo "<img src='" . IMAGENES . "corazonVacio.png' width='3%' id='idCorazonVacio' title='Añadir a Favoritos'>";
                   ?>
                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                       <button type="submit" class="btn btn-primary mb-3 m-1" id="btnFav" name="añadirFavorito" title="Añadir a Favoritos">Añadir a Favoritos</button>
@@ -84,7 +83,6 @@ if (count($arrayAnuncios) > 0) {
           </div>
 
         <?php
-          //$_SESSION["numeracion"]+=1;
           $c++;
         }
         ?>
